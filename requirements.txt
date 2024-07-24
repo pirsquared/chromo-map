@@ -1,0 +1,11 @@
+pandas
+numpy
+mpmath
+ipython
+pirrtools
+palettable
+sphinx
+sphinx-rtd-theme
+sphinx-copybutton
+sphinx-autobuild
+sphinx-autodoc-typehints

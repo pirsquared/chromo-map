@@ -1,0 +1,51 @@
+:root {
+    --py-input-border-color: rgba(104, 133, 92, 1.0);
+    --py-input-border-width: 1px;
+    --py-output-border-color: rgba(160, 97, 119, 1.0);
+    --py-output-border-width: 1px;
+    --doc-table-bg-opacity: 0.25;
+    --doc-table-attr-color: rgba(217, 175, 107, var(--doc-table-bg-opacity));
+    --doc-table-ex-color: rgba(175, 100, 88, var(--doc-table-bg-opacity));
+    --doc-table-desc-color: rgba(115, 111, 76, var(--doc-table-bg-opacity));
+}
+
+.highlight-python,
+.highlight-none {
+    position: relative;
+    container-type: inline-size;
+}
+.highlight-python {
+    border: var(--py-input-border-width)
+            solid
+            var(--py-input-border-color)
+            !important;
+}
+.highlight-none {
+    border: var(--py-output-border-width)
+            solid
+            var(--py-output-border-color)
+            !important;
+}
+
+.highlight-python::after {
+    content: 'INPUT';
+}
+.highlight-none::after {
+    content: 'OUTPUT';
+}
+.highlight-python::after,
+.highlight-none::after {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5); /* Adjust opacity for watermark effect */
+}
+
+/* Media query to apply the watermark conditionally */
+@container  (max-width: 400px) {
+    .highlight-python::after,
+    .highlight-none::after {
+        display: none; /* Hide the watermark on smaller screens */
+    }
+}
