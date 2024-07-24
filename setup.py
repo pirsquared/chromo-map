@@ -10,12 +10,14 @@ from setuptools import setup, find_packages
 
 setup(
     name="chromo_map",
-    version="0.1.7",  # Update this version number before releasing a new version
+    version="0.1.8",  # Update this version number before releasing a new version
     description="A Python package for manipulating color maps.",
     author="Sean Smith",
     author_email="pirsquared.pirr@gmail.com",
     url="https://github.com/pirsquared/chromo-map",
     packages=find_packages(),
+    include_package_data=True,
+    package_data={"chromo_map": ["data/*.json"]},
     install_requires=[
         "numpy",
         "plotly",
