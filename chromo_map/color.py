@@ -234,9 +234,7 @@ class ColorGradient(LSC):
             self.colors = tuple(Color(clr, alpha=alpha) for clr in colors.colors)
             self.__dict__.update(
                 LSC.from_list(
-                    name=name or colors.name,
-                    colors=self.tup,
-                    N=len(self.colors)
+                    name=name or colors.name, colors=self.tup, N=len(self.colors)
                 ).__dict__
             )
         elif isinstance(colors, Palette):
@@ -550,7 +548,8 @@ class PalettableColorMaps(ColorMaps):
 
     def _convert(self, value, name):
         return ColorGradient(value.mpl_colors, name=name)
-    
+
+
 class MPLColorMaps(ColorMaps):
 
     def _valid(self, value):
@@ -558,6 +557,7 @@ class MPLColorMaps(ColorMaps):
 
     def _convert(self, value, name):
         return ColorGradient(value, name=name)
+
 
 plotly_cmaps = find_instances(
     cls=list,
@@ -574,12 +574,12 @@ palettable_cmaps = find_instances(
 )
 
 mpl_dat = json.loads(pkg_resources.read_text(data, "mpl_cat_names.json"))
-mpl_cmaps = MPLColorMaps({
-    cat: {name: name for name in names} for cat, names in mpl_dat
-})
+mpl_cmaps = MPLColorMaps(
+    {cat: {name: name for name in names} for cat, names in mpl_dat}
+)
 
 
 cmaps = AttrDict()
-cmaps['plotly'] = plotly_cmaps
-cmaps['palettable'] = palettable_cmaps
-cmaps['mpl'] = mpl_cmaps
+cmaps["plotly"] = plotly_cmaps
+cmaps["palettable"] = palettable_cmaps
+cmaps["mpl"] = mpl_cmaps

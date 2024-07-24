@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chromo_map"
-version = "0.1.8"  # Update this version number before you upload a new version to PyPI
+version = "0.1.9"  # Update this version number before you upload a new version to PyPI
 description = "A Python package for manipulating color maps."
 readme = "README.md"
 license = { text = "MIT" }
@@ -65,10 +65,12 @@ exclude = '''
   | unmanaged
 )/
 '''
-# Specify the package data
-[tool.setuptools.package-data]
-"chromo_map" = ["data/*.json"]
 
+[tool.setuptools]
 # Ensure include_package_data is true
-[tool.setuptools.include-package-data]
-include = true
+include-package-data = true
+
+[tool.setuptools.package-data]
+# Specify the data files
+chromo_map = ["data/*.json"]
+
