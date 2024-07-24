@@ -1,9 +1,11 @@
-pandas
 numpy
+matplotlib
 mpmath
 ipython
 pirrtools
 palettable
+plotly
+svgwrite
 sphinx
 sphinx-rtd-theme
 sphinx-copybutton
