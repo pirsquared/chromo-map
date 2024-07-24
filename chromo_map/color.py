@@ -319,14 +319,14 @@ class ColorGradient(LSC):
         template = Template(
             dedent(
                 """\
-        <style>
-            #_{{ random_id }} { display: flex; gap: 0px; width: {{ max_width }}px; }
-            #_{{ random_id }} div { flex: 1 1 1px; }
-            #_{{ random_id }} div.color { width: 100%; }
-        </style>
         <div>
+            <style>
+                #_{{ random_id }} { display: flex; gap: 0px; width: {{ max_width }}px; }
+                #_{{ random_id }} div { flex: 1 1 1px; }
+                #_{{ random_id }} div.color { width: 100%; }
+            </style>
             <h4>{{ name }}</h4>
-            <div id="_{{ random_id }}">
+            <div id="_{{ random_id }}" class="color-map">
                 {% for clr in colors %}
                     {{ clr._repr_html_() }}
                 {% endfor %}
@@ -417,7 +417,7 @@ class Swatch:
                 self.maps.append(ColorGradient(colors, name=name))
             except ValueError as e:
                 raise e
-        self._repr_html_ = self.to_div
+        self._repr_html_ = self.to_grid
 
     def __iter__(self):
         return iter(self.maps)
@@ -441,6 +441,39 @@ class Swatch:
                 {{ cmap.to_div() }}
             {% endfor %}
         </div>
+        """
+            )
+        )
+        random_id = uuid.uuid4().hex
+        return template.render(maps=self.maps, random_id=random_id)
+
+    def to_grid(self):
+        """Convert the swatch to an HTML grid."""
+        n = len(self.maps)
+        if n == 0:
+            return ""
+        template = Template(
+            dedent(
+                """\
+            <div id="_{{ random_id }}" class="color-swatch">
+                <style>
+                    #_{{ random_id }} {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, 250px);
+                        gap: 10px;
+                        justify-content: start;
+                    }
+                    #_{{ random_id }} div {
+                        width: 250px;
+                    }
+                    #_{{ random_id }} .color {
+                        height: 30px;
+                    }
+                </style>
+                {% for cmap in maps %}
+                    {{ cmap.to_div() }}
+                {% endfor %}
+            </div>
         """
             )
         )
