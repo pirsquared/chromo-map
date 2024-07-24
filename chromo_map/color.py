@@ -4,10 +4,13 @@ import re
 import uuid
 from typing import Tuple
 from textwrap import dedent
+import importlib.resources as pkg_resources
+import json
 from jinja2 import Template
 import numpy as np
 from _plotly_utils import colors as plotly_colors
 from matplotlib.colors import LinearSegmentedColormap as LSC
+from matplotlib.colors import ListedColormap as LC
 from matplotlib.colors import to_rgba, to_rgb
 import matplotlib.pyplot as plt
 import svgwrite
@@ -15,6 +18,7 @@ import palettable
 from palettable.palette import Palette
 from pirrtools import AttrDict, find_instances
 from pirrtools.sequences import lcm
+from . import data
 
 
 def _rgb_c(c):
@@ -28,6 +32,8 @@ _blu = _rgb_c("blu")
 _alp = _rgb_c("alp")
 _rgb_pat = _COMMA.join([_red, _grn, _blu]) + f"({_COMMA}{_alp})?"
 _RGB_PATTERN = re.compile(rf"rgba?\({_rgb_pat}\)")
+
+_VALID_MPL_COLORS = plt.colormaps()
 
 
 def rgba_to_tup(rgbstr):
@@ -227,7 +233,11 @@ class ColorGradient(LSC):
         elif isinstance(colors, ColorGradient):
             self.colors = tuple(Color(clr, alpha=alpha) for clr in colors.colors)
             self.__dict__.update(
-                LSC.from_list(name=name, colors=self.tup, N=len(self.colors)).__dict__
+                LSC.from_list(
+                    name=name or colors.name,
+                    colors=self.tup,
+                    N=len(self.colors)
+                ).__dict__
             )
         elif isinstance(colors, Palette):
             self.__dict__.update(
@@ -236,7 +246,20 @@ class ColorGradient(LSC):
         elif isinstance(colors, LSC):
             self.colors = tuple(Color(colors(i), alpha=alpha) for i in range(colors.N))
             self.__dict__.update(colors.__dict__)
-
+        elif isinstance(colors, LC):
+            self.__dict__.update(
+                ColorGradient(colors.colors, name=name, alpha=alpha).__dict__
+            )
+        elif isinstance(colors, str) and colors in _VALID_MPL_COLORS:
+            cmap = plt.get_cmap(colors)
+            if isinstance(cmap, LSC):
+                self.__dict__.update(
+                    ColorGradient(cmap, name=name, alpha=alpha).__dict__
+                )
+            else:
+                self.__dict__.update(
+                    ColorGradient(cmap.colors, name=name, alpha=alpha).__dict__
+                )
         else:
             super().__init__(name, colors)
             self.colors = tuple(Color(self(i), alpha=alpha) for i in range(self.N))
@@ -293,6 +316,7 @@ class ColorGradient(LSC):
             name = f"{self.name}_r"
         return ColorGradient(super().reversed(name=name))
 
+    @property
     def _r(self):
         return self.reversed()
 
@@ -501,26 +525,39 @@ class ColorMaps(AttrDict):
             f"'{type(self).__name__}' object has no attribute '{item}'"
         )
 
+    @property
     def maps(self):
-        return type(self)({k: v for k, v in self.items() if isinstance(v, self.type)})
+        return type(self)({k: v for k, v in self.items() if self._valid(v)})
 
+    @property
     def swatch(self):
-        return Swatch(self.maps())
+        return Swatch(self.maps)
 
 
 class PlotlyColorMaps(ColorMaps):
-    type = list
+
+    def _valid(self, value):
+        return isinstance(value, list)
 
     def _convert(self, value, name):
         return ColorGradient(value, name=name)
 
 
 class PalettableColorMaps(ColorMaps):
-    type = Palette
+
+    def _valid(self, value):
+        return isinstance(value, Palette)
 
     def _convert(self, value, name):
         return ColorGradient(value.mpl_colors, name=name)
+    
+class MPLColorMaps(ColorMaps):
 
+    def _valid(self, value):
+        return value in _VALID_MPL_COLORS
+
+    def _convert(self, value, name):
+        return ColorGradient(value, name=name)
 
 plotly_cmaps = find_instances(
     cls=list,
@@ -535,3 +572,14 @@ palettable_cmaps = find_instances(
     tracker_type=PalettableColorMaps,
     filter_func=lambda name, _: _gud_name(name),
 )
+
+mpl_dat = json.loads(pkg_resources.read_text(data, "mpl_cat_names.json"))
+mpl_cmaps = MPLColorMaps({
+    cat: {name: name for name in names} for cat, names in mpl_dat
+})
+
+
+cmaps = AttrDict()
+cmaps['plotly'] = plotly_cmaps
+cmaps['palettable'] = palettable_cmaps
+cmaps['mpl'] = mpl_cmaps
