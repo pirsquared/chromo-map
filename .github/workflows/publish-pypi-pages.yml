@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/str2d
+      url: https://pypi.org/p/chromo-map
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
 
