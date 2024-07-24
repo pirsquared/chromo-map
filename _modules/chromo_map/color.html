@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>chromo_map.color &mdash; chromo_map 0.1.7 documentation</title>
+  <title>chromo_map.color &mdash; chromo_map 0.1.9 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -17,7 +17,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=ca7ad2ea"></script>
+        <script src="../../_static/documentation_options.js?v=8618f531"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -321,9 +321,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span> <span class="k">for</span> <span class="n">clr</span> <span class="ow">in</span> <span class="n">colors</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
                 <span class="n">LSC</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span>
-                    <span class="n">name</span><span class="o">=</span><span class="n">name</span> <span class="ow">or</span> <span class="n">colors</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                    <span class="n">colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tup</span><span class="p">,</span>
-                    <span class="n">N</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">name</span> <span class="ow">or</span> <span class="n">colors</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tup</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
                 <span class="p">)</span><span class="o">.</span><span class="vm">__dict__</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">Palette</span><span class="p">):</span>
@@ -638,7 +636,8 @@
 
     <span class="k">def</span> <span class="nf">_convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">ColorGradient</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">mpl_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-    
+
+
 <span class="k">class</span> <span class="nc">MPLColorMaps</span><span class="p">(</span><span class="n">ColorMaps</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
@@ -646,6 +645,7 @@
 
     <span class="k">def</span> <span class="nf">_convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">ColorGradient</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
 
 <span class="n">plotly_cmaps</span> <span class="o">=</span> <span class="n">find_instances</span><span class="p">(</span>
     <span class="bp">cls</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span>
@@ -662,15 +662,15 @@
 <span class="p">)</span>
 
 <span class="n">mpl_dat</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;mpl_cat_names.json&quot;</span><span class="p">))</span>
-<span class="n">mpl_cmaps</span> <span class="o">=</span> <span class="n">MPLColorMaps</span><span class="p">({</span>
-    <span class="n">cat</span><span class="p">:</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">}</span> <span class="k">for</span> <span class="n">cat</span><span class="p">,</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">mpl_dat</span>
-<span class="p">})</span>
+<span class="n">mpl_cmaps</span> <span class="o">=</span> <span class="n">MPLColorMaps</span><span class="p">(</span>
+    <span class="p">{</span><span class="n">cat</span><span class="p">:</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">}</span> <span class="k">for</span> <span class="n">cat</span><span class="p">,</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">mpl_dat</span><span class="p">}</span>
+<span class="p">)</span>
 
 
 <span class="n">cmaps</span> <span class="o">=</span> <span class="n">AttrDict</span><span class="p">()</span>
-<span class="n">cmaps</span><span class="p">[</span><span class="s1">&#39;plotly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plotly_cmaps</span>
-<span class="n">cmaps</span><span class="p">[</span><span class="s1">&#39;palettable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">palettable_cmaps</span>
-<span class="n">cmaps</span><span class="p">[</span><span class="s1">&#39;mpl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mpl_cmaps</span>
+<span class="n">cmaps</span><span class="p">[</span><span class="s2">&quot;plotly&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plotly_cmaps</span>
+<span class="n">cmaps</span><span class="p">[</span><span class="s2">&quot;palettable&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">palettable_cmaps</span>
+<span class="n">cmaps</span><span class="p">[</span><span class="s2">&quot;mpl&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mpl_cmaps</span>
 </pre></div>
 
            </div>
