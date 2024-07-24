@@ -11,7 +11,7 @@ Extend Functionality to Color Map Objects
 
 ## Documentation
 
-Full documentation is available at [Str2D](https://pirsquared.github.io/chromo-map/).
+Full documentation is available at [chromo-map](https://pirsquared.github.io/chromo-map/).
 
 ## Installation
 

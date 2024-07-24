@@ -10,7 +10,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="chromo_map",
-    version="0.1.5",  # Update this version number before releasing a new version
+    version="0.1.6",  # Update this version number before releasing a new version
     description="A Python package for manipulating color maps.",
     author="Sean Smith",
     author_email="pirsquared.pirr@gmail.com",
