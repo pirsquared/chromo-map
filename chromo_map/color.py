@@ -68,7 +68,10 @@ def clr_to_tup(clr):
         return hexstr_to_tup(clr) or rgba_to_tup(clr)
     if isinstance(clr, (tuple, list)):
         return clr
-    return None
+    try:
+        return to_rgba(clr)
+    except ValueError:
+        return None
 
 
 class Color:
@@ -78,9 +81,9 @@ class Color:
         if isinstance(clr, Color):
             self.__dict__.update(clr.__dict__)
             if alpha is not None:
-                self.alpha = alpha
+                self.a = alpha
         else:
-            if isinstance(clr, (tuple, list)):
+            if isinstance(clr, (tuple, list, np.ndarray)):
                 red, grn, blu, *alp = clr
                 if alpha is not None:
                     alp = alpha
@@ -97,6 +100,7 @@ class Color:
                 alp = alpha or alp
 
             else:
+                print(clr, type(clr))
                 raise ValueError("Invalid color input.")
 
             if all(map(lambda x: 0 <= x <= 1, (red, grn, blu, alp))):
@@ -167,7 +171,7 @@ class Color:
                 display: inline-block;
                 cursor: pointer;
                 background: {self.rgba};
-                width: 50px; height: 50px;
+                width: 2rem; height: 1.5rem;
             }}
             #_{random_id}::after {{
                 content: attr(data-tooltip);
@@ -175,14 +179,14 @@ class Color:
                 bottom: 50%;
                 left: 0%;
                 transform: translateY(50%);
-                padding: 2px;
+                padding: 0.125rem;
                 white-space: pre;
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-family: monospace;
                 background: rgba(0, 0, 0, 0.6);
-                backdrop-filter: blur(5px);
+                backdrop-filter: blur(0.25rem);
                 color: white;
-                border-radius: 5px;
+                border-radius: 0.25rem;
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.1s ease-in-out;
@@ -214,53 +218,44 @@ class Color:
 class ColorGradient(LSC):
     """A class for representing color gradients."""
 
+    def _update_from_list(self, colors, name, alpha):
+        if not list(colors):
+            raise ValueError("No valid colors found.")
+        self.colors = tuple(Color(clr, alpha) for clr in colors)
+        mpl_colormap = LSC.from_list(name=name, colors=self.tup, N=len(self.colors))
+        self.__dict__.update(mpl_colormap.__dict__)
+
+    def with_alpha(self, alpha, name=None):
+        return ColorGradient(
+            [Color(clr, alpha) for clr in self.colors],
+            name=name or self.name
+        )
+
     def __init__(self, colors, name=None, alpha=None):
+        name = name or "custom"
+
         if isinstance(colors, (list, tuple, np.ndarray)):
-            temp_colors = []
-            for clr in colors:
-                try:
-                    temp_colors.append(Color(clr, alpha=alpha))
-                except ValueError:
-                    pass
-
-            if not temp_colors:
-                raise ValueError("No valid colors found.")
-
-            self.colors = temp_colors
-            self.__dict__.update(
-                LSC.from_list(name=name, colors=self.tup, N=len(self.colors)).__dict__
-            )
+            self._update_from_list(colors, name, alpha)
+            
         elif isinstance(colors, ColorGradient):
-            self.colors = tuple(Color(clr, alpha=alpha) for clr in colors.colors)
-            self.__dict__.update(
-                LSC.from_list(
-                    name=name or colors.name, colors=self.tup, N=len(self.colors)
-                ).__dict__
-            )
+            self._update_from_list(colors.colors, name, alpha)
+
         elif isinstance(colors, Palette):
-            self.__dict__.update(
-                ColorGradient(colors.mpl_colors, name=name, alpha=alpha).__dict__
-            )
+            self._update_from_list(colors.mpl_colors, name, alpha)
+
         elif isinstance(colors, LSC):
-            self.colors = tuple(Color(colors(i), alpha=alpha) for i in range(colors.N))
-            self.__dict__.update(colors.__dict__)
+            self._update_from_list(colors(np.arange(colors.N)), name, alpha)
+
         elif isinstance(colors, LC):
-            self.__dict__.update(
-                ColorGradient(colors.colors, name=name, alpha=alpha).__dict__
-            )
+            self._update_from_list(colors.colors, name, alpha)
+
         elif isinstance(colors, str) and colors in _VALID_MPL_COLORS:
             cmap = plt.get_cmap(colors)
-            if isinstance(cmap, LSC):
-                self.__dict__.update(
-                    ColorGradient(cmap, name=name, alpha=alpha).__dict__
-                )
-            else:
-                self.__dict__.update(
-                    ColorGradient(cmap.colors, name=name, alpha=alpha).__dict__
-                )
+            self._update_from_list(cmap(np.arange(cmap.N)), name, alpha)
+
         else:
-            super().__init__(name, colors)
-            self.colors = tuple(Color(self(i), alpha=alpha) for i in range(self.N))
+            cmap = LSC(name, colors)
+            self._update_from_list(cmap(np.arange(cmap.N)), name, alpha)
 
     def __getattr__(self, name):
         pass_through = (
@@ -329,25 +324,32 @@ class ColorGradient(LSC):
 
     def resize(self, num):
         """Resize the gradient to a new number of colors."""
-        return ColorGradient(self._resample(num))
+        return ColorGradient(self._resample(num), name=self.name)
 
-    def to_div(self):
+    def to_div(self, max=None):
         """Convert the gradient to an HTML div."""
-        max_flex_width = 500
+        max_flex_width = 500 / 16
         n = len(self.colors)
         if n == 0:
             return ""
-        div_width = max_flex_width // n
+        
+        if max is not None and n > max:
+            cmap = self.resize(max)
+        else:
+            cmap = self
+
         template = Template(
             dedent(
                 """\
-        <div>
+        <div class="gradient">
             <style>
-                #_{{ random_id }} { display: flex; gap: 0px; width: {{ max_width }}px; }
-                #_{{ random_id }} div { flex: 1 1 1px; }
-                #_{{ random_id }} div.color { width: 100%; }
+                #_{{ random_id }} {
+                    display: flex; gap: 0rem; width: {{ max_width }}rem;
+                }
+                #_{{ random_id }} div { flex: 1 1 0; }
+                #_{{ random_id }} div.color { width: 100%; height: 100%; }
             </style>
-            <h4>{{ name }}</h4>
+            <span>{{ name }}</span>
             <div id="_{{ random_id }}" class="color-map">
                 {% for clr in colors %}
                     {{ clr._repr_html_() }}
@@ -359,11 +361,10 @@ class ColorGradient(LSC):
         )
         random_id = uuid.uuid4().hex
         return template.render(
-            name=self.name,
-            colors=self.colors,
+            name=cmap.name,
+            colors=cmap.colors,
             random_id=random_id,
             max_width=max_flex_width,
-            div_width=div_width,
         )
 
     def to_matplotlib(self):
@@ -432,7 +433,8 @@ class ColorGradient(LSC):
 class Swatch:
     """A class for representing a collection of color gradients."""
 
-    def __init__(self, maps):
+    def __init__(self, maps, max=32):
+        self.max = max
         self.maps = []
         for name, colors in maps.items():
             try:
@@ -441,33 +443,17 @@ class Swatch:
                 raise e
         self._repr_html_ = self.to_grid
 
+    def to_dict(self):
+        return {map.name: map.colors for map in self.maps}
+
     def __iter__(self):
         return iter(self.maps)
 
     def __len__(self):
         return len(self.maps)
 
-    def to_div(self):
-        """Convert the swatch to an HTML div."""
-        n = len(self.maps)
-        if n == 0:
-            return ""
-        template = Template(
-            dedent(
-                """\
-        <style>
-            #_{{ random_id }} { display: flex; gap: 0px; flex-direction: column; }
-        </style>
-        <div id="_{{ random_id }}">
-            {% for cmap in maps %}
-                {{ cmap.to_div() }}
-            {% endfor %}
-        </div>
-        """
-            )
-        )
-        random_id = uuid.uuid4().hex
-        return template.render(maps=self.maps, random_id=random_id)
+    def with_max(self, max):
+        return Swatch(self.to_dict(), max=max)
 
     def to_grid(self):
         """Convert the swatch to an HTML grid."""
@@ -481,26 +467,40 @@ class Swatch:
                 <style>
                     #_{{ random_id }} {
                         display: grid;
-                        grid-template-columns: repeat(auto-fill, 250px);
-                        gap: 10px;
-                        justify-content: start;
+                        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+                        gap: 0.5rem 1rem;
+                        justify-content: space-between;
+                        overflow: hidden;
+                        resize: both;
+                        width: 55rem;
                     }
                     #_{{ random_id }} div {
-                        width: 250px;
+                        width: 100%;
+                    }
+                    #_{{ random_id }} > div.gradient {
+                        width: 100%;
+                        height: 100%;
+                        display: grid;
+                        gap: 0.2rem;
+                        grid-template-rows: 1rem auto;
                     }
                     #_{{ random_id }} .color {
-                        height: 30px;
+                        height: minmax(1.5rem, 100%);
+                    }
+                    #_{{ random_id }} > div.gradient > span {
+                        margin: 0;
+                        padding: 0;
                     }
                 </style>
                 {% for cmap in maps %}
-                    {{ cmap.to_div() }}
+                    {{ cmap.to_div(max) }}
                 {% endfor %}
             </div>
         """
             )
         )
         random_id = uuid.uuid4().hex
-        return template.render(maps=self.maps, random_id=random_id)
+        return template.render(maps=self.maps, random_id=random_id, max=self.max)
 
 
 def _gud_name(name):
@@ -514,7 +514,10 @@ class ColorMaps(AttrDict):
         if item in self:
             value = super().__getattr__(item)
             if not isinstance(value, type(self)):
-                return self._convert(value, item)
+                cmap = self._convert(value, item)
+                if cmap.N > 32:
+                    cmap = cmap.resize(32)
+                return cmap
             return value
         temp = type(self)({k: v for k, v in self.items() if k.startswith(item)})
         if temp:
