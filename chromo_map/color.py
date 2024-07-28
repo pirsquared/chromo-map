@@ -227,8 +227,7 @@ class ColorGradient(LSC):
 
     def with_alpha(self, alpha, name=None):
         return ColorGradient(
-            [Color(clr, alpha) for clr in self.colors],
-            name=name or self.name
+            [Color(clr, alpha) for clr in self.colors], name=name or self.name
         )
 
     def __init__(self, colors, name=None, alpha=None):
@@ -236,7 +235,7 @@ class ColorGradient(LSC):
 
         if isinstance(colors, (list, tuple, np.ndarray)):
             self._update_from_list(colors, name, alpha)
-            
+
         elif isinstance(colors, ColorGradient):
             self._update_from_list(colors.colors, name, alpha)
 
@@ -326,15 +325,15 @@ class ColorGradient(LSC):
         """Resize the gradient to a new number of colors."""
         return ColorGradient(self._resample(num), name=self.name)
 
-    def to_div(self, max=None):
+    def to_div(self, maxn=None):
         """Convert the gradient to an HTML div."""
         max_flex_width = 500 / 16
         n = len(self.colors)
         if n == 0:
             return ""
-        
-        if max is not None and n > max:
-            cmap = self.resize(max)
+
+        if maxn is not None and n > maxn:
+            cmap = self.resize(maxn)
         else:
             cmap = self
 
@@ -433,8 +432,8 @@ class ColorGradient(LSC):
 class Swatch:
     """A class for representing a collection of color gradients."""
 
-    def __init__(self, maps, max=32):
-        self.max = max
+    def __init__(self, maps, maxn=32):
+        self.maxn = maxn
         self.maps = []
         for name, colors in maps.items():
             try:
@@ -452,8 +451,8 @@ class Swatch:
     def __len__(self):
         return len(self.maps)
 
-    def with_max(self, max):
-        return Swatch(self.to_dict(), max=max)
+    def with_max(self, maxn):
+        return Swatch(self.to_dict(), maxn=maxn)
 
     def to_grid(self):
         """Convert the swatch to an HTML grid."""
@@ -472,14 +471,14 @@ class Swatch:
                         justify-content: space-between;
                         overflow: hidden;
                         resize: both;
-                        width: 55rem;
+                        width: min(65rem, 100%);
                     }
                     #_{{ random_id }} div {
                         width: 100%;
                     }
                     #_{{ random_id }} > div.gradient {
                         width: 100%;
-                        height: 100%;
+                        height: min(4rem, 100%);
                         display: grid;
                         gap: 0.2rem;
                         grid-template-rows: 1rem auto;
@@ -493,14 +492,14 @@ class Swatch:
                     }
                 </style>
                 {% for cmap in maps %}
-                    {{ cmap.to_div(max) }}
+                    {{ cmap.to_div(maxn) }}
                 {% endfor %}
             </div>
         """
             )
         )
         random_id = uuid.uuid4().hex
-        return template.render(maps=self.maps, random_id=random_id, max=self.max)
+        return template.render(maps=self.maps, random_id=random_id, maxn=self.maxn)
 
 
 def _gud_name(name):
