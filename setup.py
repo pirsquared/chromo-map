@@ -10,7 +10,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="chromo_map",
-    version="0.1.10",  # Update this version number before releasing a new version
+    version="0.1.11",  # Update this version number before releasing a new version
     description="A Python package for manipulating color maps.",
     author="Sean Smith",
     author_email="pirsquared.pirr@gmail.com",
@@ -21,7 +21,7 @@ setup(
     install_requires=[
         "numpy",
         "plotly",
-        "matplotlib",
+        "matplotlib>=3.7.5",
         "pirrtools>=0.2.10",
         "palettable",
         "svgwrite",

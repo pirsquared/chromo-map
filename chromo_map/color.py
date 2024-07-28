@@ -323,7 +323,7 @@ class ColorGradient(LSC):
 
     def resize(self, num):
         """Resize the gradient to a new number of colors."""
-        return ColorGradient(self._resample(num), name=self.name)
+        return ColorGradient(self.resampled(num), name=self.name)
 
     def to_div(self, maxn=None):
         """Convert the gradient to an HTML div."""
