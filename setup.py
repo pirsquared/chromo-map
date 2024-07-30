@@ -25,6 +25,7 @@ setup(
         "pirrtools>=0.2.10",
         "palettable",
         "svgwrite",
+        "ipython",
     ],
     extras_require={
         "dev": [
@@ -35,6 +36,7 @@ setup(
             "black",
             "pre-commit",
             "pylint",
+            "ipykernel",
             "sphinx",
             "sphinx-rtd-theme",
             "sphinx-copybutton",

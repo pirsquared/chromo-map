@@ -18,7 +18,13 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "numpy", "plotly", "matplotlib>=3.7.5", "pirrtools>=0.2.10", "palettable", "svgwrite"
+  "numpy",
+  "plotly",
+  "matplotlib>=3.7.5",
+  "pirrtools>=0.2.10",
+  "palettable",
+  "svgwrite",
+  "ipython",
 ]
 
 [project.urls]
@@ -33,6 +39,7 @@ dev = [
   "black",
   "pre-commit",
   "pylint",
+  "ipykernel",
   "sphinx",
   "sphinx-rtd-theme",
   "sphinx-copybutton",

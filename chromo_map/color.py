@@ -6,6 +6,8 @@ from typing import Tuple
 from textwrap import dedent
 import importlib.resources as pkg_resources
 import json
+import base64
+from IPython.display import HTML
 from jinja2 import Template
 import numpy as np
 from _plotly_utils import colors as plotly_colors
@@ -100,8 +102,7 @@ class Color:
                 alp = alpha or alp
 
             else:
-                print(clr, type(clr))
-                raise ValueError("Invalid color input.")
+                raise ValueError(f"Invalid color input '{type(clr).__name__}'.")
 
             if all(map(lambda x: 0 <= x <= 1, (red, grn, blu, alp))):
                 self.r = red
@@ -149,7 +150,7 @@ class Color:
     @property
     def rgba(self):
         r, g, b, a = self.rgbatup
-        return f"rgba({r}, {g}, {b}, {a})"
+        return f"rgba({r}, {g}, {b}, {a:.1f})"
 
     def interpolate(self, other, factor):
         r = self.r + (other.r - self.r) * factor
@@ -214,6 +215,9 @@ class Color:
         """
         )
 
+    def __eq__(self, other):
+        return np.isclose(self.tup, other.tup).all()
+
 
 class ColorGradient(LSC):
     """A class for representing color gradients."""
@@ -231,7 +235,7 @@ class ColorGradient(LSC):
         )
 
     def __init__(self, colors, name=None, alpha=None):
-        name = name or "custom"
+        name = name or "custom" if not hasattr(colors, "name") else colors.name
 
         if isinstance(colors, (list, tuple, np.ndarray)):
             self._update_from_list(colors, name, alpha)
@@ -312,12 +316,6 @@ class ColorGradient(LSC):
     def _r(self):
         return self.reversed()
 
-    def get(self, key, default=None):
-        try:
-            return self[key]
-        except IndexError:
-            return default
-
     def __len__(self):
         return len(self.colors)
 
@@ -325,7 +323,7 @@ class ColorGradient(LSC):
         """Resize the gradient to a new number of colors."""
         return ColorGradient(self.resampled(num), name=self.name)
 
-    def to_div(self, maxn=None):
+    def to_div(self, maxn=None, as_png=False):
         """Convert the gradient to an HTML div."""
         max_flex_width = 500 / 16
         n = len(self.colors)
@@ -346,24 +344,31 @@ class ColorGradient(LSC):
                     display: flex; gap: 0rem; width: {{ max_width }}rem;
                 }
                 #_{{ random_id }} div { flex: 1 1 0; }
-                #_{{ random_id }} div.color { width: 100%; height: 100%; }
+                #_{{ random_id }} div.color, div.cmap { width: 100%; height: 100%; }
             </style>
-            <span>{{ name }}</span>
+            <strong>{{ name }}</strong>
+            {% if as_png %}
+            {{ colors.to_png().data }}
+            {% else %}
             <div id="_{{ random_id }}" class="color-map">
-                {% for clr in colors %}
+                {% for clr in colors.colors %}
                     {{ clr._repr_html_() }}
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
         """
             )
         )
         random_id = uuid.uuid4().hex
-        return template.render(
-            name=cmap.name,
-            colors=cmap.colors,
-            random_id=random_id,
-            max_width=max_flex_width,
+        return HTML(
+            template.render(
+                name=cmap.name,
+                colors=cmap,
+                random_id=random_id,
+                max_width=max_flex_width,
+                as_png=as_png,
+            )
         )
 
     def to_matplotlib(self):
@@ -401,8 +406,17 @@ class ColorGradient(LSC):
 
         return dwg
 
-    def _repr_html_(self):
-        return self.to_div()
+    def to_png(self):
+        """Convert the gradient to a PNG image."""
+        png_bytes = self._repr_png_()
+        png_base64 = base64.b64encode(png_bytes).decode("ascii")
+        div = f'<div class="cmap"><img src="data:image/png;base64,{png_base64}"></div>'
+        return HTML(div)
+
+    def _repr_html_(self, skip_super=False):
+        if hasattr(super(), "_repr_html_") and not skip_super:
+            return super()._repr_html_()
+        return self.to_div().data
 
     def __add__(self, other):
         name = f"{self.name} + {other.name}"
@@ -427,6 +441,9 @@ class ColorGradient(LSC):
         b = other.resize(n)
         name = f"{self.name} | {other.name}"
         return ColorGradient([x | y for x, y in zip(a, b)], name=name)
+
+    def __eq__(self, other):
+        return np.isclose(self.tup, other.tup).all()
 
 
 class Swatch:
@@ -454,7 +471,7 @@ class Swatch:
     def with_max(self, maxn):
         return Swatch(self.to_dict(), maxn=maxn)
 
-    def to_grid(self):
+    def to_grid(self, as_png=False):
         """Convert the swatch to an HTML grid."""
         n = len(self.maps)
         if n == 0:
@@ -486,20 +503,24 @@ class Swatch:
                     #_{{ random_id }} .color {
                         height: minmax(1.5rem, 100%);
                     }
-                    #_{{ random_id }} > div.gradient > span {
+                    #_{{ random_id }} > div.gradient > strong {
                         margin: 0;
                         padding: 0;
                     }
                 </style>
                 {% for cmap in maps %}
-                    {{ cmap.to_div(maxn) }}
+                    {{ cmap.to_div(maxn, as_png=as_png).data }}
                 {% endfor %}
             </div>
         """
             )
         )
         random_id = uuid.uuid4().hex
-        return template.render(maps=self.maps, random_id=random_id, maxn=self.maxn)
+        return HTML(
+            template.render(
+                maps=self.maps, random_id=random_id, maxn=self.maxn, as_png=as_png
+            )
+        )
 
 
 def _gud_name(name):
@@ -530,8 +551,14 @@ class ColorMaps(AttrDict):
         return type(self)({k: v for k, v in self.items() if self._valid(v)})
 
     @property
-    def swatch(self):
+    def _swatch(self):
         return Swatch(self.maps)
+
+    def _repr_html_(self):
+        return self._swatch.to_grid(as_png=True).data
+
+    def to_grid(self, *args, **kwargs):
+        return self._swatch.to_grid(*args, **kwargs)
 
 
 class PlotlyColorMaps(ColorMaps):
