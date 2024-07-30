@@ -19,6 +19,12 @@ Install
    about
 
 
+Coverage Report
+---------------
+
+The test coverage report can be found `here <_static/coverage/index.html>`_.
+
+
 
 Indices and tables
 ==================
