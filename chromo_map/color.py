@@ -344,7 +344,9 @@ class ColorGradient(LSC):
                     display: flex; gap: 0rem; width: {{ max_width }}rem;
                 }
                 #_{{ random_id }} div { flex: 1 1 0; }
-                #_{{ random_id }} div.color, div.cmap { width: 100%; height: 100%; }
+                #_{{ random_id }} div.color { width: 100%; height: 100%; }
+                #_{{ random_id }} div.cmap { width: 100%; height: auto; }
+                #_{{ random_id }} div.cmap > img { width: 100%; height: 100%; }
             </style>
             <strong>{{ name }}</strong>
             {% if as_png %}
@@ -507,6 +509,7 @@ class Swatch:
                         margin: 0;
                         padding: 0;
                     }
+                    #_{{ random_id }} img {height: 100%;}
                 </style>
                 {% for cmap in maps %}
                     {{ cmap.to_div(maxn, as_png=as_png).data }}
@@ -602,7 +605,9 @@ palettable_cmaps = find_instances(
     filter_func=lambda name, _: _gud_name(name),
 )
 
-mpl_dat = json.loads(pkg_resources.read_text(data, "mpl_cat_names.json"))
+with pkg_resources.open_text(data, "mpl_cat_names.json") as file:
+    mpl_dat = json.load(file)
+
 mpl_cmaps = MPLColorMaps(
     {cat: {name: name for name in names} for cat, names in mpl_dat}
 )

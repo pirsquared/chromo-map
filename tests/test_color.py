@@ -6,6 +6,7 @@ import pytest
 import chromo_map as cm
 from chromo_map import Color, ColorGradient
 
+
 # pylint: disable=protected-access
 # pylint: disable=broad-exception-caught
 # pylint: disable=missing-function-docstring

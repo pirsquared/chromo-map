@@ -7,6 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os
 import sys
+import shutil
 
 sys.path.insert(0, os.path.abspath("../.."))
 
@@ -47,6 +48,13 @@ html_static_path = ["_static"]
 
 html_favicon = "_static/pirr_logo.svg"
 
+def copy_coverage_report(app, exception):
+    src = os.path.join(app.outdir, '..', '..', '..', 'htmlcov')
+    dst = os.path.join(app.outdir, 'coverage')
+    if os.path.exists(src) and os.path.isdir(src):
+        shutil.copytree(src, dst)
+
 
 def setup(app):
     app.add_css_file("custom.css")
+    app.connect('build-finished', copy_coverage_report)
