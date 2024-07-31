@@ -26,6 +26,7 @@ setup(
         "palettable",
         "svgwrite",
         "ipython",
+        "importlib_resources",
     ],
     extras_require={
         "dev": [

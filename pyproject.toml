@@ -25,6 +25,7 @@ dependencies = [
   "palettable",
   "svgwrite",
   "ipython",
+  "importlib_resources",
 ]
 
 [project.urls]
