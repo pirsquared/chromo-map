@@ -6,6 +6,7 @@ pirrtools
 palettable
 plotly
 bs4
+importlib_resources
 svgwrite
 ipykernel
 pytest
