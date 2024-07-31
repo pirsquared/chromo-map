@@ -7,5 +7,4 @@ color module
 
    Color <chromo_map.Color>
    ColorGradient <chromo_map.ColorGradient>
-   ColorMaps <chromo_map.ColorMaps>
 
