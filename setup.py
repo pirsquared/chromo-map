@@ -10,7 +10,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="chromo_map",
-    version="0.1.12",  # Update this version number before releasing a new version
+    version="0.1.13",  # Update this version number before releasing a new version
     description="A Python package for manipulating color maps.",
     author="Sean Smith",
     author_email="pirsquared.pirr@gmail.com",
@@ -27,6 +27,7 @@ setup(
         "svgwrite",
         "ipython",
         "importlib_resources",
+        "bs4",
     ],
     extras_require={
         "dev": [

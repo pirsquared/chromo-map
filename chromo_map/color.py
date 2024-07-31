@@ -20,6 +20,7 @@ import palettable
 from palettable.palette import Palette
 from pirrtools import AttrDict, find_instances
 from pirrtools.sequences import lcm
+from bs4 import BeautifulSoup
 
 
 def _rgb_c(c):
@@ -76,7 +77,88 @@ def clr_to_tup(clr):
 
 
 class Color:
-    """A class for representing colors."""
+    """A class for representing colors.
+
+    You can pass in a color as a tuple of RGB or
+    RGBA values in which the values are between 0 and 1, a hex string with or without an
+    alpha value, or an RGB or RGBA string in the form `'rgb(r, g, b)'` or
+    `'rgba(r, g, b, a)'`.  The alpha value is optional in all cases.
+
+    You can also pass in another Color object to create a copy of it with an optional
+    new alpha value.
+
+    The class has properties that return the color in various formats including tuples,
+    hex strings, RGB strings, and RGBA strings.
+
+    You can also interpolate between two colors by passing in another color and a factor
+    between 0 and 1.
+
+
+    Examples
+    --------
+
+    Simple red color:
+
+    .. testcode::
+
+        from chromo_map import Color
+        Color('red')
+
+    .. html-output::
+
+        from chromo_map import Color
+        print(Color('red')._repr_html_())
+
+    Simple red color with alpha:
+
+    .. testcode::
+
+        from chromo_map import Color
+        Color('red', 0.5)
+
+    .. html-output::
+
+            from chromo_map import Color
+            print(Color('red', 0.5)._repr_html_())
+
+    Green with hex string:
+
+    .. testcode::
+
+        from chromo_map import Color
+        Color('#007f00')
+
+    .. html-output::
+
+        from chromo_map import Color
+        print(Color('#007f00')._repr_html_())
+
+    Blue with RGB string:
+
+    .. testcode::
+
+        from chromo_map import Color
+        Color('rgb(0, 0, 255)')
+
+    .. html-output::
+
+        from chromo_map import Color
+        print(Color('rgb(0, 0, 255)')._repr_html_())
+
+    Blue with RGBA string and overidden alpha:
+
+    .. testcode::
+
+        from chromo_map import Color
+        Color('rgba(0, 0, 255, 0.5)', 0.75)
+
+    .. html-output::
+
+        from chromo_map import Color
+        print(Color('rgba(0, 0, 255, 0.5)', 0.75)._repr_html_())
+
+
+    """
 
     def __init__(self, clr, alpha=None):
         if isinstance(clr, Color):
@@ -113,45 +195,287 @@ class Color:
 
     @property
     def tup(self):
+        """Return the color as a tuple.
+
+        Returns
+        -------
+        Tuple[float, float, float, float]
+            The color as a tuple of RGBA values between 0 and 1.
+
+        Examples
+        --------
+
+        Get the color as a tuple:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.tup
+
+        .. testoutput::
+
+            (1.0, 0.6470588235294118, 0.0, 0.5)
+
+        """
         return self.r, self.g, self.b, self.a
 
     @property
     def hexatup(self):
+        """Return the color as a tuple of hex values.
+
+        Returns
+        -------
+        Tuple[int, int, int, int]
+            The color as a tuple of RGBA values between 0 and 255.
+
+        Examples
+        --------
+
+        Get the color as a tuple of hex values:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.hexatup
+
+        .. testoutput::
+
+            (255, 165, 0, 127)
+
+        """
         return tuple(int(x * 255) for x in self.tup)
 
     @property
     def hextup(self):
+        """Return the color as a tuple of hex values.
+
+        Returns
+        -------
+        Tuple[int, int, int]
+            The color as a tuple of RGB values between 0 and 255.
+
+        Examples
+        --------
+
+        Get the color as a tuple of hex values:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.hextup
+
+        .. testoutput::
+
+            (255, 165, 0)
+
+        """
         return self.hexatup[:3]
 
     @property
     def rgbtup(self):
+        """Return the color as a tuple of RGB values.
+
+        Returns
+        -------
+        Tuple[int, int, int]
+            The color as a tuple of RGB values between 0 and 255.
+
+        Examples
+        --------
+
+        Get the color as a tuple of hex values:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.rgbtup
+
+        .. testoutput::
+
+            (255, 165, 0)
+
+        """
         return self.hextup
 
     @property
     def rgbatup(self):
+        """Return the color as a tuple of RGBA values.
+
+        Returns
+        -------
+        Tuple[int, int, int, float]
+            The color as a tuple of RGB values between 0 and 255 and an alpha value
+            between 0 and 1.
+
+        Examples
+        --------
+        Get the color as a tuple of RGBA values:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.rgbatup
+
+        .. testoutput::
+
+            (255, 165, 0, 0.5)
+
+        """
         return self.rgbtup + (self.a,)
 
     @property
     def hex(self):
+        """Return the color as a hex string.
+
+        Returns
+        -------
+        str
+            The color as a hex string.
+
+        Examples
+        --------
+
+        Get the color as a hex string:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.hex
+
+        .. testoutput::
+
+            '#ffa500'
+
+        """
         r, g, b = self.hextup
         return f"#{r:02x}{g:02x}{b:02x}"
 
     @property
     def hexa(self):
+        """Return the color as a hex string with an alpha value.
+
+        Returns
+        -------
+        str
+            The color as a hex string with an alpha value.
+
+        Examples
+        --------
+
+        Get the color as a hex string with an alpha value:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.hexa
+
+        .. testoutput::
+
+                '#ffa50080'
+
+        """
         r, g, b, a = self.hexatup
         return f"#{r:02x}{g:02x}{b:02x}{a:02x}"
 
     @property
     def rgb(self):
+        """Return the color as an RGB string.
+
+        Returns
+        -------
+        str
+            The color as an RGB string.
+
+        Examples
+        --------
+
+        Get the color as an RGB string:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.rgb
+
+        .. testoutput::
+
+            'rgb(255, 165, 0)'
+
+        """
         r, g, b = self.rgbtup
         return f"rgb({r}, {g}, {b})"
 
     @property
     def rgba(self):
+        """Return the color as an RGBA string.
+
+        Returns
+        -------
+        str
+            The color as an RGBA string.
+
+        Examples
+        --------
+
+        Get the color as an RGBA string:
+
+        .. testcode::
+
+            from chromo_map import Color
+            orange = Color('orange', 0.5)
+            orange.rgba
+
+        .. testoutput::
+
+            'rgba(255, 165, 0, 0.5)'
+
+        """
         r, g, b, a = self.rgbatup
         return f"rgba({r}, {g}, {b}, {a:.1f})"
 
     def interpolate(self, other, factor):
+        """Interpolate between two colors.
+
+        Parameters
+        ----------
+        other : Color
+            The other color to interpolate with.
+
+        factor : float
+            The interpolation factor between 0 and 1.
+
+        Returns
+        -------
+        Color
+            The interpolated color.
+
+        Examples
+        --------
+        Interpolate between red and blue:
+
+        .. testcode::
+
+            from chromo_map import Color
+            red = Color('red')
+            blue = Color('blue')
+
+            red.interpolate(blue, 0.5)
+
+        .. html-output::
+
+            from chromo_map import Color
+            red = Color('red')
+            blue = Color('blue')
+            print(red.interpolate(blue, 0.5)._repr_html_())
+
+        """
         r = self.r + (other.r - self.r) * factor
         g = self.g + (other.g - self.g) * factor
         b = self.b + (other.b - self.b) * factor
@@ -159,6 +483,38 @@ class Color:
         return Color((r, g, b, a))
 
     def __or__(self, other):
+        """Interpolate between two colors assuming a factor of 0.5.
+
+        Parameters
+        ----------
+        other : Color
+            The other color to interpolate with.
+
+        Returns
+        -------
+        Color
+            The interpolated color.
+
+        Examples
+        --------
+
+        Interpolate between red and blue:
+
+        .. testcode::
+
+            from chromo_map import Color
+            red = Color('red')
+            blue = Color('blue')
+            red | blue
+
+        .. html-output::
+
+            from chromo_map import Color
+            red = Color('red')
+            blue = Color('blue')
+            print((red | blue)._repr_html_())
+
+        """
         return self.interpolate(other, 0.5)
 
     def _repr_html_(self):
@@ -215,11 +571,61 @@ class Color:
         )
 
     def __eq__(self, other):
+        """Check if two colors are equal.
+
+        Only checks the result of the tuple property.
+
+        Parameters
+        ----------
+        other : Color
+            The other color to compare to.
+
+        Returns
+        -------
+        bool
+            Whether the colors are equal.
+        """
         return np.isclose(self.tup, other.tup).all()
 
 
 class ColorGradient(LSC):
-    """A class for representing color gradients."""
+    """Mimics a matplotlib colormap with a list of colors.
+
+    I wanted an object that could be used in place of a matplotlib colormap but with a
+    bit of extra functionality.  This class allows you to create a gradient from a list
+    of colors, another gradient, a palette, a matplotlib colormap, or a string name of a
+    matplotlib colormap.
+
+    Examples
+    --------
+
+    Create a gradient from a list of colors:
+
+    .. testcode::
+
+        from chromo_map import ColorGradient
+        colors = ['#ff0000', '#00ff00', '#0000ff']
+        gradient = ColorGradient(colors, name='rGb)
+        gradient
+
+    .. html-output::
+
+        from chromo_map import ColorGradient
+        colors = ['#ff0000', '#00ff00', '#0000ff']
+        gradient = ColorGradient(colors, name='rGb')
+        print(gradient._repr_html_())
+
+    Or with hover information:
+
+    .. testcode::
+
+        gradient.to_div(as_png=False)
+
+    .. html-output::
+
+        print(gradient.to_div(as_png=False).data)
+
+    """
 
     def _update_from_list(self, colors, name, alpha):
         if not list(colors):
@@ -229,6 +635,41 @@ class ColorGradient(LSC):
         self.__dict__.update(mpl_colormap.__dict__)
 
     def with_alpha(self, alpha, name=None):
+        """Create a new gradient with a new alpha value.
+
+        Parameters
+        ----------
+        alpha : float
+            The new alpha value between 0 and 1.
+
+        name : str, optional
+            The name of the new gradient.
+
+        Returns
+        -------
+        ColorGradient
+            The new gradient with the new alpha value.
+
+        Examples
+        --------
+
+        Create a gradient with a new alpha value:
+
+        .. testcode::
+
+            from chromo_map import ColorGradient
+            colors = ['#ff0000', '#00ff00', '#0000ff']
+            gradient = ColorGradient(colors, name='rGb')
+            gradient.with_alpha(0.5)
+
+        .. html-output::
+
+            from chromo_map import ColorGradient
+            colors = ['#ff0000', '#00ff00', '#0000ff']
+            gradient = ColorGradient(colors, name='rGb')
+            print(gradient.with_alpha(0.5)._repr_html_())
+
+        """
         return ColorGradient(
             [Color(clr, alpha) for clr in self.colors], name=name or self.name
         )
@@ -307,6 +748,38 @@ class ColorGradient(LSC):
         return iter(self.colors)
 
     def reversed(self, name=None):
+        """Return a new gradient with the colors reversed.
+
+        Parameters
+        ----------
+        name : str, optional
+            The name of the new gradient.
+
+        Returns
+        -------
+        ColorGradient
+            The new gradient with the colors reversed.
+
+        Examples
+        --------
+
+        Create a reversed gradient:
+
+        .. testcode::
+
+            from chromo_map import ColorGradient
+            colors = ['#ff0000', '#00ff00', '#0000ff']
+            gradient = ColorGradient(colors, name='rGb')
+            gradient.reversed()
+
+        .. html-output::
+
+            from chromo_map import ColorGradient
+            colors = ['#ff0000', '#00ff00', '#0000ff']
+            gradient = ColorGradient(colors, name='rGb')
+            print(gradient.reversed()._repr_html_())
+
+        """
         if name is None:
             name = f"{self.name}_r"
         return ColorGradient(super().reversed(name=name))
@@ -319,11 +792,76 @@ class ColorGradient(LSC):
         return len(self.colors)
 
     def resize(self, num):
-        """Resize the gradient to a new number of colors."""
+        """Resize the gradient to a new number of colors.
+
+        Parameters
+        ----------
+        num : int
+            The new number of colors.
+
+        Returns
+        -------
+        ColorGradient
+            The new gradient with the new number of colors.
+
+        Examples
+        --------
+
+        Resize the gradient to 32 colors:
+
+        .. testcode::
+
+                from chromo_map import ColorGradient
+                colors = ['#ff0000', '#00ff00', '#0000ff']
+                gradient = ColorGradient(colors, name='rGb')
+                gradient.resize(32)
+
+        .. html-output::
+
+                from chromo_map import ColorGradient
+                colors = ['#ff0000', '#00ff00', '#0000ff']
+                gradient = ColorGradient(colors, name='rGb')
+                print(gradient.resize(32)._repr_html_())
+
+        """
         return ColorGradient(self.resampled(num), name=self.name)
 
     def to_div(self, maxn=None, as_png=False):
-        """Convert the gradient to an HTML div."""
+        """Convert the gradient to an HTML div.
+
+        Parameters
+        ----------
+        maxn : int, optional
+            The maximum number of colors to display.
+
+        as_png : bool, optional
+            Whether to display the gradient as a PNG image.
+
+        Returns
+        -------
+        HTML
+            The gradient as an HTML div.
+
+        Examples
+        --------
+
+        Convert the gradient to an HTML div:
+
+        .. testcode::
+
+            from chromo_map import ColorGradient
+            colors = ['#ff0000', '#00ff00', '#0000ff']
+            gradient = ColorGradient(colors, name='rGb')
+            gradient.to_div(as_png=False)
+
+        .. html-output::
+
+                from chromo_map import ColorGradient
+                colors = ['#ff0000', '#00ff00', '#0000ff']
+                gradient = ColorGradient(colors, name='rGb')
+                print(gradient.to_div(as_png=False).data)
+
+        """
         max_flex_width = 500 / 16
         n = len(self.colors)
         if n == 0:
@@ -416,7 +954,7 @@ class ColorGradient(LSC):
 
     def _repr_html_(self, skip_super=False):
         if hasattr(super(), "_repr_html_") and not skip_super:
-            return super()._repr_html_()
+            return BeautifulSoup(super()._repr_html_(), "html.parser").prettify()
         return self.to_div().data
 
     def __add__(self, other):
@@ -530,7 +1068,39 @@ def _gud_name(name):
 
 
 class ColorMaps(AttrDict):
-    """A class for representing color maps."""
+    """A class for collecting color gradients.
+
+    This class is a dictionary of color gradients.  You can access the gradients by
+    their names or by their categories.
+
+    Examples
+    --------
+
+    Access a color gradient by name:
+
+    .. testcode::
+
+        from chromo_map import cmaps
+        cmaps.plotly.carto.Vivid
+
+    .. html-output::
+
+        from chromo_map import cmaps
+        print(cmaps.plotly.carto.Vivid._repr_html_())
+
+    Access a color gradient by category:
+
+    .. testcode::
+
+        from chromo_map import cmaps
+        cmaps.plotly.carto
+
+    .. html-output::
+
+            from chromo_map import cmaps
+            print(cmaps.plotly.carto._repr_html_())
+
+    """
 
     def __getattr__(self, item):
         if item in self:
@@ -605,7 +1175,7 @@ palettable_cmaps = find_instances(
 )
 
 mpl_dat = json.loads(
-    files('chromo_map.data').joinpath('mpl_cat_names.json').read_text()
+    files("chromo_map.data").joinpath("mpl_cat_names.json").read_text()
 )
 
 mpl_cmaps = MPLColorMaps(

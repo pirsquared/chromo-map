@@ -26,6 +26,11 @@
             var(--py-output-border-color)
             !important;
 }
+.highlight-none > .html-output {
+    border: none;
+    padding: 1rem 1rem 2rem 1rem;
+
+}
 
 .highlight-python::after {
     content: 'INPUT';
