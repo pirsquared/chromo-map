@@ -4,7 +4,7 @@ import re
 import uuid
 from typing import Tuple
 from textwrap import dedent
-import importlib.resources as pkg_resources
+from importlib_resources import files
 import json
 import base64
 from IPython.display import HTML
@@ -605,8 +605,9 @@ palettable_cmaps = find_instances(
     filter_func=lambda name, _: _gud_name(name),
 )
 
-with pkg_resources.open_text(data, "mpl_cat_names.json") as file:
-    mpl_dat = json.load(file)
+mpl_dat = json.loads(
+    files('chromo_map.data').joinpath('mpl_cat_names.json').read_text()
+)
 
 mpl_cmaps = MPLColorMaps(
     {cat: {name: name for name in names} for cat, names in mpl_dat}
