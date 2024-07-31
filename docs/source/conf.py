@@ -15,14 +15,11 @@ from bs4 import BeautifulSoup
 
 
 sys.path.insert(0, os.path.abspath("../.."))
-import chromo_map as cm  # noqa: E402
-from chromo_map import Color  # noqa: E402
-print(os.path.abspath("."))
 
 project = "chromo_map"
 copyright = "2024, Sean Smith"
 author = "Sean Smith"
-release = "0.1.14"
+release = "0.1.15"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
