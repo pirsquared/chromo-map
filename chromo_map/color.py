@@ -4,9 +4,9 @@ import re
 import uuid
 from typing import Tuple
 from textwrap import dedent
-from importlib_resources import files
 import json
 import base64
+from importlib_resources import files
 from IPython.display import HTML
 from jinja2 import Template
 import numpy as np
@@ -20,7 +20,6 @@ import palettable
 from palettable.palette import Palette
 from pirrtools import AttrDict, find_instances
 from pirrtools.sequences import lcm
-from . import data
 
 
 def _rgb_c(c):
