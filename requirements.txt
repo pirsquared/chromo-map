@@ -5,6 +5,7 @@ ipython
 pirrtools
 palettable
 plotly
+bs4
 svgwrite
 ipykernel
 pytest
