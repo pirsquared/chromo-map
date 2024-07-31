@@ -14,7 +14,7 @@ from sphinx.util.docutils import SphinxDirective
 from bs4 import BeautifulSoup
 
 
-sys.path.insert(0, os.path.abspath("../../.."))
+sys.path.insert(0, os.path.abspath("../.."))
 import chromo_map as cm  # noqa: E402
 from chromo_map import Color  # noqa: E402
 print(os.path.abspath("."))
