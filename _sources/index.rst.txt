@@ -22,7 +22,7 @@ Install
 Coverage Report
 ---------------
 
-The test coverage report can be found `here <coverage/index.html>`_.
+The test coverage report can be found `here <_static/coverage/index.html>`_.
 
 
 
