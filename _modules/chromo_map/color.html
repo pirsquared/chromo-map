@@ -431,7 +431,9 @@
 <span class="sd">                    display: flex; gap: 0rem; width: {{ max_width }}rem;</span>
 <span class="sd">                }</span>
 <span class="sd">                #_{{ random_id }} div { flex: 1 1 0; }</span>
-<span class="sd">                #_{{ random_id }} div.color, div.cmap { width: 100%; height: 100%; }</span>
+<span class="sd">                #_{{ random_id }} div.color { width: 100%; height: 100%; }</span>
+<span class="sd">                #_{{ random_id }} div.cmap { width: 100%; height: auto; }</span>
+<span class="sd">                #_{{ random_id }} div.cmap &gt; img { width: 100%; height: 100%; }</span>
 <span class="sd">            &lt;/style&gt;</span>
 <span class="sd">            &lt;strong&gt;{{ name }}&lt;/strong&gt;</span>
 <span class="sd">            {% if as_png %}</span>
@@ -595,6 +597,7 @@
 <span class="sd">                        margin: 0;</span>
 <span class="sd">                        padding: 0;</span>
 <span class="sd">                    }</span>
+<span class="sd">                    #_{{ random_id }} img {height: 100%;}</span>
 <span class="sd">                &lt;/style&gt;</span>
 <span class="sd">                {% for cmap in maps %}</span>
 <span class="sd">                    {{ cmap.to_div(maxn, as_png=as_png).data }}</span>
@@ -690,7 +693,9 @@
     <span class="n">filter_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">_gud_name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
 <span class="p">)</span>
 
-<span class="n">mpl_dat</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;mpl_cat_names.json&quot;</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">open_text</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;mpl_cat_names.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">mpl_dat</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
 <span class="n">mpl_cmaps</span> <span class="o">=</span> <span class="n">MPLColorMaps</span><span class="p">(</span>
     <span class="p">{</span><span class="n">cat</span><span class="p">:</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">}</span> <span class="k">for</span> <span class="n">cat</span><span class="p">,</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">mpl_dat</span><span class="p">}</span>
 <span class="p">)</span>
