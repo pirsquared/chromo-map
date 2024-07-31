@@ -9,6 +9,7 @@ svgwrite
 ipykernel
 pytest
 pytest-cov
+coveralls
 sphinx
 sphinx-rtd-theme
 sphinx-copybutton

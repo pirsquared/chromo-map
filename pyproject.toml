@@ -47,6 +47,7 @@ dev = [
   "sphinx-autobuild",
   "sphinx-autodoc-typehints",
   "ipython",
+  "coveralls",
 ]
 
 [tool.black]

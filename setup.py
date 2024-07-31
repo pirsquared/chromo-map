@@ -44,6 +44,7 @@ setup(
             "sphinx-autobuild",
             "sphinx-autodoc-typehints",
             "ipython",
+            "coveralls",
         ],
     },
 )
