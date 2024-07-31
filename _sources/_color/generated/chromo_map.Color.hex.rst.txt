@@ -1,0 +1,6 @@
+﻿chromo\_map.Color.hex
+=====================
+
+.. currentmodule:: chromo_map
+
+.. autoproperty:: Color.hex

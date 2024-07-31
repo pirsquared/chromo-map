@@ -1,0 +1,6 @@
+﻿chromo\_map.ColorGradient.with\_alpha
+=====================================
+
+.. currentmodule:: chromo_map
+
+.. automethod:: ColorGradient.with_alpha

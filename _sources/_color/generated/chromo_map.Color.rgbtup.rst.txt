@@ -1,0 +1,6 @@
+﻿chromo\_map.Color.rgbtup
+========================
+
+.. currentmodule:: chromo_map
+
+.. autoproperty:: Color.rgbtup

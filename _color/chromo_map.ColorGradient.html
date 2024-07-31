@@ -4,11 +4,11 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>chromo_map.ColorGradient &mdash; chromo_map 0.1.12 documentation</title>
+  <title>chromo_map.ColorGradient &mdash; chromo_map 0.1.14 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=03c6e8e3" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8fdb1ddc" />
 
   
     <link rel="shortcut icon" href="../_static/pirr_logo.svg"/>
@@ -18,7 +18,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=297ad043"></script>
+        <script src="../_static/documentation_options.js?v=468bc497"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -27,8 +27,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="About" href="../about.html" />
-    <link rel="prev" title="chromo_map.Color" href="chromo_map.Color.html" /> 
+    <link rel="next" title="chromo_map.ColorGradient.with_alpha" href="generated/chromo_map.ColorGradient.with_alpha.html" />
+    <link rel="prev" title="chromo_map.Color.rgba" href="generated/chromo_map.Color.rgba.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,7 +54,14 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="color.html">color module</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="chromo_map.Color.html">Color</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">ColorGradient</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ColorGradient</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.ColorGradient"><code class="docutils literal notranslate"><span class="pre">ColorGradient</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/chromo_map.ColorGradient.with_alpha.html">chromo_map.ColorGradient.with_alpha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/chromo_map.ColorGradient.reversed.html">chromo_map.ColorGradient.reversed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/chromo_map.ColorGradient.resize.html">chromo_map.ColorGradient.resize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/chromo_map.ColorGradient.to_div.html">chromo_map.ColorGradient.to_div</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -89,14 +96,213 @@
              
   <section id="chromo-map-colorgradient">
 <h1>chromo_map.ColorGradient<a class="headerlink" href="#chromo-map-colorgradient" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="chromo_map.ColorGradient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">ColorGradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/color.html#ColorGradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.ColorGradient" title="Link to this definition"></a></dt>
+<dd><p>Mimics a matplotlib colormap with a list of colors.</p>
+<p>I wanted an object that could be used in place of a matplotlib colormap but with a
+bit of extra functionality.  This class allows you to create a gradient from a list
+of colors, another gradient, a palette, a matplotlib colormap, or a string name of a
+matplotlib colormap.</p>
+<p class="rubric">Examples</p>
+<p>Create a gradient from a list of colors:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">chromo_map</span> <span class="kn">import</span> <span class="n">ColorGradient</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">,</span> <span class="s1">&#39;#00ff00&#39;</span><span class="p">,</span> <span class="s1">&#39;#0000ff&#39;</span><span class="p">]</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">ColorGradient</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;rGb)</span>
+<span class="n">gradient</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate">
+ <div class="html-output">
+  <div style="vertical-align: middle;">
+   <strong>
+    rGb
+   </strong>
+  </div>
+  <div class="cmap">
+   <img alt="rGb colormap" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAABACAYAAABsv8+/AAAAEnRFWHRUaXRsZQByR2IgY29sb3JtYXC87VLqAAAAGHRFWHREZXNjcmlwdGlvbgByR2IgY29sb3JtYXCwxSCwAAAAMHRFWHRBdXRob3IATWF0cGxvdGxpYiB2My45LjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmdUdHMAAAAAMnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHYzLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZ3rS7CcAAAEvSURBVHic7daxEYAwEAPBN/33bLqA+bndChQouHNn7sACx1PZwFFZ4vl7AADwPQEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIOgFhMAEfuDV6CAAAAAASUVORK5CYII=" style="border: 1px solid #555;" title="rGb"/>
+  </div>
+  <div style="vertical-align: middle; max-width: 514px; display: flex; justify-content: space-between;">
+   <div style="float: left;">
+    <div style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #ff0000ff;" title="#ff0000ff">
+    </div>
+    under
+   </div>
+   <div style="margin: 0 auto; display: inline-block;">
+    bad
+    <div style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #00000000;" title="#00000000">
+    </div>
+   </div>
+   <div style="float: right;">
+    over
+    <div style="display: inline-block; width: 1em; height: 1em; margin: 0; vertical-align: middle; border: 1px solid #555; background-color: #0000ffff;" title="#0000ffff">
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<p>Or with hover information:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gradient</span><span class="o">.</span><span class="n">to_div</span><span class="p">(</span><span class="n">as_png</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate">
+ <div class="html-output">
+  <div class="gradient">
+   <style>
+    #_fa5b18c5744b4ef58872577e912bea7d {
+            display: flex; gap: 0rem; width: 31.25rem;
+        }
+        #_fa5b18c5744b4ef58872577e912bea7d div { flex: 1 1 0; }
+        #_fa5b18c5744b4ef58872577e912bea7d div.color { width: 100%; height: 100%; }
+        #_fa5b18c5744b4ef58872577e912bea7d div.cmap { width: 100%; height: auto; }
+        #_fa5b18c5744b4ef58872577e912bea7d div.cmap > img { width: 100%; height: 100%; }
+   </style>
+   <strong>
+    rGb
+   </strong>
+   <div class="color-map" id="_fa5b18c5744b4ef58872577e912bea7d">
+    <div>
+     <style>
+      #_10d6eadafcb54edea6059927bb1fb261 { 
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        background: rgba(255, 0, 0, 1.0);
+        width: 2rem; height: 1.5rem;
+    }
+    #_10d6eadafcb54edea6059927bb1fb261::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 50%;
+        left: 0%;
+        transform: translateY(50%);
+        padding: 0.125rem;
+        white-space: pre;
+        font-size: 0.75rem;
+        font-family: monospace;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(0.25rem);
+        color: white;
+        border-radius: 0.25rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.1s ease-in-out;
+        z-index: -1;
+    }
+    #_10d6eadafcb54edea6059927bb1fb261:hover::after {
+        opacity: 1;
+        z-index: 1;
+    }
+     </style>
+     <div class="color" data-tooltip="RGBA: 255, 0, 0, 1.0
+HEXA: #ff0000ff        " id="_10d6eadafcb54edea6059927bb1fb261">
+     </div>
+    </div>
+    <div>
+     <style>
+      #_9e09f69bac8a4e5db3f103a2cbc615b7 { 
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        background: rgba(0, 255, 0, 1.0);
+        width: 2rem; height: 1.5rem;
+    }
+    #_9e09f69bac8a4e5db3f103a2cbc615b7::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 50%;
+        left: 0%;
+        transform: translateY(50%);
+        padding: 0.125rem;
+        white-space: pre;
+        font-size: 0.75rem;
+        font-family: monospace;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(0.25rem);
+        color: white;
+        border-radius: 0.25rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.1s ease-in-out;
+        z-index: -1;
+    }
+    #_9e09f69bac8a4e5db3f103a2cbc615b7:hover::after {
+        opacity: 1;
+        z-index: 1;
+    }
+     </style>
+     <div class="color" data-tooltip="RGBA: 0, 255, 0, 1.0
+HEXA: #00ff00ff        " id="_9e09f69bac8a4e5db3f103a2cbc615b7">
+     </div>
+    </div>
+    <div>
+     <style>
+      #_b0618df404b84384ad5854a9c8bd6538 { 
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        background: rgba(0, 0, 255, 1.0);
+        width: 2rem; height: 1.5rem;
+    }
+    #_b0618df404b84384ad5854a9c8bd6538::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 50%;
+        left: 0%;
+        transform: translateY(50%);
+        padding: 0.125rem;
+        white-space: pre;
+        font-size: 0.75rem;
+        font-family: monospace;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(0.25rem);
+        color: white;
+        border-radius: 0.25rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.1s ease-in-out;
+        z-index: -1;
+    }
+    #_b0618df404b84384ad5854a9c8bd6538:hover::after {
+        opacity: 1;
+        z-index: 1;
+    }
+     </style>
+     <div class="color" data-tooltip="RGBA: 0, 0, 255, 1.0
+HEXA: #0000ffff        " id="_b0618df404b84384ad5854a9c8bd6538">
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/chromo_map.ColorGradient.with_alpha.html#chromo_map.ColorGradient.with_alpha" title="chromo_map.ColorGradient.with_alpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">with_alpha</span></code></a>(alpha[, name])</p></td>
+<td><p>Create a new gradient with a new alpha value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/chromo_map.ColorGradient.reversed.html#chromo_map.ColorGradient.reversed" title="chromo_map.ColorGradient.reversed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reversed</span></code></a>([name])</p></td>
+<td><p>Return a new gradient with the colors reversed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/chromo_map.ColorGradient.resize.html#chromo_map.ColorGradient.resize" title="chromo_map.ColorGradient.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resize</span></code></a>(num)</p></td>
+<td><p>Resize the gradient to a new number of colors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/chromo_map.ColorGradient.to_div.html#chromo_map.ColorGradient.to_div" title="chromo_map.ColorGradient.to_div"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_div</span></code></a>([maxn, as_png])</p></td>
+<td><p>Convert the gradient to an HTML div.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="chromo_map.Color.html" class="btn btn-neutral float-left" title="chromo_map.Color" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../about.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="generated/chromo_map.Color.rgba.html" class="btn btn-neutral float-left" title="chromo_map.Color.rgba" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/chromo_map.ColorGradient.with_alpha.html" class="btn btn-neutral float-right" title="chromo_map.ColorGradient.with_alpha" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

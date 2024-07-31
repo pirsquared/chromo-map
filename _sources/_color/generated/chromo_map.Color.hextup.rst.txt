@@ -1,0 +1,6 @@
+﻿chromo\_map.Color.hextup
+========================
+
+.. currentmodule:: chromo_map
+
+.. autoproperty:: Color.hextup
