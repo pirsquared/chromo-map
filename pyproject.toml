@@ -11,9 +11,13 @@ license = { text = "MIT" }
 authors = [
   { name = "Sean Smith", email = "pirsquared.pirr@gmail.com" }
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 classifiers = [
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent"
 ]
@@ -27,6 +31,7 @@ dependencies = [
   "ipython",
   "importlib_resources",
   "bs4",
+  "jinja2",
 ]
 
 [project.urls]
@@ -41,6 +46,7 @@ dev = [
   "black",
   "pre-commit",
   "pylint",
+  "mypy",
   "ipykernel",
   "sphinx",
   "sphinx-rtd-theme",

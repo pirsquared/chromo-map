@@ -28,6 +28,7 @@ setup(
         "ipython",
         "importlib_resources",
         "bs4",
+        "jinja2",
     ],
     extras_require={
         "dev": [
@@ -38,6 +39,7 @@ setup(
             "black",
             "pre-commit",
             "pylint",
+            "mypy",
             "ipykernel",
             "sphinx",
             "sphinx-rtd-theme",
