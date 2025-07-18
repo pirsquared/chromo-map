@@ -210,7 +210,7 @@ def get_gradient(name: str, case_sensitive: bool = False) -> Optional["Gradient"
     import re
     from typing import Any, Dict, List
 
-    from ..catalog import cmaps
+    from chromo_map import cmaps
 
     # Compile regex pattern
     flags = 0 if case_sensitive else re.IGNORECASE

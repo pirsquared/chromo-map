@@ -12,8 +12,8 @@ from .accessibility.contrast import (contrast_ratio, find_accessible_color,
                                      is_accessible)
 from .analysis.palette import (analyze_color_harmony, generate_color_palette,
                                get_gradient)
+from .catalog import _build_unified_catalog
 # Import the catalog
-from .catalog import cmaps
 from .core.color import Color
 from .core.gradient import Gradient
 from .core.swatch import Swatch
@@ -46,3 +46,6 @@ __all__ = [
     # Catalog
     "cmaps",
 ]
+
+# Build the unified colormap catalog
+cmaps = _build_unified_catalog()

@@ -55,13 +55,3 @@ def _dig_for_gradients(gradient_nest, prefix=tuple()):
 def _gud_name(name):
     """Check if a name is a valid gradient name (not private or reversed)."""
     return not (name[0] == "_" or name[-2:] == "_r")
-
-
-# Build the unified colormap catalog
-try:
-    from .builders import _build_unified_catalog
-
-    cmaps = _build_unified_catalog()
-except ImportError:
-    # Fallback in case of circular import
-    cmaps = None
