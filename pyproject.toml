@@ -52,6 +52,7 @@ dev = [
     "black>=22.0.0",
     "isort>=5.10.0",
     "flake8>=5.0.0",
+    "flake8-pyproject>=1.2.0",
     "pre-commit>=2.20.0",
     "pylint>=2.15.0",
     "mypy>=1.0.0",
@@ -150,3 +151,8 @@ exclude_lines = [
     "if __name__ == .__main__.:",
     "if TYPE_CHECKING:",
 ]
+
+[tool.flake8]
+max-line-length = 88
+ignore = ["E501", "W291", "W293", "E741", "E722", "W503", "F401", "F841"]
+extend-exclude = ["docs/", "dev-scripts/", "examples/", "scripts/"]
