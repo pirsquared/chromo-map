@@ -96,11 +96,14 @@ class Swatch:
         random_id = uuid.uuid4().hex
         return HTML(
             template.render(
-                gradients=self.gradients, random_id=random_id, maxn=self.maxn, as_png=as_png
+                gradients=self.gradients,
+                random_id=random_id,
+                maxn=self.maxn,
+                as_png=as_png,
             )
         )
-    
-    def append(self, gradient: 'Gradient'):
+
+    def append(self, gradient: "Gradient"):
         """Append a new gradient to the swatch.
 
         Parameters
@@ -133,7 +136,7 @@ class Swatch:
         """
         self.gradients.append(gradient)
 
-    def adjust_hue(self, degrees: float) -> 'Swatch':
+    def adjust_hue(self, degrees: float) -> "Swatch":
         """Adjust the hue of all gradients in the swatch.
 
         Parameters
@@ -171,7 +174,7 @@ class Swatch:
         new_gradients = [gradient.adjust_hue(degrees) for gradient in self.gradients]
         return Swatch(new_gradients, maxn=self.maxn)
 
-    def adjust_saturation(self, factor: float) -> 'Swatch':
+    def adjust_saturation(self, factor: float) -> "Swatch":
         """Adjust the saturation of all gradients in the swatch.
 
         Parameters
@@ -206,10 +209,12 @@ class Swatch:
             print(desaturated._repr_html_())
 
         """
-        new_gradients = [gradient.adjust_saturation(factor) for gradient in self.gradients]
+        new_gradients = [
+            gradient.adjust_saturation(factor) for gradient in self.gradients
+        ]
         return Swatch(new_gradients, maxn=self.maxn)
 
-    def adjust_brightness(self, factor: float) -> 'Swatch':
+    def adjust_brightness(self, factor: float) -> "Swatch":
         """Adjust the brightness of all gradients in the swatch.
 
         Parameters
@@ -244,10 +249,12 @@ class Swatch:
             print(bright._repr_html_())
 
         """
-        new_gradients = [gradient.adjust_brightness(factor) for gradient in self.gradients]
+        new_gradients = [
+            gradient.adjust_brightness(factor) for gradient in self.gradients
+        ]
         return Swatch(new_gradients, maxn=self.maxn)
 
-    def adjust_lightness(self, factor: float) -> 'Swatch':
+    def adjust_lightness(self, factor: float) -> "Swatch":
         """Adjust the lightness of all gradients in the swatch.
 
         Parameters
@@ -282,10 +289,14 @@ class Swatch:
             print(dark._repr_html_())
 
         """
-        new_gradients = [gradient.adjust_lightness(factor) for gradient in self.gradients]
+        new_gradients = [
+            gradient.adjust_lightness(factor) for gradient in self.gradients
+        ]
         return Swatch(new_gradients, maxn=self.maxn)
 
-    def make_accessible(self, background_color: Union[Color, str], level: str = 'AA') -> 'Swatch':
+    def make_accessible(
+        self, background_color: Union[Color, str], level: str = "AA"
+    ) -> "Swatch":
         """Make all gradients in the swatch accessible against a background color.
 
         Parameters
@@ -322,10 +333,13 @@ class Swatch:
             print(accessible._repr_html_())
 
         """
-        new_gradients = [gradient.make_accessible(background_color, level) for gradient in self.gradients]
+        new_gradients = [
+            gradient.make_accessible(background_color, level)
+            for gradient in self.gradients
+        ]
         return Swatch(new_gradients, maxn=self.maxn)
 
-    def complementary(self) -> 'Swatch':
+    def complementary(self) -> "Swatch":
         """Get the complementary swatch (all gradients with complementary colors).
 
         Returns
@@ -389,36 +403,45 @@ class Swatch:
             Gradients analyzed: 1
 
         """
-        background = Color(background_color) if not isinstance(background_color, Color) else background_color
+        background = (
+            Color(background_color)
+            if not isinstance(background_color, Color)
+            else background_color
+        )
         gradient_analyses = []
         all_contrasts = []
-        
+
         for gradient in self.gradients:
             analysis = gradient.analyze_contrast(background)
-            gradient_analyses.append({
-                'name': gradient.name,
-                'analysis': analysis
-            })
-            all_contrasts.extend(analysis['contrasts'])
-        
+            gradient_analyses.append({"name": gradient.name, "analysis": analysis})
+            all_contrasts.extend(analysis["contrasts"])
+
         # Overall statistics
         total_colors = len(all_contrasts)
         accessible_aa = sum(1 for c in all_contrasts if c >= 4.5)
         accessible_aaa = sum(1 for c in all_contrasts if c >= 7.0)
-        
+
         return {
-            'gradients': gradient_analyses,
-            'total_colors': total_colors,
-            'overall_average_contrast': sum(all_contrasts) / total_colors if all_contrasts else 0,
-            'overall_min_contrast': min(all_contrasts) if all_contrasts else 0,
-            'overall_max_contrast': max(all_contrasts) if all_contrasts else 0,
-            'overall_accessible_aa_count': accessible_aa,
-            'overall_accessible_aaa_count': accessible_aaa,
-            'overall_accessibility_aa_score': accessible_aa / total_colors if total_colors else 0,
-            'overall_accessibility_aaa_score': accessible_aaa / total_colors if total_colors else 0
+            "gradients": gradient_analyses,
+            "total_colors": total_colors,
+            "overall_average_contrast": (
+                sum(all_contrasts) / total_colors if all_contrasts else 0
+            ),
+            "overall_min_contrast": min(all_contrasts) if all_contrasts else 0,
+            "overall_max_contrast": max(all_contrasts) if all_contrasts else 0,
+            "overall_accessible_aa_count": accessible_aa,
+            "overall_accessible_aaa_count": accessible_aaa,
+            "overall_accessibility_aa_score": (
+                accessible_aa / total_colors if total_colors else 0
+            ),
+            "overall_accessibility_aaa_score": (
+                accessible_aaa / total_colors if total_colors else 0
+            ),
         }
 
-    def find_accessible_version(self, background_color: Union[Color, str], level: str = 'AA') -> 'Swatch':
+    def find_accessible_version(
+        self, background_color: Union[Color, str], level: str = "AA"
+    ) -> "Swatch":
         """Find accessible version of all gradients in the swatch.
 
         Parameters
@@ -455,12 +478,20 @@ class Swatch:
             print(accessible._repr_html_())
 
         """
-        new_gradients = [gradient.find_accessible_version(background_color, level) for gradient in self.gradients]
+        new_gradients = [
+            gradient.find_accessible_version(background_color, level)
+            for gradient in self.gradients
+        ]
         return Swatch(new_gradients, maxn=self.maxn)
 
-    def maximize_contrast_iterative(self, background_color: Union[Color, str], level: str = 'AA',
-                                   adjust_lightness: bool = True, step_size: float = 0.1,
-                                   max_attempts: int = 50) -> 'Swatch':
+    def maximize_contrast_iterative(
+        self,
+        background_color: Union[Color, str],
+        level: str = "AA",
+        adjust_lightness: bool = True,
+        step_size: float = 0.1,
+        max_attempts: int = 50,
+    ) -> "Swatch":
         """Maximize contrast of all gradients using iterative approach.
 
         Parameters
@@ -503,11 +534,21 @@ class Swatch:
             print(optimized._repr_html_())
 
         """
-        new_gradients = [gradient.maximize_contrast_iterative(background_color, level, adjust_lightness, step_size, max_attempts) for gradient in self.gradients]
+        new_gradients = [
+            gradient.maximize_contrast_iterative(
+                background_color, level, adjust_lightness, step_size, max_attempts
+            )
+            for gradient in self.gradients
+        ]
         return Swatch(new_gradients, maxn=self.maxn)
 
-    def maximize_contrast_binary_search(self, background_color: Union[Color, str], level: str = 'AA',
-                                       adjust_lightness: bool = True, precision: float = 0.001) -> 'Swatch':
+    def maximize_contrast_binary_search(
+        self,
+        background_color: Union[Color, str],
+        level: str = "AA",
+        adjust_lightness: bool = True,
+        precision: float = 0.001,
+    ) -> "Swatch":
         """Maximize contrast of all gradients using binary search.
 
         Parameters
@@ -548,11 +589,20 @@ class Swatch:
             print(optimized._repr_html_())
 
         """
-        new_gradients = [gradient.maximize_contrast_binary_search(background_color, level, adjust_lightness, precision) for gradient in self.gradients]
+        new_gradients = [
+            gradient.maximize_contrast_binary_search(
+                background_color, level, adjust_lightness, precision
+            )
+            for gradient in self.gradients
+        ]
         return Swatch(new_gradients, maxn=self.maxn)
 
-    def maximize_contrast_optimization(self, background_color: Union[Color, str], level: str = 'AA',
-                                     method: str = 'golden_section') -> 'Swatch':
+    def maximize_contrast_optimization(
+        self,
+        background_color: Union[Color, str],
+        level: str = "AA",
+        method: str = "golden_section",
+    ) -> "Swatch":
         """Maximize contrast of all gradients using mathematical optimization.
 
         Parameters
@@ -591,12 +641,15 @@ class Swatch:
             print(optimized._repr_html_())
 
         """
-        new_gradients = [gradient.maximize_contrast_optimization(background_color, level, method) for gradient in self.gradients]
+        new_gradients = [
+            gradient.maximize_contrast_optimization(background_color, level, method)
+            for gradient in self.gradients
+        ]
         return Swatch(new_gradients, maxn=self.maxn)
 
     def _repr_html_(self) -> str:
         """Return HTML representation for Jupyter notebook display."""
         result = self.to_grid()
-        if hasattr(result, 'data'):
+        if hasattr(result, "data"):
             return result.data
         return str(result)

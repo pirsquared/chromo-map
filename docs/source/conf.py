@@ -42,28 +42,28 @@ extensions = [
 
 # Autodoc configuration
 autodoc_default_options = {
-    'members': True,
-    'undoc-members': True,
-    'show-inheritance': True,
-    'special-members': '__init__',
-    'exclude-members': '__weakref__',
+    "members": True,
+    "undoc-members": True,
+    "show-inheritance": True,
+    "special-members": "__init__",
+    "exclude-members": "__weakref__",
 }
 
-autodoc_typehints = 'description'
-autodoc_typehints_description_target = 'documented'
+autodoc_typehints = "description"
+autodoc_typehints_description_target = "documented"
 
 # nbsphinx configuration for Jupyter notebooks
-nbsphinx_execute = 'always'  # Always execute notebooks
-nbsphinx_kernel_name = 'python3'  # Use Python 3 kernel
+nbsphinx_execute = "always"  # Always execute notebooks
+nbsphinx_kernel_name = "python3"  # Use Python 3 kernel
 nbsphinx_allow_errors = True  # Continue building even if cells have errors
 nbsphinx_timeout = 60  # Timeout for cell execution (seconds)
 
 # Doctest configuration
 doctest_default_flags = (
-    doctest.ELLIPSIS |
-    doctest.IGNORE_EXCEPTION_DETAIL |
-    doctest.NORMALIZE_WHITESPACE |
-    doctest.DONT_ACCEPT_TRUE_FOR_1
+    doctest.ELLIPSIS
+    | doctest.IGNORE_EXCEPTION_DETAIL
+    | doctest.NORMALIZE_WHITESPACE
+    | doctest.DONT_ACCEPT_TRUE_FOR_1
 )
 
 # Don't add input/output prompts to code blocks
@@ -156,25 +156,27 @@ def generate_visual_catalog_hook(app, config):
         print("Generating visual catalog...")
         import subprocess
         import os
-        
+
         # Get the docs directory
         docs_dir = os.path.dirname(os.path.dirname(__file__))
-        script_path = os.path.join(docs_dir, 'generate_visual_catalog.py')
-        
+        script_path = os.path.join(docs_dir, "generate_visual_catalog.py")
+
         if os.path.exists(script_path):
             # Run the visual catalog generation script
-            result = subprocess.run([sys.executable, script_path], 
-                                  cwd=docs_dir, 
-                                  capture_output=True, 
-                                  text=True)
-            
+            result = subprocess.run(
+                [sys.executable, script_path],
+                cwd=docs_dir,
+                capture_output=True,
+                text=True,
+            )
+
             if result.returncode == 0:
                 print("Visual catalog generated successfully!")
             else:
                 print(f"Warning: Visual catalog generation failed: {result.stderr}")
         else:
             print("Warning: generate_visual_catalog.py not found")
-            
+
     except Exception as e:
         print(f"Warning: Could not generate visual catalog: {e}")
 
@@ -182,6 +184,6 @@ def generate_visual_catalog_hook(app, config):
 def setup(app):
     app.add_directive("html-output", HTMLOutputDirective)
     app.add_css_file("custom.css")
-    
+
     # Add the visual catalog generation hook
-    app.connect('config-inited', generate_visual_catalog_hook)
+    app.connect("config-inited", generate_visual_catalog_hook)

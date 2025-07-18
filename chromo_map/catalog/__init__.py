@@ -5,14 +5,14 @@ from .builders import (
     _build_matplotlib_catalog,
     _build_plotly_catalog,
     _build_palettable_catalog,
-    _build_unified_catalog
+    _build_unified_catalog,
 )
 
 __all__ = [
-    'ColorMapDict',
-    'cmaps',
-    '_build_matplotlib_catalog',
-    '_build_plotly_catalog',
-    '_build_palettable_catalog',
-    '_build_unified_catalog'
+    "ColorMapDict",
+    "cmaps",
+    "_build_matplotlib_catalog",
+    "_build_plotly_catalog",
+    "_build_palettable_catalog",
+    "_build_unified_catalog",
 ]

@@ -60,10 +60,10 @@ def clr_to_tup(clr: Any) -> Any:
     """Convert a color to a tuple."""
     if isinstance(clr, str):
         return hexstr_to_tup(clr) or rgba_to_tup(clr)
-    
+
     if isinstance(clr, (tuple, list)):
         clr_list = list(clr)
-        
+
         # Handle 3 or 4 element sequences
         if len(clr_list) in (3, 4):
             try:
@@ -75,10 +75,10 @@ def clr_to_tup(clr: Any) -> Any:
                     return tuple(numeric_vals)
             except (ValueError, TypeError):
                 pass
-        
+
         # Return original format if not valid color values
         return tuple(clr_list) if isinstance(clr, tuple) else clr_list
-    
+
     # Try matplotlib's to_rgba as fallback
     try:
         rgba_vals = to_rgba(clr)
@@ -173,15 +173,15 @@ class Color:
 
     def __init__(
         self,
-        clr: Union['Color', str, Tuple[float, ...], Sequence[float], np.ndarray],
-        alpha: Optional[float] = None
+        clr: Union["Color", str, Tuple[float, ...], Sequence[float], np.ndarray],
+        alpha: Optional[float] = None,
     ) -> None:
         # Initialize RGBA attributes
         self.r: float
         self.g: float
         self.b: float
         self.a: float
-        
+
         if isinstance(clr, Color):
             self.__dict__.update(clr.__dict__)
             if alpha is not None:
@@ -191,14 +191,12 @@ class Color:
                 # Extract RGB and optional alpha from sequence
                 clr_list = list(clr)
                 if len(clr_list) < 3:
-                    raise ValueError(
-                        "Color sequence must have at least 3 values (RGB)"
-                    )
-                
+                    raise ValueError("Color sequence must have at least 3 values (RGB)")
+
                 red, grn, blu = (
                     float(clr_list[0]),
                     float(clr_list[1]),
-                    float(clr_list[2])
+                    float(clr_list[2]),
                 )
                 if alpha is not None:
                     alp = alpha
@@ -215,9 +213,7 @@ class Color:
                 alp = alpha if alpha is not None else alp
 
             else:
-                raise ValueError(
-                    f"Invalid color input '{type(clr).__name__}'."
-                )
+                raise ValueError(f"Invalid color input '{type(clr).__name__}'.")
 
             if all(0 <= x <= 1 for x in (red, grn, blu, alp)):
                 self.r = red
@@ -474,7 +470,7 @@ class Color:
         r, g, b, a = self.rgbatup
         return f"rgba({r}, {g}, {b}, {a:.1f})"
 
-    def interpolate(self, other: 'Color', factor: float) -> 'Color':
+    def interpolate(self, other: "Color", factor: float) -> "Color":
         """Interpolate between two colors.
 
         Parameters
@@ -516,7 +512,7 @@ class Color:
         a = self.a + (other.a - self.a) * factor
         return Color((r, g, b, a))
 
-    def with_alpha(self, alpha: float) -> 'Color':
+    def with_alpha(self, alpha: float) -> "Color":
         """Return a new Color with the specified alpha value.
 
         Parameters
@@ -550,7 +546,7 @@ class Color:
         """
         return Color((self.r, self.g, self.b, alpha))
 
-    def __or__(self, other: 'Color') -> 'Color':
+    def __or__(self, other: "Color") -> "Color":
         """Interpolate between two colors assuming a factor of 0.5.
 
         Parameters
@@ -724,19 +720,20 @@ class Color:
             Black luminance: 0.000
 
         """
+
         def _linearize(c):
             """Convert sRGB color component to linear RGB."""
             if c <= 0.03928:
                 return c / 12.92
             return ((c + 0.055) / 1.055) ** 2.4
-        
+
         r_lin = _linearize(self.r)
         g_lin = _linearize(self.g)
         b_lin = _linearize(self.b)
-        
+
         return 0.2126 * r_lin + 0.7152 * g_lin + 0.0722 * b_lin
 
-    def adjust_hue(self, degrees: float) -> 'Color':
+    def adjust_hue(self, degrees: float) -> "Color":
         """Adjust the hue of the color by the specified degrees.
 
         Parameters
@@ -774,7 +771,7 @@ class Color:
         r, g, b = colorsys.hsv_to_rgb(new_h / 360, s, v)
         return Color((r, g, b, self.a))
 
-    def adjust_saturation(self, factor: float) -> 'Color':
+    def adjust_saturation(self, factor: float) -> "Color":
         """Adjust the saturation of the color by the specified factor.
 
         Parameters
@@ -813,7 +810,7 @@ class Color:
         r, g, b = colorsys.hsv_to_rgb(h / 360, new_s, v)
         return Color((r, g, b, self.a))
 
-    def adjust_brightness(self, factor: float) -> 'Color':
+    def adjust_brightness(self, factor: float) -> "Color":
         """Adjust the brightness (value) of the color by the specified factor.
 
         Parameters
@@ -852,7 +849,7 @@ class Color:
         r, g, b = colorsys.hsv_to_rgb(h / 360, s, new_v)
         return Color((r, g, b, self.a))
 
-    def adjust_lightness(self, factor: float) -> 'Color':
+    def adjust_lightness(self, factor: float) -> "Color":
         """Adjust the lightness (HSL) of the color by the specified factor.
 
         Parameters
@@ -891,7 +888,12 @@ class Color:
         r, g, b = colorsys.hls_to_rgb(h / 360, new_l, s)
         return Color((r, g, b, self.a))
 
-    def set_hsv(self, h: Optional[float] = None, s: Optional[float] = None, v: Optional[float] = None) -> 'Color':
+    def set_hsv(
+        self,
+        h: Optional[float] = None,
+        s: Optional[float] = None,
+        v: Optional[float] = None,
+    ) -> "Color":
         """Set specific HSV values while keeping others unchanged.
 
         Parameters
@@ -932,11 +934,11 @@ class Color:
         new_h = h if h is not None else current_h
         new_s = s if s is not None else current_s
         new_v = v if v is not None else current_v
-        
+
         r, g, b = colorsys.hsv_to_rgb(new_h / 360, new_s, new_v)
         return Color((r, g, b, self.a))
 
-    def contrast_ratio(self, other: 'Color') -> float:
+    def contrast_ratio(self, other: "Color") -> float:
         """Calculate the contrast ratio between this color and another.
 
         Uses the WCAG 2.1 formula for contrast ratio.
@@ -970,14 +972,14 @@ class Color:
         """
         l1 = self.luminance
         l2 = other.luminance
-        
+
         # Ensure l1 is the lighter color
         if l1 < l2:
             l1, l2 = l2, l1
-        
+
         return (l1 + 0.05) / (l2 + 0.05)
 
-    def is_accessible(self, other: 'Color', level: str = 'AA') -> bool:
+    def is_accessible(self, other: "Color", level: str = "AA") -> bool:
         """Check if this color has sufficient contrast with another for accessibility.
 
         Parameters
@@ -1010,12 +1012,12 @@ class Color:
 
         """
         ratio = self.contrast_ratio(other)
-        if level == 'AAA':
+        if level == "AAA":
             return ratio >= 7.0
         else:  # AA level
             return ratio >= 4.5
 
-    def complementary(self) -> 'Color':
+    def complementary(self) -> "Color":
         """Get the complementary color (opposite on the color wheel).
 
         Returns
@@ -1045,7 +1047,7 @@ class Color:
         """
         return self.adjust_hue(180)
 
-    def triadic(self) -> Tuple['Color', 'Color']:
+    def triadic(self) -> Tuple["Color", "Color"]:
         """Get the triadic colors (120 degrees apart on the color wheel).
 
         Returns
@@ -1074,7 +1076,7 @@ class Color:
         """
         return (self.adjust_hue(120), self.adjust_hue(240))
 
-    def analogous(self, angle: float = 30) -> Tuple['Color', 'Color']:
+    def analogous(self, angle: float = 30) -> Tuple["Color", "Color"]:
         """Get analogous colors (adjacent on the color wheel).
 
         Parameters
@@ -1108,8 +1110,12 @@ class Color:
         """
         return (self.adjust_hue(angle), self.adjust_hue(-angle))
 
-    def find_accessible_version(self, target_color: Union['Color', str], level: str = 'AA', 
-                              adjust_lightness: bool = True) -> 'Color':
+    def find_accessible_version(
+        self,
+        target_color: Union["Color", str],
+        level: str = "AA",
+        adjust_lightness: bool = True,
+    ) -> "Color":
         """Find an accessible version of this color against a target.
 
         Parameters
@@ -1145,9 +1151,14 @@ class Color:
         """
         return find_accessible_color(self, target_color, level, adjust_lightness)
 
-    def maximize_contrast_iterative(self, target_color: Union['Color', str], level: str = 'AA', 
-                                  adjust_lightness: bool = True, step_size: float = 0.1, 
-                                  max_attempts: int = 50) -> 'Color':
+    def maximize_contrast_iterative(
+        self,
+        target_color: Union["Color", str],
+        level: str = "AA",
+        adjust_lightness: bool = True,
+        step_size: float = 0.1,
+        max_attempts: int = 50,
+    ) -> "Color":
         """Maximize contrast against target using iterative approach.
 
         Parameters
@@ -1185,10 +1196,17 @@ class Color:
             Optimized: #000000
 
         """
-        return find_maximal_contrast_iterative(self, target_color, level, adjust_lightness, step_size, max_attempts)
+        return find_maximal_contrast_iterative(
+            self, target_color, level, adjust_lightness, step_size, max_attempts
+        )
 
-    def maximize_contrast_binary_search(self, target_color: Union['Color', str], level: str = 'AA', 
-                                       adjust_lightness: bool = True, precision: float = 0.001) -> 'Color':
+    def maximize_contrast_binary_search(
+        self,
+        target_color: Union["Color", str],
+        level: str = "AA",
+        adjust_lightness: bool = True,
+        precision: float = 0.001,
+    ) -> "Color":
         """Maximize contrast against target using binary search.
 
         Parameters
@@ -1224,10 +1242,16 @@ class Color:
             Optimized: #0d0d0d
 
         """
-        return find_maximal_contrast_binary_search(self, target_color, level, adjust_lightness, precision)
+        return find_maximal_contrast_binary_search(
+            self, target_color, level, adjust_lightness, precision
+        )
 
-    def maximize_contrast_optimization(self, target_color: Union['Color', str], level: str = 'AA', 
-                                     method: str = 'golden_section') -> 'Color':
+    def maximize_contrast_optimization(
+        self,
+        target_color: Union["Color", str],
+        level: str = "AA",
+        method: str = "golden_section",
+    ) -> "Color":
         """Maximize contrast against target using mathematical optimization.
 
         Parameters
@@ -1280,40 +1304,43 @@ class Color:
         """
         if not isinstance(other, Color):
             return False
-        return bool(np.isclose(self.tup, other.tup,
-                                 rtol=1e-2, atol=1e-2).all())
+        return bool(np.isclose(self.tup, other.tup, rtol=1e-2, atol=1e-2).all())
 
     def __repr__(self) -> str:
         """Return a rich colored representation of the color."""
         from rich.console import Console
         from rich.text import Text
-        
+
         # Force terminal mode to enable colors on Windows
         console = Console(force_terminal=True)
-        
+
         # Check if colors are supported
         if console.is_terminal and console.color_system:
             # Use background color with spaces for better visibility
             colored_block = Text("  ", style=f"on {self.hex}")
             color_info = Text(f" Color({self.hex})", style="default")
-            
+
             # Combine the colored block with the color info
             result = Text()
             result.append(colored_block)
             result.append(color_info)
-            
+
             # Use console to render to string
             with console.capture() as capture:
                 console.print(result, end="")
-            
+
             return capture.get()
         else:
             # Fallback to plain text representation
             return f"Color({self.hex})"
 
 
-def find_accessible_color(base_color: Union[Color, str], target_color: Union[Color, str], 
-                         level: str = 'AA', adjust_lightness: bool = True) -> Color:
+def find_accessible_color(
+    base_color: Union[Color, str],
+    target_color: Union[Color, str],
+    level: str = "AA",
+    adjust_lightness: bool = True,
+) -> Color:
     """Find an accessible version of a color by adjusting it.
 
     Parameters
@@ -1349,18 +1376,20 @@ def find_accessible_color(base_color: Union[Color, str], target_color: Union[Col
 
     """
     base = Color(base_color) if not isinstance(base_color, Color) else base_color
-    target = Color(target_color) if not isinstance(target_color, Color) else target_color
-    
-    required_ratio = 7.0 if level == 'AAA' else 4.5
+    target = (
+        Color(target_color) if not isinstance(target_color, Color) else target_color
+    )
+
+    required_ratio = 7.0 if level == "AAA" else 4.5
     current_ratio = base.contrast_ratio(target)
-    
+
     if current_ratio >= required_ratio:
         return base
-    
+
     # Determine if we need to make the color lighter or darker
     base_luminance = base.luminance
     target_luminance = target.luminance
-    
+
     if base_luminance > target_luminance:
         # Make base color lighter
         factor = 1.1
@@ -1369,36 +1398,44 @@ def find_accessible_color(base_color: Union[Color, str], target_color: Union[Col
         # Make base color darker
         factor = 0.9
         max_factor = 0.1
-    
+
     current_color = base
     attempts = 0
     max_attempts = 50
-    
-    while current_color.contrast_ratio(target) < required_ratio and attempts < max_attempts:
+
+    while (
+        current_color.contrast_ratio(target) < required_ratio
+        and attempts < max_attempts
+    ):
         if adjust_lightness:
             current_color = current_color.adjust_lightness(factor)
         else:
             current_color = current_color.adjust_brightness(factor)
-        
+
         attempts += 1
-        
+
         # Prevent infinite loops
         if factor > 1 and factor >= max_factor:
             break
         elif factor < 1 and factor <= max_factor:
             break
-    
+
     return current_color
 
 
-def find_maximal_contrast_iterative(base_color: Union[Color, str], target_color: Union[Color, str], 
-                                   level: str = 'AA', adjust_lightness: bool = True, 
-                                   step_size: float = 0.1, max_attempts: int = 50) -> Color:
+def find_maximal_contrast_iterative(
+    base_color: Union[Color, str],
+    target_color: Union[Color, str],
+    level: str = "AA",
+    adjust_lightness: bool = True,
+    step_size: float = 0.1,
+    max_attempts: int = 50,
+) -> Color:
     """Find maximal contrast using simple iterative approach.
-    
+
     This approach incrementally adjusts the color until it meets the contrast requirement.
     Simple but may not find the optimal solution.
-    
+
     Parameters
     ----------
     base_color : Color or str
@@ -1413,46 +1450,48 @@ def find_maximal_contrast_iterative(base_color: Union[Color, str], target_color:
         The step size for adjustments.
     max_attempts : int, default 50
         Maximum number of adjustment attempts.
-    
+
     Returns
     -------
     Color
         The adjusted color with maximal contrast found.
-    
+
     Examples
     --------
-    
+
     Find maximal contrast iteratively:
-    
+
     .. testcode::
-    
+
         from chromo_map import find_maximal_contrast_iterative
         result = find_maximal_contrast_iterative('#888888', 'white')
         print(f"Iterative result: {result.hex}")
-    
+
     .. testoutput::
-    
+
         Iterative result: #595959
-    
+
     """
     base = Color(base_color) if not isinstance(base_color, Color) else base_color
-    target = Color(target_color) if not isinstance(target_color, Color) else target_color
-    
-    required_ratio = 7.0 if level == 'AAA' else 4.5
-    
+    target = (
+        Color(target_color) if not isinstance(target_color, Color) else target_color
+    )
+
+    required_ratio = 7.0 if level == "AAA" else 4.5
+
     # Determine direction based on luminance
     base_luminance = base.luminance
     target_luminance = target.luminance
-    
+
     current_color = base
     best_color = base
     best_contrast = base.contrast_ratio(target)
-    
+
     # Try both directions to find maximum contrast
     for direction in [1, -1]:
         temp_color = base
         attempts = 0
-        
+
         while attempts < max_attempts:
             try:
                 if adjust_lightness:
@@ -1465,31 +1504,35 @@ def find_maximal_contrast_iterative(base_color: Union[Color, str], target_color:
                         next_color = temp_color.adjust_brightness(1 + step_size)
                     else:
                         next_color = temp_color.adjust_brightness(1 - step_size)
-                
+
                 next_contrast = next_color.contrast_ratio(target)
-                
+
                 if next_contrast > best_contrast:
                     best_contrast = next_contrast
                     best_color = next_color
                     temp_color = next_color
                 else:
                     break  # No improvement, stop in this direction
-                
+
                 attempts += 1
             except (ZeroDivisionError, ValueError):
                 break  # Stop if adjustment fails
-    
+
     return best_color
 
 
-def find_maximal_contrast_binary_search(base_color: Union[Color, str], target_color: Union[Color, str], 
-                                       level: str = 'AA', adjust_lightness: bool = True, 
-                                       precision: float = 0.001) -> Color:
+def find_maximal_contrast_binary_search(
+    base_color: Union[Color, str],
+    target_color: Union[Color, str],
+    level: str = "AA",
+    adjust_lightness: bool = True,
+    precision: float = 0.001,
+) -> Color:
     """Find maximal contrast using binary search approach.
-    
+
     This approach uses binary search to efficiently find the optimal adjustment factor
     that maximizes contrast while meeting accessibility requirements.
-    
+
     Parameters
     ----------
     base_color : Color or str
@@ -1502,64 +1545,66 @@ def find_maximal_contrast_binary_search(base_color: Union[Color, str], target_co
         Whether to adjust lightness (True) or brightness/value (False).
     precision : float, default 0.001
         The precision for binary search convergence.
-    
+
     Returns
     -------
     Color
         The adjusted color with maximal contrast found.
-    
+
     Examples
     --------
-    
+
     Find maximal contrast using binary search:
-    
+
     .. testcode::
-    
+
         from chromo_map import find_maximal_contrast_binary_search
         result = find_maximal_contrast_binary_search('#888888', 'white')
         print(f"Binary search result: {result.hex}")
-    
+
     .. testoutput::
-    
+
         Binary search result: #595959
-    
+
     """
     base = Color(base_color) if not isinstance(base_color, Color) else base_color
-    target = Color(target_color) if not isinstance(target_color, Color) else target_color
-    
-    required_ratio = 7.0 if level == 'AAA' else 4.5
-    
+    target = (
+        Color(target_color) if not isinstance(target_color, Color) else target_color
+    )
+
+    required_ratio = 7.0 if level == "AAA" else 4.5
+
     # Determine search direction
     base_luminance = base.luminance
     target_luminance = target.luminance
-    
+
     best_color = base
     best_contrast = base.contrast_ratio(target)
-    
+
     # Search in both directions to find maximum
-    for search_direction in ['lighter', 'darker']:
-        if search_direction == 'lighter':
+    for search_direction in ["lighter", "darker"]:
+        if search_direction == "lighter":
             low, high = 1.0, 3.0  # Factor range for making lighter
         else:
             low, high = 0.1, 1.0  # Factor range for making darker
-        
+
         while (high - low) > precision:
             mid = (low + high) / 2
-            
+
             try:
                 if adjust_lightness:
                     test_color = base.adjust_lightness(mid)
                 else:
                     test_color = base.adjust_brightness(mid)
-                
+
                 test_contrast = test_color.contrast_ratio(target)
-                
+
                 if test_contrast > best_contrast:
                     best_contrast = test_contrast
                     best_color = test_color
-                
+
                 # Binary search logic - try to find the extreme that gives max contrast
-                if search_direction == 'lighter':
+                if search_direction == "lighter":
                     # For lighter colors, higher factors usually give more contrast
                     if test_contrast >= required_ratio:
                         low = mid  # Can go lighter
@@ -1573,17 +1618,21 @@ def find_maximal_contrast_binary_search(base_color: Union[Color, str], target_co
                         low = mid  # Too dark, go back
             except (ZeroDivisionError, ValueError):
                 break  # Exit if color adjustment fails
-    
+
     return best_color
 
 
-def find_maximal_contrast_optimization(base_color: Union[Color, str], target_color: Union[Color, str], 
-                                     level: str = 'AA', method: str = 'golden_section') -> Color:
+def find_maximal_contrast_optimization(
+    base_color: Union[Color, str],
+    target_color: Union[Color, str],
+    level: str = "AA",
+    method: str = "golden_section",
+) -> Color:
     """Find maximal contrast using mathematical optimization.
-    
+
     This approach uses mathematical optimization techniques to find the adjustment
     that maximizes contrast ratio while meeting accessibility requirements.
-    
+
     Parameters
     ----------
     base_color : Color or str
@@ -1594,66 +1643,68 @@ def find_maximal_contrast_optimization(base_color: Union[Color, str], target_col
         The WCAG level to achieve ('AA' or 'AAA').
     method : str, default 'golden_section'
         The optimization method to use ('golden_section' or 'gradient_descent').
-    
+
     Returns
     -------
     Color
         The adjusted color with maximal contrast found.
-    
+
     Examples
     --------
-    
+
     Find maximal contrast using optimization:
-    
+
     .. testcode::
-    
+
         from chromo_map import find_maximal_contrast_optimization
         result = find_maximal_contrast_optimization('#888888', 'white')
         print(f"Optimization result: {result.hex}")
-    
+
     .. testoutput::
-    
+
         Optimization result: #595959
-    
+
     """
     base = Color(base_color) if not isinstance(base_color, Color) else base_color
-    target = Color(target_color) if not isinstance(target_color, Color) else target_color
-    
-    required_ratio = 7.0 if level == 'AAA' else 4.5
-    
+    target = (
+        Color(target_color) if not isinstance(target_color, Color) else target_color
+    )
+
+    required_ratio = 7.0 if level == "AAA" else 4.5
+
     def objective_function(factor: float) -> float:
         """Objective function to maximize contrast ratio."""
         try:
             # Try both lightness and brightness adjustments
             lightness_color = base.adjust_lightness(factor)
             brightness_color = base.adjust_brightness(factor)
-            
+
             lightness_contrast = lightness_color.contrast_ratio(target)
             brightness_contrast = brightness_color.contrast_ratio(target)
-            
+
             # Return the maximum contrast achievable
             return max(lightness_contrast, brightness_contrast)
         except (ZeroDivisionError, ValueError):
             return 0.0  # Return minimal contrast if adjustment fails
-    
-    if method == 'golden_section':
+
+    if method == "golden_section":
         # Golden section search for maximum
         phi = (1 + 5**0.5) / 2  # Golden ratio
         resphi = 2 - phi
-        
+
         # Search bounds
         a, b = 0.1, 3.0
         tol = 1e-5
-        
+
         # Initial points
         x1 = a + resphi * (b - a)
         x2 = a + (1 - resphi) * (b - a)
         f1 = objective_function(x1)
         f2 = objective_function(x2)
-        
+
         best_factor = x1 if f1 > f2 else x2
         best_contrast = max(f1, f2)
-        
+
         while abs(b - a) > tol:
             if f1 > f2:
                 b = x2
@@ -1667,22 +1718,28 @@ def find_maximal_contrast_optimization(base_color: Union[Color, str], target_col
                 f1 = f2
                 x2 = a + (1 - resphi) * (b - a)
                 f2 = objective_function(x2)
-            
+
             current_best = x1 if f1 > f2 else x2
             current_contrast = max(f1, f2)
-            
+
             if current_contrast > best_contrast:
                 best_contrast = current_contrast
                 best_factor = current_best
-        
+
         # Determine which adjustment method gives better contrast
         lightness_color = base.adjust_lightness(best_factor)
         brightness_color = base.adjust_brightness(best_factor)
-        
+
         lightness_contrast = lightness_color.contrast_ratio(target)
         brightness_contrast = brightness_color.contrast_ratio(target)
-        
-        return lightness_color if lightness_contrast > brightness_contrast else brightness_color
-    
+
+        return (
+            lightness_color
+            if lightness_contrast > brightness_contrast
+            else brightness_color
+        )
+
     # If method is not golden_section, fall back to iterative approach
-    return find_maximal_contrast_iterative(base_color, target_color, level, True, 0.1, 50)
+    return find_maximal_contrast_iterative(
+        base_color, target_color, level, True, 0.1, 50
+    )

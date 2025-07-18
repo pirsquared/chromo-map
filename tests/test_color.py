@@ -15,21 +15,21 @@ def test_colormaps():
     try:
         # Test the new unified catalog structure
         assert "matplotlib" in cm.cmaps
-        assert "plotly" in cm.cmaps  
+        assert "plotly" in cm.cmaps
         assert "palettable" in cm.cmaps
         assert "all" in cm.cmaps
-        
+
         # Test basic access
         _ = len(cm.cmaps.all)  # Should have some colormaps
-        
+
         # Test matplotlib access
-        if hasattr(cm.cmaps.matplotlib, 'PerceptuallyUniformSequential'):
+        if hasattr(cm.cmaps.matplotlib, "PerceptuallyUniformSequential"):
             _ = cm.cmaps.matplotlib.PerceptuallyUniformSequential.viridis
-        
+
         # Test unified access
-        if hasattr(cm.cmaps.all, 'viridis'):
+        if hasattr(cm.cmaps.all, "viridis"):
             _ = cm.cmaps.all.viridis
-            
+
     except Exception as e:  # pragma: no cover
         pytest.fail(f"Unexpected exception: {e}")  # pragma: no cover
 
@@ -164,29 +164,29 @@ def test_gradient_02():
 def test_gradient_03():
     # Use matplotlib viridis which should be available
     grad1 = cm.cmaps.matplotlib.miscellaneous.viridis
-    grad2 = Gradient('viridis', "viridis") 
+    grad2 = Gradient("viridis", "viridis")
     assert grad1 == grad2
 
 
 def test_gradient_04():
     # Test with alpha modification
     grad1 = cm.cmaps.matplotlib.miscellaneous.viridis.with_alpha(0.5)
-    grad2 = Gradient('viridis', "viridis", alpha=0.5)
+    grad2 = Gradient("viridis", "viridis", alpha=0.5)
     assert grad1 == grad2
 
 
 def test_gradient_05():
     # Use matplotlib colormap instead of palettable
     grad1 = cm.cmaps.matplotlib.miscellaneous.viridis
-    grad2 = Gradient('viridis', "viridis")
-    grad3 = Gradient('viridis')
+    grad2 = Gradient("viridis", "viridis")
+    grad3 = Gradient("viridis")
     assert grad1 == grad2
     assert grad2 == grad3
 
 
 def test_gradient_06():
     grad1 = cm.cmaps.matplotlib.miscellaneous.viridis.with_alpha(0.5)
-    grad2 = Gradient('viridis', "viridis", alpha=0.5)
+    grad2 = Gradient("viridis", "viridis", alpha=0.5)
     assert grad1 == grad2
 
 
@@ -254,9 +254,7 @@ def test_gradient_13():
 
 
 def test_gradient_14():
-    with pytest.raises(
-        AttributeError, match="'Gradient' object has no attribute 'x'"
-    ):
+    with pytest.raises(AttributeError, match="'Gradient' object has no attribute 'x'"):
         _ = cm.cmaps.matplotlib.miscellaneous.viridis.x
 
 

@@ -14,7 +14,7 @@ else:
 
 class ColorMapDict(AttrDict):
     """AttrDict subclass that displays collections of gradients as a Swatch."""
-    
+
     def _repr_html_(self) -> str:
         """Return HTML representation for Jupyter notebook display."""
         # Collect all gradient values from this dict
@@ -25,12 +25,12 @@ class ColorMapDict(AttrDict):
             elif isinstance(value, ColorMapDict):
                 # Recursively collect gradients from nested dicts
                 gradients.extend(self._collect_gradients(value))
-        
+
         if gradients:
             swatch = Swatch(gradients)
             return swatch._repr_html_()
         return f"<div>Empty ColorMapDict with {len(self)} categories</div>"
-    
+
     def _collect_gradients(self, nested_dict):
         """Recursively collect all gradients from nested structure."""
         gradients = []
@@ -59,6 +59,7 @@ def _gud_name(name):
 # Build the unified colormap catalog
 try:
     from .builders import _build_unified_catalog
+
     cmaps = _build_unified_catalog()
 except ImportError:
     # Fallback in case of circular import

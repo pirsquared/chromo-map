@@ -77,7 +77,7 @@ class Gradient(LSC):
             self.colors = colors.colors
             self.name = colors.name
             # Handle _segmentdata attribute safely
-            segmentdata = getattr(colors, '_segmentdata', {})
+            segmentdata = getattr(colors, "_segmentdata", {})
             super().__init__(colors.name, segmentdata, colors.N)
         elif isinstance(colors, (list, tuple)):
             self._update_from_list(colors, name, alpha)
@@ -102,7 +102,7 @@ class Gradient(LSC):
             # Use LSC.from_list for better type compatibility
             if name is None:
                 name = "custom"
-            
+
             # Handle dictionary input for LinearSegmentedColormap
             if isinstance(colors, dict):
                 cmap = LSC(name, colors)
@@ -115,25 +115,27 @@ class Gradient(LSC):
         """Update the gradient from a list of colors."""
         if name is None:
             name = "custom"
-        
+
         # Check for empty colors list
         if not colors:
             raise ValueError("No valid colors found.")
-        
+
         self.colors = [Color(c) for c in colors]
-        
+
         if alpha is not None:
             self.colors = [c.with_alpha(alpha) for c in self.colors]
-        
+
         self.name = name
-        
+
         # Create the matplotlib colormap
         # Convert to normalized RGBA tuples (0-1 range)
         color_list = []
         for c in self.colors:
             r, g, b, a = c.rgbatup
-            color_list.append((r/255.0, g/255.0, b/255.0, a))
-        super().__init__(name, LSC.from_list(name, color_list)._segmentdata, len(color_list))
+            color_list.append((r / 255.0, g / 255.0, b / 255.0, a))
+        super().__init__(
+            name, LSC.from_list(name, color_list)._segmentdata, len(color_list)
+        )
 
     def with_alpha(self, alpha):
         """Return a new gradient with the specified alpha value.
@@ -182,45 +184,47 @@ class Gradient(LSC):
         """Return a rich colored representation of the gradient."""
         from rich.console import Console
         from rich.text import Text
-        
+
         # Force terminal mode to enable colors on Windows
         console = Console(force_terminal=True)
-        
+
         # Check if colors are supported
         if console.is_terminal and console.color_system:
             # Create colored blocks for each color in the gradient
             result = Text()
-            
+
             # Limit display to 64 characters maximum
             max_chars = 64
             colors_to_display = self.colors
-            
+
             # If we have more than 64 colors, resample down to 64
             if len(self.colors) > max_chars:
                 # Use the resize method to get a resampled version
                 resampled_gradient = self.resize(max_chars)
                 colors_to_display = resampled_gradient.colors
-            
+
             # Determine spacing based on number of colors to display
             # Use 2 spaces for <= 32 colors, 1 space for > 32 colors
             if len(colors_to_display) <= 32:
                 char_per_color = "  "  # 2 spaces
             else:
-                char_per_color = " "   # 1 space
-            
+                char_per_color = " "  # 1 space
+
             # Add colored blocks for each color using background colors
             for color in colors_to_display:
                 colored_block = Text(char_per_color, style=f"on {color.hex}")
                 result.append(colored_block)
-            
+
             # Add gradient info
-            gradient_info = Text(f" Gradient({self.name}, {len(self.colors)} colors)", style="default")
+            gradient_info = Text(
+                f" Gradient({self.name}, {len(self.colors)} colors)", style="default"
+            )
             result.append(gradient_info)
-            
+
             # Use console to render to string
             with console.capture() as capture:
                 console.print(result, end="")
-            
+
             return capture.get()
         else:
             # Fallback to plain text representation
@@ -554,7 +558,7 @@ class Gradient(LSC):
         """
         return Gradient(self.colors, name=new_name)
 
-    def adjust_hue(self, degrees: float) -> 'Gradient':
+    def adjust_hue(self, degrees: float) -> "Gradient":
         """Adjust the hue of all colors in the gradient.
 
         Parameters
@@ -592,7 +596,7 @@ class Gradient(LSC):
         new_colors = [color.adjust_hue(degrees) for color in self.colors]
         return Gradient(new_colors, name=f"{self.name}_hue{degrees:+.0f}")
 
-    def adjust_saturation(self, factor: float) -> 'Gradient':
+    def adjust_saturation(self, factor: float) -> "Gradient":
         """Adjust the saturation of all colors in the gradient.
 
         Parameters
@@ -630,7 +634,7 @@ class Gradient(LSC):
         new_colors = [color.adjust_saturation(factor) for color in self.colors]
         return Gradient(new_colors, name=f"{self.name}_sat{factor:.1f}")
 
-    def adjust_brightness(self, factor: float) -> 'Gradient':
+    def adjust_brightness(self, factor: float) -> "Gradient":
         """Adjust the brightness of all colors in the gradient.
 
         Parameters
@@ -668,7 +672,7 @@ class Gradient(LSC):
         new_colors = [color.adjust_brightness(factor) for color in self.colors]
         return Gradient(new_colors, name=f"{self.name}_bright{factor:.1f}")
 
-    def adjust_lightness(self, factor: float) -> 'Gradient':
+    def adjust_lightness(self, factor: float) -> "Gradient":
         """Adjust the lightness of all colors in the gradient.
 
         Parameters
@@ -706,7 +710,9 @@ class Gradient(LSC):
         new_colors = [color.adjust_lightness(factor) for color in self.colors]
         return Gradient(new_colors, name=f"{self.name}_light{factor:.1f}")
 
-    def make_accessible(self, background_color: Union[Color, str], level: str = 'AA') -> 'Gradient':
+    def make_accessible(
+        self, background_color: Union[Color, str], level: str = "AA"
+    ) -> "Gradient":
         """Make all colors in the gradient accessible against a background color.
 
         Parameters
@@ -744,11 +750,18 @@ class Gradient(LSC):
 
         """
         from chromo_map.core.color import find_accessible_color
-        background = Color(background_color) if not isinstance(background_color, Color) else background_color
-        new_colors = [find_accessible_color(color, background, level) for color in self.colors]
+
+        background = (
+            Color(background_color)
+            if not isinstance(background_color, Color)
+            else background_color
+        )
+        new_colors = [
+            find_accessible_color(color, background, level) for color in self.colors
+        ]
         return Gradient(new_colors, name=f"{self.name}_accessible")
 
-    def complementary(self) -> 'Gradient':
+    def complementary(self) -> "Gradient":
         """Get the complementary gradient (all colors shifted 180 degrees).
 
         Returns
@@ -812,23 +825,33 @@ class Gradient(LSC):
             Average contrast: 8.65
 
         """
-        background = Color(background_color) if not isinstance(background_color, Color) else background_color
+        background = (
+            Color(background_color)
+            if not isinstance(background_color, Color)
+            else background_color
+        )
         contrasts = [color.contrast_ratio(background) for color in self.colors]
         accessible_aa = sum(1 for c in contrasts if c >= 4.5)
         accessible_aaa = sum(1 for c in contrasts if c >= 7.0)
-        
+
         return {
-            'average_contrast': sum(contrasts) / len(contrasts) if contrasts else 0,
-            'min_contrast': min(contrasts) if contrasts else 0,
-            'max_contrast': max(contrasts) if contrasts else 0,
-            'accessible_aa_count': accessible_aa,
-            'accessible_aaa_count': accessible_aaa,
-            'accessibility_aa_score': accessible_aa / len(contrasts) if contrasts else 0,
-            'accessibility_aaa_score': accessible_aaa / len(contrasts) if contrasts else 0,
-            'contrasts': contrasts
+            "average_contrast": sum(contrasts) / len(contrasts) if contrasts else 0,
+            "min_contrast": min(contrasts) if contrasts else 0,
+            "max_contrast": max(contrasts) if contrasts else 0,
+            "accessible_aa_count": accessible_aa,
+            "accessible_aaa_count": accessible_aaa,
+            "accessibility_aa_score": (
+                accessible_aa / len(contrasts) if contrasts else 0
+            ),
+            "accessibility_aaa_score": (
+                accessible_aaa / len(contrasts) if contrasts else 0
+            ),
+            "contrasts": contrasts,
         }
 
-    def find_accessible_version(self, background_color: Union[Color, str], level: str = 'AA') -> 'Gradient':
+    def find_accessible_version(
+        self, background_color: Union[Color, str], level: str = "AA"
+    ) -> "Gradient":
         """Find accessible version of all colors in the gradient.
 
         Parameters
@@ -867,9 +890,14 @@ class Gradient(LSC):
         """
         return self.make_accessible(background_color, level)
 
-    def maximize_contrast_iterative(self, background_color: Union[Color, str], level: str = 'AA',
-                                   adjust_lightness: bool = True, step_size: float = 0.1,
-                                   max_attempts: int = 50) -> 'Gradient':
+    def maximize_contrast_iterative(
+        self,
+        background_color: Union[Color, str],
+        level: str = "AA",
+        adjust_lightness: bool = True,
+        step_size: float = 0.1,
+        max_attempts: int = 50,
+    ) -> "Gradient":
         """Maximize contrast of all colors using iterative approach.
 
         Parameters
@@ -913,12 +941,27 @@ class Gradient(LSC):
 
         """
         from chromo_map.core.color import find_maximal_contrast_iterative
-        background = Color(background_color) if not isinstance(background_color, Color) else background_color
-        new_colors = [find_maximal_contrast_iterative(color, background, level, adjust_lightness, step_size, max_attempts) for color in self.colors]
+
+        background = (
+            Color(background_color)
+            if not isinstance(background_color, Color)
+            else background_color
+        )
+        new_colors = [
+            find_maximal_contrast_iterative(
+                color, background, level, adjust_lightness, step_size, max_attempts
+            )
+            for color in self.colors
+        ]
         return Gradient(new_colors, name=f"{self.name}_max_contrast_iterative")
 
-    def maximize_contrast_binary_search(self, background_color: Union[Color, str], level: str = 'AA',
-                                       adjust_lightness: bool = True, precision: float = 0.001) -> 'Gradient':
+    def maximize_contrast_binary_search(
+        self,
+        background_color: Union[Color, str],
+        level: str = "AA",
+        adjust_lightness: bool = True,
+        precision: float = 0.001,
+    ) -> "Gradient":
         """Maximize contrast of all colors using binary search.
 
         Parameters
@@ -960,12 +1003,26 @@ class Gradient(LSC):
 
         """
         from chromo_map.core.color import find_maximal_contrast_binary_search
-        background = Color(background_color) if not isinstance(background_color, Color) else background_color
-        new_colors = [find_maximal_contrast_binary_search(color, background, level, adjust_lightness, precision) for color in self.colors]
+
+        background = (
+            Color(background_color)
+            if not isinstance(background_color, Color)
+            else background_color
+        )
+        new_colors = [
+            find_maximal_contrast_binary_search(
+                color, background, level, adjust_lightness, precision
+            )
+            for color in self.colors
+        ]
         return Gradient(new_colors, name=f"{self.name}_max_contrast_binary")
 
-    def maximize_contrast_optimization(self, background_color: Union[Color, str], level: str = 'AA',
-                                     method: str = 'golden_section') -> 'Gradient':
+    def maximize_contrast_optimization(
+        self,
+        background_color: Union[Color, str],
+        level: str = "AA",
+        method: str = "golden_section",
+    ) -> "Gradient":
         """Maximize contrast of all colors using mathematical optimization.
 
         Parameters
@@ -1005,6 +1062,14 @@ class Gradient(LSC):
 
         """
         from chromo_map.core.color import find_maximal_contrast_optimization
-        background = Color(background_color) if not isinstance(background_color, Color) else background_color
-        new_colors = [find_maximal_contrast_optimization(color, background, level, method) for color in self.colors]
+
+        background = (
+            Color(background_color)
+            if not isinstance(background_color, Color)
+            else background_color
+        )
+        new_colors = [
+            find_maximal_contrast_optimization(color, background, level, method)
+            for color in self.colors
+        ]
         return Gradient(new_colors, name=f"{self.name}_max_contrast_optimization")

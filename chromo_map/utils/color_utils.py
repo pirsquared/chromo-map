@@ -5,6 +5,7 @@ from typing import Tuple, Optional, Any, List
 from matplotlib.colors import to_rgba, to_rgb
 import matplotlib.pyplot as plt
 
+
 # Color parsing utilities
 def _rgb_c(c: str) -> str:
     """Helper function for regex pattern building."""
@@ -59,10 +60,10 @@ def clr_to_tup(clr: Any) -> Any:
     """Convert a color to a tuple."""
     if isinstance(clr, str):
         return hexstr_to_tup(clr) or rgba_to_tup(clr)
-    
+
     if isinstance(clr, (tuple, list)):
         clr_list = list(clr)
-        
+
         # Handle 3 or 4 element sequences
         if len(clr_list) in (3, 4):
             try:
@@ -74,10 +75,10 @@ def clr_to_tup(clr: Any) -> Any:
                     return tuple(numeric_vals)
             except (ValueError, TypeError):
                 pass
-        
+
         # Return original format if not valid color values
         return tuple(clr_list) if isinstance(clr, tuple) else clr_list
-    
+
     # Try matplotlib's to_rgba as fallback
     try:
         rgba_vals = to_rgba(clr)
