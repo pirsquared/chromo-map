@@ -8,8 +8,8 @@ and provides methods for color interpolation, resizing, and accessibility adjust
 
 import base64
 import uuid
-from math import gcd
 from functools import reduce
+from math import gcd
 from textwrap import dedent
 from typing import Any, Dict, List, Union
 

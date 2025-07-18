@@ -2,12 +2,13 @@
 """Catalog builders for chromo_map package."""
 
 import json
-from typing import Dict, Any, List, Optional, Union, TYPE_CHECKING
-from importlib_resources import files
-from pirrtools import AttrDict, find_instances
-from palettable.palette import Palette
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union
+
 import palettable
 from _plotly_utils import colors as plotly_colors
+from importlib_resources import files
+from palettable.palette import Palette
+from pirrtools import AttrDict, find_instances
 
 if TYPE_CHECKING:
     from chromo_map.core.gradient import Gradient

@@ -1,6 +1,6 @@
 """Color analysis functions for chromo_map package."""
 
-from typing import List, Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Optional
 
 if TYPE_CHECKING:
     from chromo_map.core.color import Color
@@ -208,7 +208,8 @@ def get_gradient(name: str, case_sensitive: bool = False) -> Optional["Gradient"
         return None
 
     import re
-    from typing import List, Dict, Any
+    from typing import Any, Dict, List
+
     from ..catalog import cmaps
 
     # Compile regex pattern

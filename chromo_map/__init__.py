@@ -3,32 +3,22 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import LinearSegmentedColormap as LSC
+from pirrtools import AttrDict
 
+from .accessibility.contrast import (contrast_ratio, find_accessible_color,
+                                     find_maximal_contrast_binary_search,
+                                     find_maximal_contrast_iterative,
+                                     find_maximal_contrast_optimization,
+                                     is_accessible)
+from .analysis.palette import (analyze_color_harmony, generate_color_palette,
+                               get_gradient)
+# Import the catalog
+from .catalog import cmaps
 from .core.color import Color
 from .core.gradient import Gradient
 from .core.swatch import Swatch
-
 # Import from the new modular structure
-from .utils.color_utils import rgba_to_tup, hexstr_to_tup, clr_to_tup
-
-from .accessibility.contrast import (
-    contrast_ratio,
-    is_accessible,
-    find_accessible_color,
-    find_maximal_contrast_iterative,
-    find_maximal_contrast_binary_search,
-    find_maximal_contrast_optimization,
-)
-
-from .analysis.palette import (
-    generate_color_palette,
-    analyze_color_harmony,
-    get_gradient,
-)
-
-# Import the catalog
-from .catalog import cmaps
-from pirrtools import AttrDict
+from .utils.color_utils import clr_to_tup, hexstr_to_tup, rgba_to_tup
 
 __all__ = [
     "Color",

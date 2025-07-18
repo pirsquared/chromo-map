@@ -3,6 +3,7 @@ This module contains test functions to be used with the pytest framework.
 """
 
 import pytest
+
 import chromo_map as cm
 from chromo_map import Color, Gradient
 

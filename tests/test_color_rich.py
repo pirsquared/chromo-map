@@ -1,9 +1,11 @@
 """Tests for Color class rich output and improvements."""
 
-import pytest
-from chromo_map import Color
-from rich.console import Console
 from io import StringIO
+
+import pytest
+from rich.console import Console
+
+from chromo_map import Color
 
 
 class TestColorRichOutput:

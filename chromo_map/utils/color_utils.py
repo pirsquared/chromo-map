@@ -1,9 +1,10 @@
 """Color utility functions for chromo_map package."""
 
 import re
-from typing import Tuple, Optional, Any, List
-from matplotlib.colors import to_rgba, to_rgb
+from typing import Any, List, Optional, Tuple
+
 import matplotlib.pyplot as plt
+from matplotlib.colors import to_rgb, to_rgba
 
 
 # Color parsing utilities

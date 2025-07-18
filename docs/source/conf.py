@@ -3,17 +3,17 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import doctest
+import io
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os
-import io
 import sys
-import doctest
-from contextlib import redirect_stdout, redirect_stderr
+from contextlib import redirect_stderr, redirect_stdout
+
+from bs4 import BeautifulSoup
 from docutils import nodes
 from sphinx.util.docutils import SphinxDirective
-from bs4 import BeautifulSoup
-
 
 sys.path.insert(0, os.path.abspath("../.."))
 
@@ -154,8 +154,8 @@ def generate_visual_catalog_hook(app, config):
     """Hook to generate visual catalog before building documentation."""
     try:
         print("Generating visual catalog...")
-        import subprocess
         import os
+        import subprocess
 
         # Get the docs directory
         docs_dir = os.path.dirname(os.path.dirname(__file__))

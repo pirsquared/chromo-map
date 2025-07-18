@@ -1,6 +1,6 @@
 """Tests for Swatch HSV, scaling, accessible, and contrast utilities."""
 
-from chromo_map import Swatch, Color, Gradient
+from chromo_map import Color, Gradient, Swatch
 
 
 class TestSwatchScalingUtilities:

@@ -6,13 +6,10 @@ This document demonstrates the three distinct approaches we implemented
 for finding maximal contrast between colors in the chromo-map library.
 """
 
-from chromo_map import (
-    Color,
-    find_accessible_color,
-    find_maximal_contrast_iterative,
-    find_maximal_contrast_binary_search,
-    find_maximal_contrast_optimization,
-)
+from chromo_map import (Color, find_accessible_color,
+                        find_maximal_contrast_binary_search,
+                        find_maximal_contrast_iterative,
+                        find_maximal_contrast_optimization)
 
 
 def demonstrate_approaches():

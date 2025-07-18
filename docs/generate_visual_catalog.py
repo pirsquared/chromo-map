@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Generate visual catalog HTML for documentation."""
 
-import sys
 import os
+import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 

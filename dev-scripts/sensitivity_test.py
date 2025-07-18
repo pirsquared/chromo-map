@@ -1,4 +1,4 @@
-from chromo_map import find_maximal_contrast_binary_search, Color
+from chromo_map import Color, find_maximal_contrast_binary_search
 
 # Test sensitivity to different base colors
 target = Color("white")

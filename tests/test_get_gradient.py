@@ -1,8 +1,10 @@
 """Tests for the get_gradient function."""
 
-import pytest
 import re
-from chromo_map import get_gradient, Gradient
+
+import pytest
+
+from chromo_map import Gradient, get_gradient
 
 
 class TestGetGradient:

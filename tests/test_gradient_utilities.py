@@ -1,6 +1,6 @@
 """Tests for Gradient HSV, scaling, accessible, and contrast utilities."""
 
-from chromo_map import Gradient, Color
+from chromo_map import Color, Gradient
 
 
 class TestGradientScalingUtilities:

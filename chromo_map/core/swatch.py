@@ -2,8 +2,9 @@
 """Swatch class for chromo_map package."""
 
 import uuid
-from typing import Union, Dict, Any, TYPE_CHECKING
 from textwrap import dedent
+from typing import TYPE_CHECKING, Any, Dict, Union
+
 from IPython.display import HTML
 from jinja2 import Template
 

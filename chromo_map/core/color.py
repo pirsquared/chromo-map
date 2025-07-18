@@ -1,13 +1,14 @@
 # mypy: ignore-errors
 """Core color functionality for chromo_map package."""
 
+import colorsys
 import re
 import uuid
-import colorsys
-from typing import Tuple, Union, Optional, Any, Sequence, List
 from textwrap import dedent
+from typing import Any, List, Optional, Sequence, Tuple, Union
+
 import numpy as np
-from matplotlib.colors import to_rgba, to_rgb
+from matplotlib.colors import to_rgb, to_rgba
 
 
 def _rgb_c(c: str) -> str:

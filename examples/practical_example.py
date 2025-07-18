@@ -1,10 +1,7 @@
-from chromo_map import (
-    find_accessible_color,
-    find_maximal_contrast_iterative,
-    find_maximal_contrast_binary_search,
-    find_maximal_contrast_optimization,
-    Color,
-)
+from chromo_map import (Color, find_accessible_color,
+                        find_maximal_contrast_binary_search,
+                        find_maximal_contrast_iterative,
+                        find_maximal_contrast_optimization)
 
 # Practical example: Making a website color accessible
 brand_color = "#ff6b6b"  # Light red brand color
