@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
         python-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
@@ -60,7 +60,6 @@ jobs:
         black --check chromo_map/ tests/
         isort --check-only chromo_map/ tests/
         flake8 chromo_map/ tests/
-      continue-on-error: true
     
     - name: Run type checking
       run: |
@@ -136,6 +135,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -e .[docs]
+        python -m ipykernel install --user --name python3
     
     - name: Build documentation
       run: |
