@@ -63,7 +63,10 @@ dev = [
   "palettable",
   "matplotlib",
   "plotly",
-  "rich"
+  "rich",
+  "tox",
+  "importlib_resources",
+  "bs4"
 ]
 
 [tool.black]
