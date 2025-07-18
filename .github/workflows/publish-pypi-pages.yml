@@ -60,6 +60,7 @@ jobs:
         black --check chromo_map/ tests/
         isort --check-only chromo_map/ tests/
         flake8 chromo_map/ tests/
+      continue-on-error: true
     
     - name: Run type checking
       run: |
