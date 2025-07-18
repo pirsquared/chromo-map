@@ -190,9 +190,9 @@ def _find_best_representative(
     return max(scored, key=lambda x: x[0])[1]
 
 
-def _build_unified_catalog() -> AttrDict:
+def _build_unified_catalog() -> ColorMapDict:
     """Build a unified catalog with multiple organization structures."""
-    cmaps = AttrDict()
+    cmaps = ColorMapDict()
     
     # Build individual catalogs
     mpl_catalog = _build_matplotlib_catalog()

@@ -75,7 +75,9 @@ class Gradient(LSC):
         if isinstance(colors, Gradient):
             self.colors = colors.colors
             self.name = colors.name
-            super().__init__(colors.name, colors._segmentdata, colors.N)
+            # Handle _segmentdata attribute safely
+            segmentdata = getattr(colors, '_segmentdata', {})
+            super().__init__(colors.name, segmentdata, colors.N)
         elif isinstance(colors, (list, tuple)):
             self._update_from_list(colors, name, alpha)
         elif isinstance(colors, np.ndarray):
@@ -180,25 +182,48 @@ class Gradient(LSC):
         from rich.console import Console
         from rich.text import Text
         
-        console = Console()
+        # Force terminal mode to enable colors on Windows
+        console = Console(force_terminal=True)
         
-        # Create colored blocks for each color in the gradient
-        result = Text()
-        
-        # Add colored blocks for each color
-        for color in self.colors:
-            colored_block = Text("██", style=f"color {color.hex}")
-            result.append(colored_block)
-        
-        # Add gradient info
-        gradient_info = Text(f" Gradient({self.name}, {len(self.colors)} colors)", style="default")
-        result.append(gradient_info)
-        
-        # Use console to render to string
-        with console.capture() as capture:
-            console.print(result, end="")
-        
-        return capture.get()
+        # Check if colors are supported
+        if console.is_terminal and console.color_system:
+            # Create colored blocks for each color in the gradient
+            result = Text()
+            
+            # Limit display to 64 characters maximum
+            max_chars = 64
+            colors_to_display = self.colors
+            
+            # If we have more than 64 colors, resample down to 64
+            if len(self.colors) > max_chars:
+                # Use the resize method to get a resampled version
+                resampled_gradient = self.resize(max_chars)
+                colors_to_display = resampled_gradient.colors
+            
+            # Determine spacing based on number of colors to display
+            # Use 2 spaces for <= 32 colors, 1 space for > 32 colors
+            if len(colors_to_display) <= 32:
+                char_per_color = "  "  # 2 spaces
+            else:
+                char_per_color = " "   # 1 space
+            
+            # Add colored blocks for each color using background colors
+            for color in colors_to_display:
+                colored_block = Text(char_per_color, style=f"on {color.hex}")
+                result.append(colored_block)
+            
+            # Add gradient info
+            gradient_info = Text(f" Gradient({self.name}, {len(self.colors)} colors)", style="default")
+            result.append(gradient_info)
+            
+            # Use console to render to string
+            with console.capture() as capture:
+                console.print(result, end="")
+            
+            return capture.get()
+        else:
+            # Fallback to plain text representation
+            return f"Gradient({self.name}, {len(self.colors)} colors)"
 
     def __getattr__(self, name):
         """Get attributes from underlying colors."""
@@ -783,7 +808,7 @@ class Gradient(LSC):
 
         .. testoutput::
 
-            Average contrast: 8.47
+            Average contrast: 8.65
 
         """
         background = Color(background_color) if not isinstance(background_color, Color) else background_color

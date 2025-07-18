@@ -8,6 +8,7 @@
 import os
 import io
 import sys
+import doctest
 from contextlib import redirect_stdout, redirect_stderr
 from docutils import nodes
 from sphinx.util.docutils import SphinxDirective
@@ -33,8 +34,62 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
+    "sphinx.ext.inheritance_diagram",
     "sphinx_copybutton",
+    "sphinx_autodoc_typehints",
+    "nbsphinx",
 ]
+
+# Autodoc configuration
+autodoc_default_options = {
+    'members': True,
+    'undoc-members': True,
+    'show-inheritance': True,
+    'special-members': '__init__',
+    'exclude-members': '__weakref__',
+}
+
+autodoc_typehints = 'description'
+autodoc_typehints_description_target = 'documented'
+
+# nbsphinx configuration for Jupyter notebooks
+nbsphinx_execute = 'always'  # Always execute notebooks
+nbsphinx_kernel_name = 'python3'  # Use Python 3 kernel
+nbsphinx_allow_errors = True  # Continue building even if cells have errors
+nbsphinx_timeout = 60  # Timeout for cell execution (seconds)
+
+# Doctest configuration
+doctest_default_flags = (
+    doctest.ELLIPSIS |
+    doctest.IGNORE_EXCEPTION_DETAIL |
+    doctest.NORMALIZE_WHITESPACE |
+    doctest.DONT_ACCEPT_TRUE_FOR_1
+)
+
+# Don't add input/output prompts to code blocks
+nbsphinx_prolog = """
+.. raw:: html
+
+    <style>
+    .nbinput .prompt, .nboutput .prompt {
+        display: none;
+    }
+    </style>
+"""
+
+# Napoleon settings for Google/NumPy style docstrings
+napoleon_google_docstring = True
+napoleon_numpy_docstring = True
+napoleon_include_init_with_doc = False
+napoleon_include_private_with_doc = False
+napoleon_include_special_with_doc = True
+napoleon_use_admonition_for_examples = False
+napoleon_use_admonition_for_notes = False
+napoleon_use_admonition_for_references = False
+napoleon_use_ivar = False
+napoleon_use_param = True
+napoleon_use_rtype = True
+napoleon_type_aliases = None
 
 autosummary_generate = True
 
@@ -95,6 +150,38 @@ class HTMLOutputDirective(SphinxDirective):
             return [nodes.error(None, nodes.paragraph(text=f"Error: {str(e)}"))]
 
 
+def generate_visual_catalog_hook(app, config):
+    """Hook to generate visual catalog before building documentation."""
+    try:
+        print("Generating visual catalog...")
+        import subprocess
+        import os
+        
+        # Get the docs directory
+        docs_dir = os.path.dirname(os.path.dirname(__file__))
+        script_path = os.path.join(docs_dir, 'generate_visual_catalog.py')
+        
+        if os.path.exists(script_path):
+            # Run the visual catalog generation script
+            result = subprocess.run([sys.executable, script_path], 
+                                  cwd=docs_dir, 
+                                  capture_output=True, 
+                                  text=True)
+            
+            if result.returncode == 0:
+                print("Visual catalog generated successfully!")
+            else:
+                print(f"Warning: Visual catalog generation failed: {result.stderr}")
+        else:
+            print("Warning: generate_visual_catalog.py not found")
+            
+    except Exception as e:
+        print(f"Warning: Could not generate visual catalog: {e}")
+
+
 def setup(app):
     app.add_directive("html-output", HTMLOutputDirective)
     app.add_css_file("custom.css")
+    
+    # Add the visual catalog generation hook
+    app.connect('config-inited', generate_visual_catalog_hook)

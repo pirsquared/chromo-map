@@ -163,9 +163,6 @@ def get_gradient(name: str, case_sensitive: bool = False) -> Optional["Gradient"
     """
     Search for a gradient by name with regex support across all sources.
     
-    NOTE: Currently disabled due to matplotlib colormap parsing issues.
-    This function will be re-enabled in Phase 3 of the refactoring.
-    
     Parameters
     ----------
     name : str
@@ -205,6 +202,84 @@ def get_gradient(name: str, case_sensitive: bool = False) -> Optional["Gradient"
     
         viridis
     """
-    # Temporarily disabled due to matplotlib colormap parsing issues
-    # TODO: Fix in Phase 3 refactoring
-    return None
+    # Return None for empty string
+    if not name or not name.strip():
+        return None
+        
+    import re
+    from typing import List, Dict, Any
+    from ..catalog import cmaps
+    
+    # Compile regex pattern
+    flags = 0 if case_sensitive else re.IGNORECASE
+    try:
+        pattern = re.compile(name, flags)
+    except re.error:
+        # If regex is invalid, treat as literal string
+        pattern = re.compile(re.escape(name), flags)
+    
+    # Collect all matching gradients with metadata
+    matches: List[Dict[str, Any]] = []
+    
+    # Search through all catalog sources
+    catalog_sources = [
+        ('palettable', cmaps.palettable),
+        ('matplotlib', cmaps.matplotlib), 
+        ('plotly', cmaps.plotly)
+    ]
+    
+    for source_name, source_catalog in catalog_sources:
+        # Recursively search through the catalog structure
+        def search_recursive(obj, path=""):
+            if hasattr(obj, '_data') and hasattr(obj._data, 'items'):
+                # This is a ColorMapDict or AttrDict
+                for key, value in obj._data.items():
+                    if hasattr(value, 'colors') and hasattr(value, 'name'):
+                        # This is a Gradient object
+                        if pattern.search(key) or pattern.search(value.name):
+                            matches.append({
+                                'gradient': value,
+                                'source': source_name,
+                                'length': len(value.colors),
+                                'name': value.name,
+                                'match_key': key
+                            })
+                    else:
+                        # Recurse deeper
+                        search_recursive(value, f"{path}.{key}")
+            elif hasattr(obj, 'items'):
+                # This is a regular dict
+                for key, value in obj.items():
+                    if hasattr(value, 'colors') and hasattr(value, 'name'):
+                        # This is a Gradient object
+                        if pattern.search(key) or pattern.search(value.name):
+                            matches.append({
+                                'gradient': value,
+                                'source': source_name,
+                                'length': len(value.colors),
+                                'name': value.name,
+                                'match_key': key
+                            })
+                    else:
+                        # Recurse deeper
+                        search_recursive(value, f"{path}.{key}")
+        
+        try:
+            search_recursive(source_catalog)
+        except Exception:
+            # If there's an error with this source, skip it
+            continue
+    
+    # If no matches found, return None
+    if not matches:
+        return None
+    
+    # Sort matches by preference: palettable > matplotlib > plotly, then by length (descending)
+    source_priority = {'palettable': 3, 'matplotlib': 2, 'plotly': 1}
+    
+    matches.sort(key=lambda x: (source_priority.get(x['source'], 0), x['length']), reverse=True)
+    
+    # Return the best match
+    best_match = matches[0]['gradient']
+    # Type assertion to help mypy understand this is a Gradient
+    return best_match  # type: ignore

@@ -1287,21 +1287,28 @@ class Color:
         from rich.console import Console
         from rich.text import Text
         
-        console = Console()
-        # Create a colored block using the color's hex value
-        colored_block = Text("██", style=f"color {self.hex}")
-        color_info = Text(f" Color({self.hex})", style="default")
+        # Force terminal mode to enable colors on Windows
+        console = Console(force_terminal=True)
         
-        # Combine the colored block with the color info
-        result = Text()
-        result.append(colored_block)
-        result.append(color_info)
-        
-        # Use console to render to string
-        with console.capture() as capture:
-            console.print(result, end="")
-        
-        return capture.get()
+        # Check if colors are supported
+        if console.is_terminal and console.color_system:
+            # Use background color with spaces for better visibility
+            colored_block = Text("  ", style=f"on {self.hex}")
+            color_info = Text(f" Color({self.hex})", style="default")
+            
+            # Combine the colored block with the color info
+            result = Text()
+            result.append(colored_block)
+            result.append(color_info)
+            
+            # Use console to render to string
+            with console.capture() as capture:
+                console.print(result, end="")
+            
+            return capture.get()
+        else:
+            # Fallback to plain text representation
+            return f"Color({self.hex})"
 
 
 def find_accessible_color(base_color: Union[Color, str], target_color: Union[Color, str], 

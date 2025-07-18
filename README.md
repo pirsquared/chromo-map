@@ -7,11 +7,24 @@ Extend Functionality to Color Map Objects
 
 ## Overview
 
-`chromo-map` is a Python package that extends the functionality of color map objects. It provides a simple interface to create custom color maps, and to manipulate existing color maps. The package is built on top of the `matplotlib` library, and is designed to be easy to use and flexible.
+`chromo-map` is a Python package that extends the functionality of color map objects. The core `Gradient` class is fully compatible with matplotlib colormaps, allowing you to use Plotly, Palettable, and custom color palettes anywhere matplotlib expects a colormap. This gives you access to hundreds of professional color schemes through a single, consistent interface while maintaining complete compatibility with your existing matplotlib plotting code.
+
+Key features:
+- **Drop-in matplotlib compatibility** - Use any gradient as a matplotlib colormap
+- **Unified color catalog** - Access Plotly, matplotlib, and Palettable palettes through one interface  
+- **Enhanced functionality** - Advanced color manipulation while maintaining matplotlib compatibility
+- **Easy customization** - Create and modify color gradients with simple, intuitive methods
 
 ## Documentation
 
-Full documentation is available at [chromo-map](https://pirsquared.github.io/chromo-map/).
+- **User Documentation**: [chromo-map](https://pirsquared.github.io/chromo-map/)
+- **Development Documentation**: [docs/development/](docs/development/) - Comprehensive development process documentation, including phase summaries, technical implementation details, and best practices
+
+## Examples and Scripts
+
+- **[examples/](examples/)** - Demonstration scripts and practical usage examples
+- **[dev-scripts/](dev-scripts/)** - Development testing and debugging scripts  
+- **[scripts/](scripts/)** - Utility scripts for project maintenance
 
 ## Installation
 
