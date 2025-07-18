@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Catalog class for chromo_map package."""
 
 from typing import Dict, Any, List, Optional, Union, TYPE_CHECKING

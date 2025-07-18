@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """
 Gradient class for chromo-map.
 

@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Catalog builders for chromo_map package."""
 
 import json

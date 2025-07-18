@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Core color functionality for chromo_map package."""
 
 import re

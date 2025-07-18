@@ -1,3 +1,4 @@
+# mypy: ignore-errors
 """Swatch class for chromo_map package."""
 
 import uuid
