@@ -7,7 +7,7 @@ name = "chromo_map"
 version = "1.0.0"  # Update this version number before you upload a new version to PyPI
 description = "A Python package for manipulating color maps."
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
 authors = [
   { name = "Sean Smith", email = "pirsquared.pirr@gmail.com" }
 ]
