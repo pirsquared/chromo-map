@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comprehensive Documentation for chromo-map Phase 5 &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="_static/pirr_logo.svg"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="About" href="about.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Comprehensive Documentation for chromo-map Phase 5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#get-gradient-function">get_gradient() Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#color-repr-improvements">Color.__repr__() Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gradient-repr-improvements">Gradient.__repr__() Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rich-library-integration">Rich Library Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-strategy">Testing Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#future-enhancements">Future Enhancements</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Comprehensive Documentation for chromo-map Phase 5</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/phase5_documentation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="comprehensive-documentation-for-chromo-map-phase-5">
+<h1>Comprehensive Documentation for chromo-map Phase 5<a class="headerlink" href="#comprehensive-documentation-for-chromo-map-phase-5" title="Link to this heading"></a></h1>
+<p>This document provides detailed documentation for all the new functions and improvements
+implemented in Phase 5 of the chromo-map project.</p>
+<p>Functions Covered:
+- get_gradient()
+- Color.__repr__() improvements
+- Gradient.__repr__() improvements</p>
+<p>Classes Covered:
+- Color (rich output enhancements)
+- Gradient (rich output enhancements)</p>
+<section id="get-gradient-function">
+<h2>get_gradient() Function<a class="headerlink" href="#get-gradient-function" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">get_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_sensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chromo_map/analysis/palette.html#get_gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Search for a gradient by name with regex support across all sources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name or regex pattern to search for</p></li>
+<li><p><strong>case_sensitive</strong> (<em>bool</em><em>, </em><em>default False</em>) – Whether to perform case-sensitive search</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The best matching gradient, or None if no match found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="api/core.html#chromo_map.Gradient" title="chromo_map.Gradient">Gradient</a>]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Search for viridis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_gradient</span>
+<span class="n">grad</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">name</span> <span class="k">if</span> <span class="n">grad</span> <span class="k">else</span> <span class="s1">&#39;Not found&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>viridis
+</pre></div>
+</div>
+<p>Search with regex:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_gradient</span>
+<span class="n">grad</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;vir.*&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">name</span> <span class="k">if</span> <span class="n">grad</span> <span class="k">else</span> <span class="s1">&#39;Not found&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>viridis
+</pre></div>
+</div>
+</dd></dl>
+
+<p>The get_gradient function provides a powerful search capability for finding gradients
+from multiple colormap sources.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (str): The name or pattern to search for. Can be:
+- Exact colormap name (e.g., ‘viridis’)
+- Regex pattern (e.g., ‘vir.*’, ‘Set[0-9]+’)
+- Partial name (e.g., ‘plas’ for ‘plasma’)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">case_sensitive</span></code> (bool, optional): Whether to perform case-sensitive search.
+Default is False.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Optional[Gradient]</span></code>: The best matching gradient, or None if no matches found.</p></li>
+</ul>
+<p><strong>Search Algorithm:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Source Priority</strong>: Searches sources in order of preference:
+- Palettable (highest priority)
+- Matplotlib
+- Plotly (lowest priority)</p></li>
+<li><p><strong>Pattern Matching</strong>: Uses regex search for flexible pattern matching</p></li>
+<li><p><strong>Length Preference</strong>: Within same source, prefers longer gradients</p></li>
+<li><p><strong>Error Handling</strong>: Invalid regex patterns are treated as literal strings</p></li>
+</ol>
+<p><strong>Examples:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exact match</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Case insensitive (default)</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;VIRIDIS&#39;</span><span class="p">)</span>
+
+<span class="c1"># Case sensitive</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Regex pattern</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;vir.*&#39;</span><span class="p">)</span>  <span class="c1"># Matches viridis</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;Set[0-9]+&#39;</span><span class="p">)</span>  <span class="c1"># Matches Set1, Set2, etc.</span>
+
+<span class="c1"># Partial match</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;plas&#39;</span><span class="p">)</span>  <span class="c1"># May match plasma</span>
+</pre></div>
+</div>
+<p><strong>Use Cases:</strong></p>
+<ul class="simple">
+<li><p><strong>Interactive Exploration</strong>: Quickly find gradients without knowing exact names</p></li>
+<li><p><strong>Fuzzy Search</strong>: Find gradients with partial or approximate names</p></li>
+<li><p><strong>Pattern-Based Discovery</strong>: Use regex to find families of related gradients</p></li>
+<li><p><strong>Source-Aware Selection</strong>: Automatically prefer higher-quality sources</p></li>
+</ul>
+<p><strong>Implementation Details:</strong></p>
+<p>The function recursively searches through all available colormap catalogs,
+applying regex patterns to find matches. Results are sorted by source priority
+and gradient length, ensuring the best available match is returned.</p>
+</section>
+<section id="color-repr-improvements">
+<h2>Color.__repr__() Improvements<a class="headerlink" href="#color-repr-improvements" title="Link to this heading"></a></h2>
+<p>The Color class now provides rich terminal output with Windows compatibility.</p>
+<p><strong>Key Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Windows Compatibility</strong>: Uses background colors instead of Unicode blocks</p></li>
+<li><p><strong>Rich Integration</strong>: Seamlessly integrates with the rich library</p></li>
+<li><p><strong>Visual Feedback</strong>: Provides immediate visual representation of colors</p></li>
+<li><p><strong>Consistent Formatting</strong>: Maintains consistent output across platforms</p></li>
+</ul>
+<p><strong>Technical Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Rich representation showing color as background with spaces.&#39;&#39;&#39;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rich.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">Text</span>
+
+    <span class="c1"># Use background color with spaces for Windows compatibility</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;on </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span>
+</pre></div>
+</div>
+<p><strong>Benefits:</strong></p>
+<ul class="simple">
+<li><p><strong>Cross-Platform</strong>: Works on Windows, macOS, and Linux</p></li>
+<li><p><strong>Terminal Integration</strong>: Displays colors directly in terminal output</p></li>
+<li><p><strong>Development Workflow</strong>: Enhances debugging and interactive development</p></li>
+<li><p><strong>User Experience</strong>: Provides immediate visual feedback</p></li>
+</ul>
+</section>
+<section id="gradient-repr-improvements">
+<h2>Gradient.__repr__() Improvements<a class="headerlink" href="#gradient-repr-improvements" title="Link to this heading"></a></h2>
+<p>The Gradient class now provides sophisticated rich output with intelligent scaling.</p>
+<p><strong>Key Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Character Limit</strong>: Maximum 64 characters for manageable output</p></li>
+<li><p><strong>Intelligent Resampling</strong>: Automatically resamples long gradients</p></li>
+<li><p><strong>Adaptive Spacing</strong>: Scales from 2 spaces to 1 space based on length</p></li>
+<li><p><strong>Visual Progression</strong>: Shows clear color transitions</p></li>
+</ul>
+<p><strong>Technical Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Rich representation with 64-character limit and adaptive spacing.&#39;&#39;&#39;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rich.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">Text</span>
+
+    <span class="n">max_chars</span> <span class="o">=</span> <span class="mi">64</span>
+
+    <span class="c1"># Determine spacing based on length</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">32</span><span class="p">:</span>
+        <span class="n">spaces_per_color</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">spaces_per_color</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># Calculate required colors for display</span>
+    <span class="n">required_colors</span> <span class="o">=</span> <span class="n">max_chars</span> <span class="o">//</span> <span class="n">spaces_per_color</span>
+
+    <span class="c1"># Resample if necessary</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">required_colors</span><span class="p">:</span>
+        <span class="n">display_gradient</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">required_colors</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">display_gradient</span> <span class="o">=</span> <span class="bp">self</span>
+
+    <span class="c1"># Build rich text representation</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">display_gradient</span><span class="o">.</span><span class="n">colors</span><span class="p">:</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="n">spaces_per_color</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;on </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">text</span>
+</pre></div>
+</div>
+<p><strong>Scaling Logic:</strong></p>
+<ul class="simple">
+<li><p><strong>≤32 colors</strong>: 2 spaces per color (detailed view)</p></li>
+<li><p><strong>&gt;32 colors</strong>: 1 space per color (compact view)</p></li>
+<li><p><strong>&gt;64 spaces needed</strong>: Automatically resample to fit</p></li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul class="simple">
+<li><p><strong>Scalability</strong>: Handles gradients of any length</p></li>
+<li><p><strong>Readability</strong>: Maintains visual clarity at all scales</p></li>
+<li><p><strong>Performance</strong>: Efficient rendering through intelligent sampling</p></li>
+<li><p><strong>Consistency</strong>: Predictable output format</p></li>
+</ul>
+</section>
+<section id="rich-library-integration">
+<h2>Rich Library Integration<a class="headerlink" href="#rich-library-integration" title="Link to this heading"></a></h2>
+<p>All improvements are built on the rich library for cross-platform compatibility.</p>
+<p><strong>Key Components:</strong></p>
+<ul class="simple">
+<li><p><strong>Text Objects</strong>: Use rich.text.Text for styled output</p></li>
+<li><p><strong>Style Syntax</strong>: Leverage rich’s style system for colors</p></li>
+<li><p><strong>Console Integration</strong>: Seamless integration with rich console</p></li>
+<li><p><strong>Platform Compatibility</strong>: Automatic platform-specific adaptations</p></li>
+</ul>
+<p><strong>Style Format:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Background color style</span>
+<span class="n">style</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;on </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s1">&#39;</span>  <span class="c1"># e.g., &#39;on #FF0000&#39;</span>
+
+<span class="c1"># Create styled text</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Console Usage:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rich.console</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+
+<span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">)</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print with rich formatting</span>
+<span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+<span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">gradient</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-strategy">
+<h2>Testing Strategy<a class="headerlink" href="#testing-strategy" title="Link to this heading"></a></h2>
+<p>Comprehensive test suites cover all new functionality:</p>
+<p><strong>Test Categories:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Unit Tests</strong>: Individual function behavior</p></li>
+<li><p><strong>Integration Tests</strong>: Cross-component interactions</p></li>
+<li><p><strong>Visual Tests</strong>: Rich output validation</p></li>
+<li><p><strong>Edge Cases</strong>: Boundary conditions and error handling</p></li>
+<li><p><strong>Performance Tests</strong>: Scalability and efficiency</p></li>
+<li><p><strong>Platform Tests</strong>: Cross-platform compatibility</p></li>
+</ol>
+<p><strong>Test Files:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_get_gradient.py</span></code>: Comprehensive get_gradient testing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_color_rich.py</span></code>: Color class rich output testing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_gradient_rich.py</span></code>: Gradient class rich output testing</p></li>
+</ul>
+<p><strong>Coverage Goals:</strong></p>
+<ul class="simple">
+<li><p>&gt;90% code coverage for new functions</p></li>
+<li><p>All edge cases and error conditions</p></li>
+<li><p>Platform-specific behavior validation</p></li>
+<li><p>Performance benchmarks</p></li>
+</ul>
+</section>
+<section id="future-enhancements">
+<h2>Future Enhancements<a class="headerlink" href="#future-enhancements" title="Link to this heading"></a></h2>
+<p>Planned improvements for future phases:</p>
+<ol class="arabic simple">
+<li><p><strong>Additional Sources</strong>: Support for more colormap libraries</p></li>
+<li><p><strong>Caching</strong>: Intelligent caching for performance</p></li>
+<li><p><strong>Configuration</strong>: User-configurable search preferences</p></li>
+<li><p><strong>Export Options</strong>: Multiple output formats for gradients</p></li>
+<li><p><strong>Interactive Tools</strong>: CLI tools for gradient exploration</p></li>
+</ol>
+<p><strong>Compatibility:</strong></p>
+<ul class="simple">
+<li><p>Python 3.8+</p></li>
+<li><p>Rich library 10.0+</p></li>
+<li><p>Windows 10+, macOS 10.14+, Linux (modern distributions)</p></li>
+</ul>
+<p><strong>Dependencies:</strong></p>
+<ul class="simple">
+<li><p>rich: Terminal formatting and styling</p></li>
+<li><p>matplotlib: Core colormap functionality</p></li>
+<li><p>palettable: Additional colormap sources</p></li>
+<li><p>plotly: Web-based colormap sources</p></li>
+</ul>
+<p>This comprehensive documentation provides complete coverage of all Phase 5
+enhancements, ensuring users can fully leverage the new functionality.
+“””</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,6 +1,0 @@
-﻿chromo\_map.ColorGradient.reversed
-==================================
-
-.. currentmodule:: chromo_map
-
-.. automethod:: ColorGradient.reversed

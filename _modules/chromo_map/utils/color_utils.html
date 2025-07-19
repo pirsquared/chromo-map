@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chromo_map.utils.color_utils &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/pirr_logo.svg"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">chromo_map.utils.color_utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for chromo_map.utils.color_utils</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Color utility functions for chromo_map package.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_rgb</span><span class="p">,</span> <span class="n">to_rgba</span>
+
+
+<span class="c1"># Color parsing utilities</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_rgb_c</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function for regex pattern building.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">rf</span><span class="s2">&quot;(?P&lt;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&gt;[^,\s]+)&quot;</span>
+
+
+<span class="n">_COMMA</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\s*,\s*&quot;</span>
+<span class="n">_red</span> <span class="o">=</span> <span class="n">_rgb_c</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">_grn</span> <span class="o">=</span> <span class="n">_rgb_c</span><span class="p">(</span><span class="s2">&quot;grn&quot;</span><span class="p">)</span>
+<span class="n">_blu</span> <span class="o">=</span> <span class="n">_rgb_c</span><span class="p">(</span><span class="s2">&quot;blu&quot;</span><span class="p">)</span>
+<span class="n">_alp</span> <span class="o">=</span> <span class="n">_rgb_c</span><span class="p">(</span><span class="s2">&quot;alp&quot;</span><span class="p">)</span>
+<span class="n">_rgb_pat</span> <span class="o">=</span> <span class="n">_COMMA</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">_red</span><span class="p">,</span> <span class="n">_grn</span><span class="p">,</span> <span class="n">_blu</span><span class="p">])</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">_COMMA</span><span class="si">}{</span><span class="n">_alp</span><span class="si">}</span><span class="s2">)?&quot;</span>
+<span class="n">_RGB_PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;rgba?\(</span><span class="si">{</span><span class="n">_rgb_pat</span><span class="si">}</span><span class="s2">\)&quot;</span><span class="p">)</span>
+
+<span class="n">_VALID_MPL_COLORS</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colormaps</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="rgba_to_tup">
+<a class="viewcode-back" href="../../../api/utilities.html#chromo_map.rgba_to_tup">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rgba_to_tup</span><span class="p">(</span><span class="n">rgbstr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an RGBA string to a tuple.&quot;&quot;&quot;</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">_RGB_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">rgbstr</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="n">gdict</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+        <span class="n">red</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">])</span>
+        <span class="n">grn</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;grn&quot;</span><span class="p">])</span>
+        <span class="n">blu</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;blu&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">alp</span> <span class="o">:=</span> <span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;alp&quot;</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">alp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">alp</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">alp</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Alpha must be between 0 and 1.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alp</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rgb_vals</span> <span class="o">=</span> <span class="n">to_rgb</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">red</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">grn</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">blu</span><span class="si">:</span><span class="s2">02x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rgb_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rgb_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rgb_vals</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">alp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="hexstr_to_tup">
+<a class="viewcode-back" href="../../../api/utilities.html#chromo_map.hexstr_to_tup">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hexstr_to_tup</span><span class="p">(</span><span class="n">hexstr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a hex string to a tuple.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rgba_vals</span> <span class="o">=</span> <span class="n">to_rgba</span><span class="p">(</span><span class="n">hexstr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rgba_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_valid_color_values</span><span class="p">(</span><span class="n">vals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if values are valid color values (0-1 range).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="clr_to_tup">
+<a class="viewcode-back" href="../../../api/utilities.html#chromo_map.clr_to_tup">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">clr_to_tup</span><span class="p">(</span><span class="n">clr</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a color to a tuple.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">hexstr_to_tup</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span> <span class="ow">or</span> <span class="n">rgba_to_tup</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+        <span class="n">clr_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span>
+
+        <span class="c1"># Handle 3 or 4 element sequences</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">clr_list</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">numeric_vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">clr_list</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">_is_valid_color_values</span><span class="p">(</span><span class="n">numeric_vals</span><span class="p">):</span>
+                    <span class="c1"># Add alpha if missing</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeric_vals</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                        <span class="n">numeric_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">numeric_vals</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+                <span class="k">pass</span>
+
+        <span class="c1"># Return original format if not valid color values</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">clr_list</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="k">else</span> <span class="n">clr_list</span>
+
+    <span class="c1"># Try matplotlib&#39;s to_rgba as fallback</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rgba_vals</span> <span class="o">=</span> <span class="n">to_rgba</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rgba_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

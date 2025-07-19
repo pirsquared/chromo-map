@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example Gallery &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../_static/pirr_logo.svg"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Visual Color Catalog" href="../catalog_visual.html" />
+    <link rel="prev" title="chromo-map Jupyter Integration Demo" href="jupyter_integration_demo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example Gallery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-integration">Jupyter Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-color-operations">Basic Color Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web-design-color-schemes">Web Design Color Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-visualization">Data Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#brand-identity-system">Brand Identity System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accessibility-examples">Accessibility Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#seasonal-color-schemes">Seasonal Color Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interactive-jupyter-examples">Interactive Jupyter Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-contrast-optimization">Advanced Contrast Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-color-space-operations">Custom Color Space Operations</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example Gallery</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/gallery.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-gallery">
+<h1>Example Gallery<a class="headerlink" href="#example-gallery" title="Link to this heading"></a></h1>
+<p>This gallery showcases practical examples of using chromo-map for various applications.</p>
+<section id="jupyter-integration">
+<h2>Jupyter Integration<a class="headerlink" href="#jupyter-integration" title="Link to this heading"></a></h2>
+<p><strong>Interactive Visual Exploration</strong></p>
+<p>chromo-map provides exceptional Jupyter notebook integration with rich visual displays. See our comprehensive interactive demo:</p>
+<p><a class="reference internal" href="jupyter_integration.html"><span class="doc">Jupyter Integration</span></a></p>
+<p>This notebook demonstrates:
+- Rich color and gradient visualization
+- Interactive color manipulation with real-time feedback
+- Professional palette exploration
+- matplotlib compatibility examples</p>
+</section>
+<section id="basic-color-operations">
+<h2>Basic Color Operations<a class="headerlink" href="#basic-color-operations" title="Link to this heading"></a></h2>
+<p><strong>Creating and Manipulating Colors</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+
+<span class="c1"># Create a base color</span>
+<span class="n">sunset_orange</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff6b35&#39;</span><span class="p">)</span>
+
+<span class="c1"># Explore properties</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hex: </span><span class="si">{</span><span class="n">sunset_orange</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RGB: </span><span class="si">{</span><span class="n">sunset_orange</span><span class="o">.</span><span class="n">rgb</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HSV: </span><span class="si">{</span><span class="n">sunset_orange</span><span class="o">.</span><span class="n">hsv</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HSL: </span><span class="si">{</span><span class="n">sunset_orange</span><span class="o">.</span><span class="n">hsl</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create variations</span>
+<span class="n">lighter</span> <span class="o">=</span> <span class="n">sunset_orange</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">darker</span> <span class="o">=</span> <span class="n">sunset_orange</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">more_saturated</span> <span class="o">=</span> <span class="n">sunset_orange</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">complementary</span> <span class="o">=</span> <span class="n">sunset_orange</span><span class="o">.</span><span class="n">complementary</span><span class="p">()</span>
+
+<span class="n">variations</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;original&#39;</span><span class="p">:</span> <span class="n">sunset_orange</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;lighter&#39;</span><span class="p">:</span> <span class="n">lighter</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;darker&#39;</span><span class="p">:</span> <span class="n">darker</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;more_saturated&#39;</span><span class="p">:</span> <span class="n">more_saturated</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;complementary&#39;</span><span class="p">:</span> <span class="n">complementary</span><span class="o">.</span><span class="n">hex</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="web-design-color-schemes">
+<h2>Web Design Color Schemes<a class="headerlink" href="#web-design-color-schemes" title="Link to this heading"></a></h2>
+<p><strong>Creating a Website Color Palette</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">generate_color_palette</span><span class="p">,</span> <span class="n">find_accessible_color</span>
+
+<span class="c1"># Brand primary color</span>
+<span class="n">brand_blue</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#2c5aa0&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generate harmonious colors</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span><span class="n">brand_blue</span><span class="p">,</span> <span class="s1">&#39;analogous&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Ensure accessibility for web use</span>
+<span class="n">white_bg</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>
+<span class="n">accessible_palette</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">palette</span><span class="p">:</span>
+    <span class="n">accessible</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">white_bg</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+    <span class="n">accessible_palette</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accessible</span><span class="o">.</span><span class="n">hex</span><span class="p">)</span>
+
+<span class="c1"># Create semantic colors</span>
+<span class="n">success_green</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="s1">&#39;#28a745&#39;</span><span class="p">,</span> <span class="n">white_bg</span><span class="p">)</span>
+<span class="n">warning_yellow</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="s1">&#39;#ffc107&#39;</span><span class="p">,</span> <span class="n">white_bg</span><span class="p">)</span>
+<span class="n">error_red</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="s1">&#39;#dc3545&#39;</span><span class="p">,</span> <span class="n">white_bg</span><span class="p">)</span>
+
+<span class="n">web_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;primary&#39;</span><span class="p">:</span> <span class="n">accessible_palette</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>  <span class="c1"># Main brand color</span>
+    <span class="s1">&#39;secondary&#39;</span><span class="p">:</span> <span class="n">accessible_palette</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="c1"># Supporting color</span>
+    <span class="s1">&#39;accent&#39;</span><span class="p">:</span> <span class="n">accessible_palette</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>    <span class="c1"># Highlight color</span>
+    <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="n">success_green</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;warning&#39;</span><span class="p">:</span> <span class="n">warning_yellow</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">error_red</span><span class="o">.</span><span class="n">hex</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="data-visualization">
+<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading"></a></h2>
+<p><strong>Scientific Color Maps</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_gradient</span><span class="p">,</span> <span class="n">Gradient</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Get a perceptually uniform colormap</span>
+<span class="n">viridis</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create sample data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Plot with chromo-map gradient</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">viridis</span><span class="o">.</span><span class="n">to_mpl</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Viridis (Perceptually Uniform)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Custom gradient for comparison</span>
+<span class="n">custom</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">([</span><span class="s1">&#39;#440154&#39;</span><span class="p">,</span> <span class="s1">&#39;#31688e&#39;</span><span class="p">,</span> <span class="s1">&#39;#35b779&#39;</span><span class="p">,</span> <span class="s1">&#39;#fde725&#39;</span><span class="p">],</span> <span class="mi">256</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">custom</span><span class="o">.</span><span class="n">to_mpl</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Custom Gradient&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Categorical Data Visualization</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_color_palette</span><span class="p">,</span> <span class="n">Color</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Generate colors for 6 categories</span>
+<span class="n">base_color</span> <span class="o">=</span> <span class="s1">&#39;#e74c3c&#39;</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="c1"># Create evenly distributed hues</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">categories</span><span class="p">):</span>
+    <span class="n">hue_shift</span> <span class="o">=</span> <span class="p">(</span><span class="mi">360</span> <span class="o">/</span> <span class="n">categories</span><span class="p">)</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="n">hue_shift</span><span class="p">)</span>
+    <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span><span class="p">)</span>
+
+<span class="c1"># Sample data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">67</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Category A&#39;</span><span class="p">,</span> <span class="s1">&#39;Category B&#39;</span><span class="p">,</span> <span class="s1">&#39;Category C&#39;</span><span class="p">,</span> <span class="s1">&#39;Category D&#39;</span><span class="p">,</span> <span class="s1">&#39;Category E&#39;</span><span class="p">,</span> <span class="s1">&#39;Category F&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create pie chart</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Categorical Data with Harmonious Colors&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="brand-identity-system">
+<h2>Brand Identity System<a class="headerlink" href="#brand-identity-system" title="Link to this heading"></a></h2>
+<p><strong>Complete Brand Color System</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">find_accessible_color</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_brand_identity</span><span class="p">(</span><span class="n">primary_hex</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a complete brand identity color system.&quot;&quot;&quot;</span>
+    <span class="n">primary</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">primary_hex</span><span class="p">)</span>
+
+    <span class="c1"># Core brand colors</span>
+    <span class="n">secondary</span> <span class="o">=</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">accent</span> <span class="o">=</span> <span class="n">primary</span><span class="o">.</span><span class="n">complementary</span><span class="p">()</span>
+
+    <span class="c1"># Monochromatic variations</span>
+    <span class="n">primary_light</span> <span class="o">=</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">primary_dark</span> <span class="o">=</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">)</span>
+
+    <span class="c1"># Neutral palette</span>
+    <span class="n">neutral_lightest</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#f8f9fa&#39;</span><span class="p">)</span>
+    <span class="n">neutral_light</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#e9ecef&#39;</span><span class="p">)</span>
+    <span class="n">neutral_medium</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#6c757d&#39;</span><span class="p">)</span>
+    <span class="n">neutral_dark</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#495057&#39;</span><span class="p">)</span>
+    <span class="n">neutral_darkest</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#212529&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Ensure accessibility for text on white</span>
+    <span class="n">white</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>
+    <span class="n">text_primary</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">primary</span><span class="p">,</span> <span class="n">white</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+    <span class="n">text_secondary</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">secondary</span><span class="p">,</span> <span class="n">white</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+    <span class="n">text_neutral</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">neutral_medium</span><span class="p">,</span> <span class="n">white</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AAA&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;brand&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;primary&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;secondary&#39;</span><span class="p">:</span> <span class="n">secondary</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;accent&#39;</span><span class="p">:</span> <span class="n">accent</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;primary_light&#39;</span><span class="p">:</span> <span class="n">primary_light</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;primary_dark&#39;</span><span class="p">:</span> <span class="n">primary_dark</span><span class="o">.</span><span class="n">hex</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;primary&#39;</span><span class="p">:</span> <span class="n">text_primary</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;secondary&#39;</span><span class="p">:</span> <span class="n">text_secondary</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;neutral&#39;</span><span class="p">:</span> <span class="n">text_neutral</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;inverse&#39;</span><span class="p">:</span> <span class="n">neutral_lightest</span><span class="o">.</span><span class="n">hex</span>  <span class="c1"># For dark backgrounds</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;neutrals&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;lightest&#39;</span><span class="p">:</span> <span class="n">neutral_lightest</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;light&#39;</span><span class="p">:</span> <span class="n">neutral_light</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;medium&#39;</span><span class="p">:</span> <span class="n">neutral_medium</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;dark&#39;</span><span class="p">:</span> <span class="n">neutral_dark</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;darkest&#39;</span><span class="p">:</span> <span class="n">neutral_darkest</span><span class="o">.</span><span class="n">hex</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="c1"># Example: Tech startup brand</span>
+<span class="n">tech_brand</span> <span class="o">=</span> <span class="n">create_brand_identity</span><span class="p">(</span><span class="s1">&#39;#667eea&#39;</span><span class="p">)</span>  <span class="c1"># Modern purple-blue</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tech Startup Brand Colors:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">category</span><span class="p">,</span> <span class="n">colors</span> <span class="ow">in</span> <span class="n">tech_brand</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n</span><span class="si">{</span><span class="n">category</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">hex_color</span> <span class="ow">in</span> <span class="n">colors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">hex_color</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="accessibility-examples">
+<h2>Accessibility Examples<a class="headerlink" href="#accessibility-examples" title="Link to this heading"></a></h2>
+<p><strong>WCAG Compliant Color Palette</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_accessible_color</span><span class="p">,</span> <span class="n">contrast_ratio</span><span class="p">,</span> <span class="n">is_accessible</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_accessible_palette</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ensure all colors meet WCAG AA standards.&quot;&quot;&quot;</span>
+    <span class="n">accessible_colors</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">background</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># Make accessible</span>
+        <span class="n">accessible</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">contrast_ratio</span><span class="p">(</span><span class="n">accessible</span><span class="p">,</span> <span class="n">bg</span><span class="p">)</span>
+
+        <span class="n">accessible_colors</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;original&#39;</span><span class="p">:</span> <span class="n">color</span><span class="p">,</span>
+            <span class="s1">&#39;accessible&#39;</span><span class="p">:</span> <span class="n">accessible</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+            <span class="s1">&#39;contrast_ratio&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;wcag_aa&#39;</span><span class="p">:</span> <span class="n">is_accessible</span><span class="p">(</span><span class="n">accessible</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;wcag_aaa&#39;</span><span class="p">:</span> <span class="n">is_accessible</span><span class="p">(</span><span class="n">accessible</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AAA&#39;</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">accessible_colors</span>
+
+<span class="c1"># Original palette (might not be accessible)</span>
+<span class="n">original_palette</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;primary&#39;</span><span class="p">:</span> <span class="s1">&#39;#3498db&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;secondary&#39;</span><span class="p">:</span> <span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="s1">&#39;#2ecc71&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;warning&#39;</span><span class="p">:</span> <span class="s1">&#39;#f39c12&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="s1">&#39;#9b59b6&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># Make it accessible</span>
+<span class="n">accessible_results</span> <span class="o">=</span> <span class="n">create_accessible_palette</span><span class="p">(</span><span class="n">original_palette</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accessibility Analysis:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">accessible_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n</span><span class="si">{</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Original: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;original&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Accessible: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;accessible&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Contrast: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;contrast_ratio&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:1&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  WCAG AA: </span><span class="si">{</span><span class="s1">&#39;✅&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wcag_aa&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;❌&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  WCAG AAA: </span><span class="si">{</span><span class="s1">&#39;✅&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wcag_aaa&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;❌&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="seasonal-color-schemes">
+<h2>Seasonal Color Schemes<a class="headerlink" href="#seasonal-color-schemes" title="Link to this heading"></a></h2>
+<p><strong>Creating Seasonal Palettes</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Gradient</span><span class="p">,</span> <span class="n">Swatch</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_seasonal_palettes</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create color palettes inspired by seasons.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Spring - fresh greens and soft pastels</span>
+    <span class="n">spring_colors</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#8fbc8f&#39;</span><span class="p">),</span>  <span class="c1"># Dark sea green</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#98fb98&#39;</span><span class="p">),</span>  <span class="c1"># Pale green</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#f0fff0&#39;</span><span class="p">),</span>  <span class="c1"># Honeydew</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ffc0cb&#39;</span><span class="p">),</span>  <span class="c1"># Pink</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ffb6c1&#39;</span><span class="p">)</span>   <span class="c1"># Light pink</span>
+    <span class="p">]</span>
+    <span class="n">spring_gradient</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">spring_colors</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1"># Summer - warm, vibrant colors</span>
+    <span class="n">summer_colors</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff6347&#39;</span><span class="p">),</span>  <span class="c1"># Tomato</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ffa500&#39;</span><span class="p">),</span>  <span class="c1"># Orange</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ffd700&#39;</span><span class="p">),</span>  <span class="c1"># Gold</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff1493&#39;</span><span class="p">),</span>  <span class="c1"># Deep pink</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#00bfff&#39;</span><span class="p">)</span>   <span class="c1"># Deep sky blue</span>
+    <span class="p">]</span>
+    <span class="n">summer_gradient</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">summer_colors</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1"># Autumn - warm, muted earth tones</span>
+    <span class="n">autumn_colors</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#d2691e&#39;</span><span class="p">),</span>  <span class="c1"># Chocolate</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#cd853f&#39;</span><span class="p">),</span>  <span class="c1"># Peru</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#daa520&#39;</span><span class="p">),</span>  <span class="c1"># Goldenrod</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#b22222&#39;</span><span class="p">),</span>  <span class="c1"># Fire brick</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#a0522d&#39;</span><span class="p">)</span>   <span class="c1"># Sienna</span>
+    <span class="p">]</span>
+    <span class="n">autumn_gradient</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">autumn_colors</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1"># Winter - cool blues and whites</span>
+    <span class="n">winter_colors</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#4682b4&#39;</span><span class="p">),</span>  <span class="c1"># Steel blue</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#b0c4de&#39;</span><span class="p">),</span>  <span class="c1"># Light steel blue</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#f0f8ff&#39;</span><span class="p">),</span>  <span class="c1"># Alice blue</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#e6e6fa&#39;</span><span class="p">),</span>  <span class="c1"># Lavender</span>
+        <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#483d8b&#39;</span><span class="p">)</span>   <span class="c1"># Dark slate blue</span>
+    <span class="p">]</span>
+    <span class="n">winter_gradient</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">winter_colors</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1"># Create swatch for comparison</span>
+    <span class="n">seasonal_swatch</span> <span class="o">=</span> <span class="n">Swatch</span><span class="p">([</span>
+        <span class="n">spring_gradient</span><span class="p">,</span>
+        <span class="n">summer_gradient</span><span class="p">,</span>
+        <span class="n">autumn_gradient</span><span class="p">,</span>
+        <span class="n">winter_gradient</span>
+    <span class="p">],</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;spring&#39;</span><span class="p">:</span> <span class="n">spring_gradient</span><span class="p">,</span>
+        <span class="s1">&#39;summer&#39;</span><span class="p">:</span> <span class="n">summer_gradient</span><span class="p">,</span>
+        <span class="s1">&#39;autumn&#39;</span><span class="p">:</span> <span class="n">autumn_gradient</span><span class="p">,</span>
+        <span class="s1">&#39;winter&#39;</span><span class="p">:</span> <span class="n">winter_gradient</span><span class="p">,</span>
+        <span class="s1">&#39;swatch&#39;</span><span class="p">:</span> <span class="n">seasonal_swatch</span>
+    <span class="p">}</span>
+
+<span class="n">seasonal_palettes</span> <span class="o">=</span> <span class="n">create_seasonal_palettes</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="interactive-jupyter-examples">
+<h2>Interactive Jupyter Examples<a class="headerlink" href="#interactive-jupyter-examples" title="Link to this heading"></a></h2>
+<p><strong>Rich Display in Notebooks</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Gradient</span><span class="p">,</span> <span class="n">Swatch</span>
+
+<span class="c1"># Colors display as colored squares with hover information</span>
+<span class="n">sunset</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff6b35&#39;</span><span class="p">)</span>
+<span class="n">ocean</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#006994&#39;</span><span class="p">)</span>
+<span class="n">forest</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#2d5016&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display individual colors</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Individual Colors:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sunset</span><span class="p">)</span>  <span class="c1"># Shows as colored square</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ocean</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">forest</span><span class="p">)</span>
+
+<span class="c1"># Gradients display as horizontal color bars</span>
+<span class="n">sunset_gradient</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">([</span><span class="s1">&#39;#ff6b35&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff8e53&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffad6a&#39;</span><span class="p">],</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">ocean_gradient</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">([</span><span class="s1">&#39;#006994&#39;</span><span class="p">,</span> <span class="s1">&#39;#4da6c7&#39;</span><span class="p">,</span> <span class="s1">&#39;#8dc3e3&#39;</span><span class="p">],</span> <span class="mi">15</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gradients:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sunset_gradient</span><span class="p">)</span>  <span class="c1"># Shows as color bar</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ocean_gradient</span><span class="p">)</span>
+
+<span class="c1"># Swatches display as organized grids</span>
+<span class="n">nature_swatch</span> <span class="o">=</span> <span class="n">Swatch</span><span class="p">([</span>
+    <span class="n">Gradient</span><span class="p">([</span><span class="s1">&#39;#ff6b35&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffad6a&#39;</span><span class="p">],</span> <span class="mi">10</span><span class="p">),</span>  <span class="c1"># Sunset</span>
+    <span class="n">Gradient</span><span class="p">([</span><span class="s1">&#39;#006994&#39;</span><span class="p">,</span> <span class="s1">&#39;#8dc3e3&#39;</span><span class="p">],</span> <span class="mi">10</span><span class="p">),</span>  <span class="c1"># Ocean</span>
+    <span class="n">Gradient</span><span class="p">([</span><span class="s1">&#39;#2d5016&#39;</span><span class="p">,</span> <span class="s1">&#39;#7cb342&#39;</span><span class="p">],</span> <span class="mi">10</span><span class="p">),</span>  <span class="c1"># Forest</span>
+    <span class="n">Gradient</span><span class="p">([</span><span class="s1">&#39;#8e24aa&#39;</span><span class="p">,</span> <span class="s1">&#39;#ba68c8&#39;</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># Lavender</span>
+<span class="p">],</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Swatch Grid:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">nature_swatch</span><span class="p">)</span>  <span class="c1"># Shows as 2x2 grid</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-contrast-optimization">
+<h2>Advanced Contrast Optimization<a class="headerlink" href="#advanced-contrast-optimization" title="Link to this heading"></a></h2>
+<p><strong>Finding Maximum Contrast</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">find_accessible_color</span><span class="p">,</span>
+    <span class="n">find_maximal_contrast_iterative</span><span class="p">,</span>
+    <span class="n">find_maximal_contrast_binary_search</span><span class="p">,</span>
+    <span class="n">find_maximal_contrast_optimization</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compare_contrast_methods</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">background</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compare different contrast optimization methods.&quot;&quot;&quot;</span>
+    <span class="n">methods</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Basic Accessible&#39;</span><span class="p">:</span> <span class="n">find_accessible_color</span><span class="p">,</span>
+        <span class="s1">&#39;Enhanced Iterative&#39;</span><span class="p">:</span> <span class="n">find_maximal_contrast_iterative</span><span class="p">,</span>
+        <span class="s1">&#39;Binary Search&#39;</span><span class="p">:</span> <span class="n">find_maximal_contrast_binary_search</span><span class="p">,</span>
+        <span class="s1">&#39;Mathematical Optimization&#39;</span><span class="p">:</span> <span class="n">find_maximal_contrast_optimization</span>
+    <span class="p">}</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">methods</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">optimized</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+            <span class="n">ratio</span> <span class="o">=</span> <span class="n">optimized</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="n">background</span><span class="p">))</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">optimized</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+                <span class="s1">&#39;contrast&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="c1"># Test with a challenging color</span>
+<span class="n">test_results</span> <span class="o">=</span> <span class="n">compare_contrast_methods</span><span class="p">(</span><span class="s1">&#39;#ff6b6b&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contrast Optimization Comparison:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: #ff6b6b vs white&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original contrast: </span><span class="si">{</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff6b6b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">))</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">nOptimized Results:&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">method</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">test_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">: Error - </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (contrast: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;contrast&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-color-space-operations">
+<h2>Custom Color Space Operations<a class="headerlink" href="#custom-color-space-operations" title="Link to this heading"></a></h2>
+<p><strong>Working with Different Color Spaces</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">colorsys</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">analyze_color_properties</span><span class="p">(</span><span class="n">hex_color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analyze a color across different properties.&quot;&quot;&quot;</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">hex_color</span><span class="p">)</span>
+
+    <span class="n">analysis</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;input&#39;</span><span class="p">:</span> <span class="n">hex_color</span><span class="p">,</span>
+        <span class="s1">&#39;rgb&#39;</span><span class="p">:</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb</span><span class="p">,</span>
+        <span class="s1">&#39;hsv&#39;</span><span class="p">:</span> <span class="n">color</span><span class="o">.</span><span class="n">hsv</span><span class="p">,</span>
+        <span class="s1">&#39;hsl&#39;</span><span class="p">:</span> <span class="n">color</span><span class="o">.</span><span class="n">hsl</span><span class="p">,</span>
+        <span class="s1">&#39;properties&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;hue_name&#39;</span><span class="p">:</span> <span class="n">get_hue_name</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">hue</span><span class="p">),</span>
+            <span class="s1">&#39;saturation_level&#39;</span><span class="p">:</span> <span class="n">get_saturation_level</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">saturation</span><span class="p">),</span>
+            <span class="s1">&#39;brightness_level&#39;</span><span class="p">:</span> <span class="n">get_brightness_level</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+            <span class="s1">&#39;warmth&#39;</span><span class="p">:</span> <span class="s1">&#39;warm&#39;</span> <span class="k">if</span> <span class="n">is_warm_color</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">hue</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;cool&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">analysis</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_hue_name</span><span class="p">(</span><span class="n">hue</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert hue degrees to color name.&quot;&quot;&quot;</span>
+    <span class="n">hue</span> <span class="o">=</span> <span class="n">hue</span> <span class="o">%</span> <span class="mi">360</span>
+    <span class="k">if</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">15</span> <span class="ow">or</span> <span class="n">hue</span> <span class="o">&gt;=</span> <span class="mi">345</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;red&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">45</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;orange&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">75</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;yellow&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;yellow-green&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">135</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;green&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">165</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;green-cyan&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">195</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;cyan&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">225</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;blue&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">255</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;blue-purple&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">285</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;purple&#39;</span>
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">&lt;</span> <span class="mi">315</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;purple-magenta&#39;</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;magenta&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_saturation_level</span><span class="p">(</span><span class="n">saturation</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Categorize saturation level.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">saturation</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;very low&#39;</span>
+    <span class="k">elif</span> <span class="n">saturation</span> <span class="o">&lt;</span> <span class="mf">0.4</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;low&#39;</span>
+    <span class="k">elif</span> <span class="n">saturation</span> <span class="o">&lt;</span> <span class="mf">0.6</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;medium&#39;</span>
+    <span class="k">elif</span> <span class="n">saturation</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;high&#39;</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;very high&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_brightness_level</span><span class="p">(</span><span class="n">brightness</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Categorize brightness level.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">brightness</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;very dark&#39;</span>
+    <span class="k">elif</span> <span class="n">brightness</span> <span class="o">&lt;</span> <span class="mf">0.4</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;dark&#39;</span>
+    <span class="k">elif</span> <span class="n">brightness</span> <span class="o">&lt;</span> <span class="mf">0.6</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;medium&#39;</span>
+    <span class="k">elif</span> <span class="n">brightness</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;bright&#39;</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;very bright&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_warm_color</span><span class="p">(</span><span class="n">hue</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine if color is warm or cool.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hue</span> <span class="o">&gt;=</span> <span class="mi">315</span> <span class="ow">or</span> <span class="n">hue</span> <span class="o">&lt;=</span> <span class="mi">45</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="n">hue</span> <span class="o">&lt;=</span> <span class="mi">135</span><span class="p">)</span>
+
+<span class="c1"># Analyze some colors</span>
+<span class="n">test_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#ff6b35&#39;</span><span class="p">,</span> <span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ecc71&#39;</span><span class="p">,</span> <span class="s1">&#39;#9b59b6&#39;</span><span class="p">,</span> <span class="s1">&#39;#f39c12&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">hex_color</span> <span class="ow">in</span> <span class="n">test_colors</span><span class="p">:</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">analyze_color_properties</span><span class="p">(</span><span class="n">hex_color</span><span class="p">)</span>
+    <span class="n">props</span> <span class="o">=</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n</span><span class="si">{</span><span class="n">hex_color</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Hue: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;hue_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Saturation: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;saturation_level&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Brightness: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;brightness_level&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Temperature: </span><span class="si">{</span><span class="n">props</span><span class="p">[</span><span class="s1">&#39;warmth&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These examples demonstrate the versatility and power of chromo-map for various color-related tasks. Whether you’re designing websites, creating data visualizations, or building brand identities, chromo-map provides the tools to work with colors professionally and accessibly.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="jupyter_integration_demo.html" class="btn btn-neutral float-left" title="chromo-map Jupyter Integration Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../catalog_visual.html" class="btn btn-neutral float-right" title="Visual Color Catalog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

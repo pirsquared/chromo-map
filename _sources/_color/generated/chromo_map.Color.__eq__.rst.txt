@@ -1,6 +1,0 @@
-﻿chromo\_map.Color.\_\_eq\_\_
-============================
-
-.. currentmodule:: chromo_map
-
-.. automethod:: Color.__eq__

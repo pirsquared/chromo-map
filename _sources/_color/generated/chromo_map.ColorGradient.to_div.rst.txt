@@ -1,6 +1,0 @@
-﻿chromo\_map.ColorGradient.to\_div
-=================================
-
-.. currentmodule:: chromo_map
-
-.. automethod:: ColorGradient.to_div

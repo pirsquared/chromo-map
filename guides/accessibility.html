@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Guide &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../_static/pirr_logo.svg"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Color Theory Guide" href="color_theory.html" />
+    <link rel="prev" title="Basic Usage Guide" href="basic_usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Accessibility Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-color-accessibility">Understanding Color Accessibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wcag-guidelines">WCAG Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-accessibility-check">Quick Accessibility Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-colors-accessible">Making Colors Accessible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#practical-examples">Practical Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#color-blindness-considerations">Color Blindness Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-your-colors">Testing Your Colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-accessibility-features">Advanced Accessibility Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices-summary">Best Practices Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tools-and-resources">Tools and Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Accessibility Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/accessibility.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessibility-guide">
+<h1>Accessibility Guide<a class="headerlink" href="#accessibility-guide" title="Link to this heading"></a></h1>
+<p>This guide covers creating accessible color combinations that meet WCAG (Web Content Accessibility Guidelines) standards.</p>
+<section id="understanding-color-accessibility">
+<h2>Understanding Color Accessibility<a class="headerlink" href="#understanding-color-accessibility" title="Link to this heading"></a></h2>
+<p>Color accessibility ensures that content is usable by people with various visual impairments, including:</p>
+<ul class="simple">
+<li><p><strong>Color blindness</strong> (affecting ~8% of men and ~0.5% of women)</p></li>
+<li><p><strong>Low vision</strong> conditions</p></li>
+<li><p><strong>Age-related vision changes</strong></p></li>
+<li><p><strong>Different viewing conditions</strong> (bright sunlight, low-quality displays)</p></li>
+</ul>
+</section>
+<section id="wcag-guidelines">
+<h2>WCAG Guidelines<a class="headerlink" href="#wcag-guidelines" title="Link to this heading"></a></h2>
+<p>The Web Content Accessibility Guidelines define contrast requirements:</p>
+<dl class="simple">
+<dt><strong>Contrast Ratios</strong></dt><dd><ul class="simple">
+<li><p><strong>AA Level</strong>: 4.5:1 for normal text, 3:1 for large text</p></li>
+<li><p><strong>AAA Level</strong>: 7:1 for normal text, 4.5:1 for large text</p></li>
+</ul>
+</dd>
+<dt><strong>Text Size Classifications</strong></dt><dd><ul class="simple">
+<li><p><strong>Normal text</strong>: Under 18pt regular or 14pt bold</p></li>
+<li><p><strong>Large text</strong>: 18pt+ regular or 14pt+ bold</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="quick-accessibility-check">
+<h2>Quick Accessibility Check<a class="headerlink" href="#quick-accessibility-check" title="Link to this heading"></a></h2>
+<p>Use the built-in functions to check if color combinations are accessible:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">contrast_ratio</span><span class="p">,</span> <span class="n">is_accessible</span>
+
+<span class="c1"># Check contrast ratio</span>
+<span class="n">text_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#333333&#39;</span><span class="p">)</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">)</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">contrast_ratio</span><span class="p">(</span><span class="n">text_color</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contrast ratio: </span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 12.63</span>
+
+<span class="c1"># Check WCAG compliance</span>
+<span class="n">aa_compliant</span> <span class="o">=</span> <span class="n">is_accessible</span><span class="p">(</span><span class="n">text_color</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+<span class="n">aaa_compliant</span> <span class="o">=</span> <span class="n">is_accessible</span><span class="p">(</span><span class="n">text_color</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AAA&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AA compliant: </span><span class="si">{</span><span class="n">aa_compliant</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AAA compliant: </span><span class="si">{</span><span class="n">aaa_compliant</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># True</span>
+</pre></div>
+</div>
+</section>
+<section id="making-colors-accessible">
+<h2>Making Colors Accessible<a class="headerlink" href="#making-colors-accessible" title="Link to this heading"></a></h2>
+<p>When you have a color that doesn’t meet accessibility requirements, use the optimization functions:</p>
+<p><strong>Basic Accessibility</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_accessible_color</span>
+
+<span class="c1"># Start with a brand color that might not be accessible</span>
+<span class="n">brand_color</span> <span class="o">=</span> <span class="s1">&#39;#ff6b6b&#39;</span>  <span class="c1"># Light red</span>
+<span class="n">background</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span>
+
+<span class="c1"># Make it accessible</span>
+<span class="n">accessible_color</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">brand_color</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="n">brand_color</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accessible: </span><span class="si">{</span><span class="n">accessible_color</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contrast: </span><span class="si">{</span><span class="n">accessible_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="n">background</span><span class="p">))</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Maximum Contrast Optimization</strong></p>
+<p>For the best possible contrast while maintaining color character:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_binary_search</span>
+
+<span class="c1"># Find maximum contrast version</span>
+<span class="n">optimized</span> <span class="o">=</span> <span class="n">find_maximal_contrast_binary_search</span><span class="p">(</span><span class="s1">&#39;#ff6b6b&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimized color: </span><span class="si">{</span><span class="n">optimized</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contrast ratio: </span><span class="si">{</span><span class="n">optimized</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">))</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="practical-examples">
+<h2>Practical Examples<a class="headerlink" href="#practical-examples" title="Link to this heading"></a></h2>
+<p><strong>Website Color Palette</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">find_accessible_color</span>
+
+<span class="c1"># Brand colors</span>
+<span class="n">primary</span> <span class="o">=</span> <span class="s1">&#39;#3498db&#39;</span>      <span class="c1"># Blue</span>
+<span class="n">secondary</span> <span class="o">=</span> <span class="s1">&#39;#e74c3c&#39;</span>    <span class="c1"># Red</span>
+<span class="n">accent</span> <span class="o">=</span> <span class="s1">&#39;#f39c12&#39;</span>       <span class="c1"># Orange</span>
+
+<span class="c1"># Background colors</span>
+<span class="n">light_bg</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>     <span class="c1"># White</span>
+<span class="n">dark_bg</span> <span class="o">=</span> <span class="s1">&#39;#2c3e50&#39;</span>      <span class="c1"># Dark blue</span>
+
+<span class="c1"># Ensure all combinations are accessible</span>
+<span class="n">primary_on_light</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">primary</span><span class="p">,</span> <span class="n">light_bg</span><span class="p">)</span>
+<span class="n">secondary_on_light</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">secondary</span><span class="p">,</span> <span class="n">light_bg</span><span class="p">)</span>
+<span class="n">accent_on_light</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">accent</span><span class="p">,</span> <span class="n">light_bg</span><span class="p">)</span>
+
+<span class="c1"># For dark backgrounds, often we need lighter text</span>
+<span class="n">primary_on_dark</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">primary</span><span class="p">,</span> <span class="n">dark_bg</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accessible color palette:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Primary on light: </span><span class="si">{</span><span class="n">primary_on_light</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Secondary on light: </span><span class="si">{</span><span class="n">secondary_on_light</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accent on light: </span><span class="si">{</span><span class="n">accent_on_light</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Primary on dark: </span><span class="si">{</span><span class="n">primary_on_dark</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Form Validation Colors</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_accessible_color</span>
+
+<span class="c1"># Common form validation colors</span>
+<span class="n">success_base</span> <span class="o">=</span> <span class="s1">&#39;#28a745&#39;</span>   <span class="c1"># Green</span>
+<span class="n">warning_base</span> <span class="o">=</span> <span class="s1">&#39;#ffc107&#39;</span>   <span class="c1"># Yellow</span>
+<span class="n">error_base</span> <span class="o">=</span> <span class="s1">&#39;#dc3545&#39;</span>     <span class="c1"># Red</span>
+<span class="n">info_base</span> <span class="o">=</span> <span class="s1">&#39;#17a2b8&#39;</span>      <span class="c1"># Cyan</span>
+
+<span class="n">background</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>
+
+<span class="c1"># Make all accessible for text on white background</span>
+<span class="n">success_text</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">success_base</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+<span class="n">warning_text</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">warning_base</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+<span class="n">error_text</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">error_base</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+<span class="n">info_text</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">info_base</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+
+<span class="n">validation_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="n">success_text</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;warning&#39;</span><span class="p">:</span> <span class="n">warning_text</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">error_text</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="n">info_text</span><span class="o">.</span><span class="n">hex</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accessible validation colors:&quot;</span><span class="p">,</span> <span class="n">validation_colors</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="color-blindness-considerations">
+<h2>Color Blindness Considerations<a class="headerlink" href="#color-blindness-considerations" title="Link to this heading"></a></h2>
+<p>Beyond contrast, consider color blindness when choosing colors:</p>
+<dl class="simple">
+<dt><strong>Problematic Combinations</strong></dt><dd><ul class="simple">
+<li><p>Red/green (most common color blindness)</p></li>
+<li><p>Blue/purple</p></li>
+<li><p>Green/brown</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Safe Strategies</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+
+<span class="c1"># Use colors that are distinguishable across color blindness types</span>
+<span class="n">safe_colors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#d73027&#39;</span><span class="p">),</span>  <span class="c1"># Red (safe red)</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#1a9850&#39;</span><span class="p">),</span>  <span class="c1"># Green (safe green)</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#313695&#39;</span><span class="p">),</span>  <span class="c1"># Blue</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#f46d43&#39;</span><span class="p">),</span>  <span class="c1"># Orange</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#a50026&#39;</span><span class="p">),</span>  <span class="c1"># Dark red</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#74add1&#39;</span><span class="p">)</span>   <span class="c1"># Light blue</span>
+<span class="p">]</span>
+
+<span class="c1"># Test: These colors have good separation in HSV space</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">safe_colors</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Color </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2"> (H:</span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">hue</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Use Additional Visual Cues</strong></dt><dd><p>Don’t rely on color alone. Combine with:
+- Icons or symbols
+- Patterns or textures
+- Typography (bold, italic)
+- Positioning</p>
+</dd>
+</dl>
+</section>
+<section id="testing-your-colors">
+<h2>Testing Your Colors<a class="headerlink" href="#testing-your-colors" title="Link to this heading"></a></h2>
+<p><strong>Automated Testing</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">is_accessible</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_color_accessibility</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">backgrounds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test all color/background combinations.&quot;&quot;&quot;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">bg</span> <span class="ow">in</span> <span class="n">backgrounds</span><span class="p">:</span>
+            <span class="n">color_obj</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+            <span class="n">bg_obj</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">bg</span><span class="p">)</span>
+            <span class="n">ratio</span> <span class="o">=</span> <span class="n">color_obj</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">bg_obj</span><span class="p">)</span>
+            <span class="n">aa</span> <span class="o">=</span> <span class="n">is_accessible</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+            <span class="n">aaa</span> <span class="o">=</span> <span class="n">is_accessible</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AAA&#39;</span><span class="p">)</span>
+
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">color</span><span class="p">,</span>
+                <span class="s1">&#39;background&#39;</span><span class="p">:</span> <span class="n">bg</span><span class="p">,</span>
+                <span class="s1">&#39;ratio&#39;</span><span class="p">:</span> <span class="n">ratio</span><span class="p">,</span>
+                <span class="s1">&#39;aa&#39;</span><span class="p">:</span> <span class="n">aa</span><span class="p">,</span>
+                <span class="s1">&#39;aaa&#39;</span><span class="p">:</span> <span class="n">aaa</span>
+            <span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="c1"># Test your palette</span>
+<span class="n">text_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#333333&#39;</span><span class="p">,</span> <span class="s1">&#39;#666666&#39;</span><span class="p">,</span> <span class="s1">&#39;#999999&#39;</span><span class="p">]</span>
+<span class="n">backgrounds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;#f8f9fa&#39;</span><span class="p">,</span> <span class="s1">&#39;#e9ecef&#39;</span><span class="p">]</span>
+
+<span class="n">test_results</span> <span class="o">=</span> <span class="n">test_color_accessibility</span><span class="p">(</span><span class="n">text_colors</span><span class="p">,</span> <span class="n">backgrounds</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">test_results</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;background&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;ratio&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;background&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;ratio&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Manual Testing Tools</strong></dt><dd><ul class="simple">
+<li><p>Browser developer tools (accessibility audits)</p></li>
+<li><p>Color blindness simulators</p></li>
+<li><p>Real testing with users who have visual impairments</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="advanced-accessibility-features">
+<h2>Advanced Accessibility Features<a class="headerlink" href="#advanced-accessibility-features" title="Link to this heading"></a></h2>
+<p><strong>Progressive Enhancement</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">find_accessible_color</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_accessible_theme</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">backgrounds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create progressively accessible color variations.&quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span>
+
+    <span class="n">theme</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">bg_name</span><span class="p">,</span> <span class="n">bg_color</span> <span class="ow">in</span> <span class="n">backgrounds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># Different accessibility levels</span>
+        <span class="n">theme</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bg_name</span><span class="si">}</span><span class="s1">_aa&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span>
+            <span class="n">base_color</span><span class="p">,</span> <span class="n">bg_color</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">hex</span>
+
+        <span class="n">theme</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bg_name</span><span class="si">}</span><span class="s1">_aaa&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span>
+            <span class="n">base_color</span><span class="p">,</span> <span class="n">bg_color</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AAA&#39;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">hex</span>
+
+    <span class="k">return</span> <span class="n">theme</span>
+
+<span class="c1"># Create adaptive theme</span>
+<span class="n">backgrounds</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;light&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;medium&#39;</span><span class="p">:</span> <span class="s1">&#39;#f5f5f5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dark&#39;</span><span class="p">:</span> <span class="s1">&#39;#333333&#39;</span>
+<span class="p">}</span>
+
+<span class="n">brand_theme</span> <span class="o">=</span> <span class="n">create_accessible_theme</span><span class="p">(</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="n">backgrounds</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">brand_theme</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Dynamic Contrast Adjustment</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">find_maximal_contrast_optimization</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_optimal_text_color</span><span class="p">(</span><span class="n">background_color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the best text color for any background.&quot;&quot;&quot;</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">background_color</span><span class="p">)</span>
+
+    <span class="c1"># Test both black and white text</span>
+    <span class="n">black_contrast</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#000000&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">bg</span><span class="p">)</span>
+    <span class="n">white_contrast</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">bg</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">black_contrast</span> <span class="o">&gt;</span> <span class="n">white_contrast</span><span class="p">:</span>
+        <span class="c1"># Optimize black text</span>
+        <span class="k">return</span> <span class="n">find_maximal_contrast_optimization</span><span class="p">(</span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span> <span class="n">background_color</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Optimize white text</span>
+        <span class="k">return</span> <span class="n">find_maximal_contrast_optimization</span><span class="p">(</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span> <span class="n">background_color</span><span class="p">)</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">backgrounds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="s1">&#39;#f39c12&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ecc71&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">bg</span> <span class="ow">in</span> <span class="n">backgrounds</span><span class="p">:</span>
+    <span class="n">optimal_text</span> <span class="o">=</span> <span class="n">get_optimal_text_color</span><span class="p">(</span><span class="n">bg</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Background: </span><span class="si">{</span><span class="n">bg</span><span class="si">}</span><span class="s2"> → Text: </span><span class="si">{</span><span class="n">optimal_text</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="best-practices-summary">
+<h2>Best Practices Summary<a class="headerlink" href="#best-practices-summary" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Always test contrast ratios</strong> before finalizing color choices</p></li>
+<li><p><strong>Aim for AAA compliance</strong> when possible, especially for body text</p></li>
+<li><p><strong>Use multiple visual cues</strong> beyond color alone</p></li>
+<li><p><strong>Test with actual users</strong> who have visual impairments</p></li>
+<li><p><strong>Consider viewing conditions</strong> (mobile devices, bright sunlight)</p></li>
+<li><p><strong>Maintain brand identity</strong> while ensuring accessibility</p></li>
+<li><p><strong>Document your accessible color palette</strong> for consistent use</p></li>
+</ol>
+</section>
+<section id="tools-and-resources">
+<h2>Tools and Resources<a class="headerlink" href="#tools-and-resources" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>chromo-map Functions</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contrast_ratio()</span></code> - Calculate WCAG contrast ratios</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_accessible()</span></code> - Check WCAG compliance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_accessible_color()</span></code> - Make colors accessible</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_maximal_contrast_*()</span></code> - Optimize for maximum contrast</p></li>
+</ul>
+</dd>
+<dt><strong>External Tools</strong></dt><dd><ul class="simple">
+<li><p>WebAIM Contrast Checker</p></li>
+<li><p>Colour Contrast Analyser (CCA)</p></li>
+<li><p>axe DevTools browser extension</p></li>
+</ul>
+</dd>
+<dt><strong>Testing</strong></dt><dd><ul class="simple">
+<li><p>Lighthouse accessibility audits</p></li>
+<li><p>WAVE (Web Accessibility Evaluation Tool)</p></li>
+<li><p>Color blindness simulators</p></li>
+</ul>
+</dd>
+</dl>
+<p>Remember: Accessibility benefits everyone, not just users with disabilities. High-contrast, well-chosen colors improve readability and user experience for all users.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="basic_usage.html" class="btn btn-neutral float-left" title="Basic Usage Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="color_theory.html" class="btn btn-neutral float-right" title="Color Theory Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

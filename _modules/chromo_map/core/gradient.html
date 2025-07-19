@@ -1,0 +1,1307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chromo_map.core.gradient &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/pirr_logo.svg"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">chromo_map.core.gradient</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for chromo_map.core.gradient</h1><div class="highlight"><pre>
+<span></span><span class="c1"># mypy: ignore-errors</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Gradient class for chromo-map.</span>
+
+<span class="sd">This module contains the Gradient class that represents a color gradient</span>
+<span class="sd">and provides methods for color interpolation, resizing, and accessibility adjustments.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">gcd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">textwrap</span><span class="w"> </span><span class="kn">import</span> <span class="n">dedent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">svgwrite</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jinja2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Template</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearSegmentedColormap</span> <span class="k">as</span> <span class="n">LSC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span> <span class="k">as</span> <span class="n">LC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map.core.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lcm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the least common multiple of two numbers.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">//</span> <span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lcm_of_list</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the least common multiple of a list of numbers.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="n">lcm</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Gradient">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Gradient</span><span class="p">(</span><span class="n">LSC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A color gradient class that extends matplotlib&#39;s LinearSegmentedColormap.</span>
+
+<span class="sd">    This class provides functionality for creating and manipulating color gradients,</span>
+<span class="sd">    including interpolation, resizing, and accessibility adjustments.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    colors : various</span>
+<span class="sd">        Input colors in various formats (list, Gradient, colormap, etc.)</span>
+<span class="sd">    name : str, optional</span>
+<span class="sd">        Name of the gradient</span>
+<span class="sd">    alpha : float, optional</span>
+<span class="sd">        Alpha transparency value</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a gradient from a list of colors:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import Gradient</span>
+<span class="sd">        colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">        gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">        gradient</span>
+
+<span class="sd">    .. html-output::</span>
+
+<span class="sd">        from chromo_map import Gradient</span>
+<span class="sd">        colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">        gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">        print(gradient._repr_html_())</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Gradient.__init__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize a Gradient object.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">Gradient</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">colors</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">name</span>
+            <span class="c1"># Handle _segmentdata attribute safely</span>
+            <span class="n">segmentdata</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="s2">&quot;_segmentdata&quot;</span><span class="p">,</span> <span class="p">{})</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">colors</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">segmentdata</span><span class="p">,</span> <span class="n">colors</span><span class="o">.</span><span class="n">N</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_from_list</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_from_list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">colors</span><span class="p">),</span> <span class="n">name</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="p">(</span><span class="n">LSC</span><span class="p">,</span> <span class="n">LC</span><span class="p">)):</span>
+            <span class="n">color_array</span> <span class="o">=</span> <span class="n">colors</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">colors</span><span class="o">.</span><span class="n">N</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_from_list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">color_array</span><span class="p">),</span> <span class="n">name</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># Handle string colormap names</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+            <span class="n">color_array</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">))</span>
+            <span class="c1"># Convert RGBA tuples to hex strings for matplotlib compatibility</span>
+            <span class="n">color_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">rgba</span> <span class="ow">in</span> <span class="n">color_array</span><span class="p">:</span>
+                <span class="c1"># Convert RGBA tuple to hex</span>
+                <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">rgba</span>
+                <span class="n">hex_color</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="n">g</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s2">02x</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">color_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hex_color</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_from_list</span><span class="p">(</span><span class="n">color_list</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Use LSC.from_list for better type compatibility</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;custom&quot;</span>
+
+            <span class="c1"># Handle dictionary input for LinearSegmentedColormap</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">cmap</span> <span class="o">=</span> <span class="n">LSC</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">colors</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cmap</span> <span class="o">=</span> <span class="n">LSC</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">colors</span><span class="p">)</span>
+            <span class="n">color_array</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_from_list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">color_array</span><span class="p">),</span> <span class="n">name</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_from_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the gradient from a list of colors.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;custom&quot;</span>
+
+        <span class="c1"># Check for empty colors list</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">colors</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No valid colors found.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">Color</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">alpha</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">with_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="c1"># Create the matplotlib colormap</span>
+        <span class="c1"># Convert to normalized RGBA tuples (0-1 range)</span>
+        <span class="n">color_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">:</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">rgbatup</span>
+            <span class="n">color_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">r</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">g</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">b</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">LSC</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">color_list</span><span class="p">)</span><span class="o">.</span><span class="n">_segmentdata</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">color_list</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Gradient.with_alpha">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.with_alpha">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">with_alpha</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new gradient with the specified alpha value.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        alpha : float</span>
+<span class="sd">            The alpha value (0-1)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with the specified alpha value</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Create a gradient with 50% transparency:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            transparent = gradient.with_alpha(0.5)</span>
+<span class="sd">            transparent</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            transparent = gradient.with_alpha(0.5)</span>
+<span class="sd">            print(transparent._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">([</span><span class="n">c</span><span class="o">.</span><span class="n">with_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__eq__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__eq__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if two gradients are equal based on their colors.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Gradient</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tup</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">tup</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__repr__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__repr__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a rich colored representation of the gradient.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">rich.console</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">rich.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">Text</span>
+
+        <span class="c1"># Force terminal mode to enable colors on Windows</span>
+        <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">force_terminal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Check if colors are supported</span>
+        <span class="k">if</span> <span class="n">console</span><span class="o">.</span><span class="n">is_terminal</span> <span class="ow">and</span> <span class="n">console</span><span class="o">.</span><span class="n">color_system</span><span class="p">:</span>
+            <span class="c1"># Create colored blocks for each color in the gradient</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Text</span><span class="p">()</span>
+
+            <span class="c1"># Limit display to 64 characters maximum</span>
+            <span class="n">max_chars</span> <span class="o">=</span> <span class="mi">64</span>
+            <span class="n">colors_to_display</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span>
+
+            <span class="c1"># If we have more than 64 colors, resample down to 64</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_chars</span><span class="p">:</span>
+                <span class="c1"># Use the resize method to get a resampled version</span>
+                <span class="n">resampled_gradient</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">max_chars</span><span class="p">)</span>
+                <span class="n">colors_to_display</span> <span class="o">=</span> <span class="n">resampled_gradient</span><span class="o">.</span><span class="n">colors</span>
+
+            <span class="c1"># Determine spacing based on number of colors to display</span>
+            <span class="c1"># Use 2 spaces for &lt;= 32 colors, 1 space for &gt; 32 colors</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors_to_display</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">32</span><span class="p">:</span>
+                <span class="n">char_per_color</span> <span class="o">=</span> <span class="s2">&quot;  &quot;</span>  <span class="c1"># 2 spaces</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">char_per_color</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>  <span class="c1"># 1 space</span>
+
+            <span class="c1"># Add colored blocks for each color using background colors</span>
+            <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors_to_display</span><span class="p">:</span>
+                <span class="n">colored_block</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">char_per_color</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;on </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colored_block</span><span class="p">)</span>
+
+            <span class="c1"># Add gradient info</span>
+            <span class="n">gradient_info</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot; Gradient(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span><span class="si">}</span><span class="s2"> colors)&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
+            <span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gradient_info</span><span class="p">)</span>
+
+            <span class="c1"># Use console to render to string</span>
+            <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">capture</span><span class="p">()</span> <span class="k">as</span> <span class="n">capture</span><span class="p">:</span>
+                <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">capture</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Fallback to plain text representation</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Gradient(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span><span class="si">}</span><span class="s2"> colors)&quot;</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__getattr__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__getattr__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get attributes from underlying colors.&quot;&quot;&quot;</span>
+        <span class="n">pass_through</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;tup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hex&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hexa&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rgb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rgba&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hextup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rgbtup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hexatup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rgbatup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;a&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">pass_through</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">clr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">]</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;Gradient&#39; object has no attribute &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__getitem__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__getitem__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get colors from the gradient by index or fraction.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">start</span> <span class="ow">or</span> <span class="mi">0</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">stop</span> <span class="ow">or</span> <span class="mi">1</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">step</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">num</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">key</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">x</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">modf</span><span class="p">(</span><span class="n">key</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">c0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">c1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">c0</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">Gradient</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">key</span><span class="p">])</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid index: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__iter__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__iter__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterate over the colors in the gradient.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.reversed">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.reversed">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reversed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new gradient with the colors reversed.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            The name of the new gradient.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            The new gradient with the colors reversed.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Create a reversed gradient:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;rGb&#39;)</span>
+<span class="sd">            gradient.reversed()</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;rGb&#39;)</span>
+<span class="sd">            print(gradient.reversed()._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_r&quot;</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">reversed</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">))</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_r</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a reversed gradient.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">reversed</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Gradient.__len__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__len__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of colors in the gradient.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.resize">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.resize">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resize the gradient to a new number of colors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        num : int</span>
+<span class="sd">            The new number of colors.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            The new gradient with the new number of colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Resize the gradient to 32 colors:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">                from chromo_map import Gradient</span>
+<span class="sd">                colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">                gradient = Gradient(colors, name=&#39;rGb&#39;)</span>
+<span class="sd">                gradient.resize(32)</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">                from chromo_map import Gradient</span>
+<span class="sd">                colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">                gradient = Gradient(colors, name=&#39;rGb&#39;)</span>
+<span class="sd">                print(gradient.resize(32)._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resampled</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.to_div">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.to_div">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_div</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">as_png</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the gradient to an HTML div.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        maxn : int, optional</span>
+<span class="sd">            The maximum number of colors to display.</span>
+
+<span class="sd">        as_png : bool, optional</span>
+<span class="sd">            Whether to display the gradient as a PNG image.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        HTML</span>
+<span class="sd">            The gradient as an HTML div.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Convert the gradient to an HTML div:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;rGb&#39;)</span>
+<span class="sd">            gradient.to_div(as_png=False)</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">                from chromo_map import Gradient</span>
+<span class="sd">                colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">                gradient = Gradient(colors, name=&#39;rGb&#39;)</span>
+<span class="sd">                print(gradient.to_div(as_png=False).data)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">max_flex_width</span> <span class="o">=</span> <span class="mi">500</span> <span class="o">/</span> <span class="mi">16</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">maxn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">maxn</span><span class="p">:</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">maxn</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="n">template</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span>
+            <span class="n">dedent</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;\</span>
+<span class="sd">        &lt;div class=&quot;gradient&quot;&gt;</span>
+<span class="sd">            &lt;style&gt;</span>
+<span class="sd">                #_{{ random_id }} {</span>
+<span class="sd">                    display: flex; gap: 0rem; width: {{ max_width }}rem;</span>
+<span class="sd">                }</span>
+<span class="sd">                #_{{ random_id }} div { flex: 1 1 0; }</span>
+<span class="sd">                #_{{ random_id }} div.color { width: 100%; height: 100%; }</span>
+<span class="sd">                #_{{ random_id }} div.cmap { width: 100%; height: auto; }</span>
+<span class="sd">                #_{{ random_id }} div.cmap &gt; img { width: 100%; height: 100%; }</span>
+<span class="sd">            &lt;/style&gt;</span>
+<span class="sd">            &lt;strong&gt;{{ name }}&lt;/strong&gt;</span>
+<span class="sd">            {% if as_png %}</span>
+<span class="sd">            {{ colors.to_png().data }}</span>
+<span class="sd">            {% else %}</span>
+<span class="sd">            &lt;div id=&quot;_{{ random_id }}&quot; class=&quot;color-map&quot;&gt;</span>
+<span class="sd">                {% for clr in colors.colors %}</span>
+<span class="sd">                    {{ clr._repr_html_() }}</span>
+<span class="sd">                {% endfor %}</span>
+<span class="sd">            &lt;/div&gt;</span>
+<span class="sd">            {% endif %}</span>
+<span class="sd">        &lt;/div&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">random_id</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span>
+        <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span>
+            <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">colors</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+                <span class="n">random_id</span><span class="o">=</span><span class="n">random_id</span><span class="p">,</span>
+                <span class="n">max_width</span><span class="o">=</span><span class="n">max_flex_width</span><span class="p">,</span>
+                <span class="n">as_png</span><span class="o">=</span><span class="n">as_png</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.to_matplotlib">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.to_matplotlib">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_matplotlib</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the gradient to a matplotlib figure.&quot;&quot;&quot;</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">)</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">gradient</span><span class="p">,</span> <span class="n">gradient</span><span class="p">))</span>
+
+        <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Gradient.to_drawing">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.to_drawing">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_drawing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the gradient to an SVG drawing.&quot;&quot;&quot;</span>
+        <span class="n">dwg</span> <span class="o">=</span> <span class="n">svgwrite</span><span class="o">.</span><span class="n">Drawing</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;tiny&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+        <span class="n">rect_width</span> <span class="o">=</span> <span class="n">width</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span>
+
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">rect_width</span><span class="p">)</span>
+            <span class="n">actual_width</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">dwg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+                <span class="n">dwg</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span>
+                    <span class="n">insert</span><span class="o">=</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">actual_width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span>
+                    <span class="n">fill</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+                    <span class="n">fill_opacity</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">a</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">right</span>
+
+        <span class="k">return</span> <span class="n">dwg</span></div>
+
+
+<div class="viewcode-block" id="Gradient.to_png">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.to_png">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_png</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the gradient to a PNG image.&quot;&quot;&quot;</span>
+        <span class="n">png_bytes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repr_png_</span><span class="p">()</span>
+        <span class="n">png_base64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">png_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+        <span class="n">div</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;div class=&quot;cmap&quot;&gt;&lt;img src=&quot;data:image/png;base64,</span><span class="si">{</span><span class="n">png_base64</span><span class="si">}</span><span class="s1">&quot;&gt;&lt;/div&gt;&#39;</span>
+        <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">div</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">skip_super</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return HTML representation of the gradient.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="nb">super</span><span class="p">(),</span> <span class="s2">&quot;_repr_html_&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">skip_super</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_repr_html_</span><span class="p">(),</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_div</span><span class="p">()</span><span class="o">.</span><span class="n">data</span>
+
+<div class="viewcode-block" id="Gradient.__add__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__add__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add two gradients together.&quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__mul__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__mul__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply gradient by an integer.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">*</span> <span class="n">other</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid multiplication.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__rmul__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__rmul__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reverse multiplication.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__truediv__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__truediv__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Divide gradient by a number.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">other</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">[::</span><span class="n">step</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid division.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.__or__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.__or__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Blend two gradients together.&quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">lcm</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">([</span><span class="n">x</span> <span class="o">|</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)],</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.rename">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.rename">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rename the gradient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        new_name : str</span>
+<span class="sd">            The new name for the gradient.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            The gradient with the new name.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Rename the gradient:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;rGb&#39;)</span>
+<span class="sd">            gradient.rename(&#39;New Gradient&#39;)</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;rGb&#39;)</span>
+<span class="sd">            print(gradient.rename(&#39;New Gradient&#39;)._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">new_name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.adjust_hue">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.adjust_hue">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adjust_hue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degrees</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the hue of all colors in the gradient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        degrees : float</span>
+<span class="sd">            The number of degrees to adjust the hue by.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with adjusted hue.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Adjust hue by 60 degrees:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            shifted = gradient.adjust_hue(60)</span>
+<span class="sd">            shifted</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            shifted = gradient.adjust_hue(60)</span>
+<span class="sd">            print(shifted._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="n">degrees</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_hue</span><span class="si">{</span><span class="n">degrees</span><span class="si">:</span><span class="s2">+.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.adjust_saturation">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.adjust_saturation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adjust_saturation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the saturation of all colors in the gradient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        factor : float</span>
+<span class="sd">            The factor to multiply saturation by.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with adjusted saturation.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Decrease saturation by 50%:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            desaturated = gradient.adjust_saturation(0.5)</span>
+<span class="sd">            desaturated</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            desaturated = gradient.adjust_saturation(0.5)</span>
+<span class="sd">            print(desaturated._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_sat</span><span class="si">{</span><span class="n">factor</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.adjust_brightness">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.adjust_brightness">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adjust_brightness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the brightness of all colors in the gradient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        factor : float</span>
+<span class="sd">            The factor to multiply brightness by.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with adjusted brightness.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Increase brightness by 20%:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            bright = gradient.adjust_brightness(1.2)</span>
+<span class="sd">            bright</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            bright = gradient.adjust_brightness(1.2)</span>
+<span class="sd">            print(bright._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_bright</span><span class="si">{</span><span class="n">factor</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.adjust_lightness">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.adjust_lightness">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adjust_lightness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the lightness of all colors in the gradient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        factor : float</span>
+<span class="sd">            The factor to multiply lightness by.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with adjusted lightness.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Decrease lightness by 30%:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            dark = gradient.adjust_lightness(0.7)</span>
+<span class="sd">            dark</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            dark = gradient.adjust_lightness(0.7)</span>
+<span class="sd">            print(dark._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_light</span><span class="si">{</span><span class="n">factor</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.make_accessible">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.make_accessible">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">make_accessible</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">background_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make all colors in the gradient accessible against a background color.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        background_color : Color or str</span>
+<span class="sd">            The background color to ensure accessibility against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with accessible colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Make gradient accessible against white background:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ffcccc&#39;, &#39;#ccffcc&#39;, &#39;#ccccff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Pastels&#39;)</span>
+<span class="sd">            accessible = gradient.make_accessible(&#39;white&#39;)</span>
+<span class="sd">            accessible</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ffcccc&#39;, &#39;#ccffcc&#39;, &#39;#ccccff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Pastels&#39;)</span>
+<span class="sd">            accessible = gradient.make_accessible(&#39;white&#39;)</span>
+<span class="sd">            print(accessible._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map.core.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_accessible_color</span>
+
+        <span class="n">background</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Color</span><span class="p">(</span><span class="n">background_color</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">background_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span>
+            <span class="k">else</span> <span class="n">background_color</span>
+        <span class="p">)</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_accessible&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.complementary">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.complementary">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">complementary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the complementary gradient (all colors shifted 180 degrees).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with complementary colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get complementary gradient:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            complement = gradient.complementary()</span>
+<span class="sd">            complement</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff0000&#39;, &#39;#00ff00&#39;, &#39;#0000ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;RGB&#39;)</span>
+<span class="sd">            complement = gradient.complementary()</span>
+<span class="sd">            print(complement._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">complementary</span><span class="p">()</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_complementary&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.analyze_contrast">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.analyze_contrast">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">analyze_contrast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">background_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analyze contrast ratios of all colors against a background.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        background_color : Color or str</span>
+<span class="sd">            The background color to analyze against.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Dict[str, Any]</span>
+<span class="sd">            Dictionary containing contrast analysis results.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Analyze contrast against white background:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#000000&#39;, &#39;#808080&#39;, &#39;#ffffff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Grayscale&#39;)</span>
+<span class="sd">            analysis = gradient.analyze_contrast(&#39;white&#39;)</span>
+<span class="sd">            print(f&quot;Average contrast: {analysis[&#39;average_contrast&#39;]:.2f}&quot;)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            Average contrast: 8.65</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">background</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Color</span><span class="p">(</span><span class="n">background_color</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">background_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span>
+            <span class="k">else</span> <span class="n">background_color</span>
+        <span class="p">)</span>
+        <span class="n">contrasts</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">background</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">]</span>
+        <span class="n">accessible_aa</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">contrasts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;=</span> <span class="mf">4.5</span><span class="p">)</span>
+        <span class="n">accessible_aaa</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">contrasts</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;=</span> <span class="mf">7.0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;average_contrast&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">contrasts</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">contrasts</span><span class="p">)</span> <span class="k">if</span> <span class="n">contrasts</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;min_contrast&quot;</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">contrasts</span><span class="p">)</span> <span class="k">if</span> <span class="n">contrasts</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;max_contrast&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">contrasts</span><span class="p">)</span> <span class="k">if</span> <span class="n">contrasts</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;accessible_aa_count&quot;</span><span class="p">:</span> <span class="n">accessible_aa</span><span class="p">,</span>
+            <span class="s2">&quot;accessible_aaa_count&quot;</span><span class="p">:</span> <span class="n">accessible_aaa</span><span class="p">,</span>
+            <span class="s2">&quot;accessibility_aa_score&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="n">accessible_aa</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">contrasts</span><span class="p">)</span> <span class="k">if</span> <span class="n">contrasts</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;accessibility_aaa_score&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="n">accessible_aaa</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">contrasts</span><span class="p">)</span> <span class="k">if</span> <span class="n">contrasts</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;contrasts&quot;</span><span class="p">:</span> <span class="n">contrasts</span><span class="p">,</span>
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="Gradient.find_accessible_version">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.find_accessible_version">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_accessible_version</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">background_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find accessible version of all colors in the gradient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        background_color : Color or str</span>
+<span class="sd">            The background color to ensure accessibility against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with accessible colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Find accessible version of gradient:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ffcccc&#39;, &#39;#ccffcc&#39;, &#39;#ccccff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Pastels&#39;)</span>
+<span class="sd">            accessible = gradient.find_accessible_version(&#39;white&#39;)</span>
+<span class="sd">            accessible</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ffcccc&#39;, &#39;#ccffcc&#39;, &#39;#ccccff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Pastels&#39;)</span>
+<span class="sd">            accessible = gradient.find_accessible_version(&#39;white&#39;)</span>
+<span class="sd">            print(accessible._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_accessible</span><span class="p">(</span><span class="n">background_color</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.maximize_contrast_iterative">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.maximize_contrast_iterative">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximize_contrast_iterative</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">background_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+        <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">,</span>
+        <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">max_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximize contrast of all colors using iterative approach.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        background_color : Color or str</span>
+<span class="sd">            The background color to maximize contrast against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">        adjust_lightness : bool, default True</span>
+<span class="sd">            Whether to adjust lightness (True) or brightness/value (False).</span>
+<span class="sd">        step_size : float, default 0.1</span>
+<span class="sd">            The step size for adjustments.</span>
+<span class="sd">        max_attempts : int, default 50</span>
+<span class="sd">            Maximum number of adjustment attempts.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with maximized contrast colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Maximize contrast iteratively:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff6666&#39;, &#39;#66ff66&#39;, &#39;#6666ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Light&#39;)</span>
+<span class="sd">            optimized = gradient.maximize_contrast_iterative(&#39;white&#39;)</span>
+<span class="sd">            optimized</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff6666&#39;, &#39;#66ff66&#39;, &#39;#6666ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Light&#39;)</span>
+<span class="sd">            optimized = gradient.maximize_contrast_iterative(&#39;white&#39;)</span>
+<span class="sd">            print(optimized._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map.core.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_iterative</span>
+
+        <span class="n">background</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Color</span><span class="p">(</span><span class="n">background_color</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">background_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span>
+            <span class="k">else</span> <span class="n">background_color</span>
+        <span class="p">)</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">find_maximal_contrast_iterative</span><span class="p">(</span>
+                <span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">adjust_lightness</span><span class="p">,</span> <span class="n">step_size</span><span class="p">,</span> <span class="n">max_attempts</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_max_contrast_iterative&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.maximize_contrast_binary_search">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.maximize_contrast_binary_search">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximize_contrast_binary_search</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">background_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+        <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">,</span>
+        <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximize contrast of all colors using binary search.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        background_color : Color or str</span>
+<span class="sd">            The background color to maximize contrast against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">        adjust_lightness : bool, default True</span>
+<span class="sd">            Whether to adjust lightness (True) or brightness/value (False).</span>
+<span class="sd">        precision : float, default 0.001</span>
+<span class="sd">            The precision for binary search convergence.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with maximized contrast colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Maximize contrast with binary search:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff6666&#39;, &#39;#66ff66&#39;, &#39;#6666ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Light&#39;)</span>
+<span class="sd">            optimized = gradient.maximize_contrast_binary_search(&#39;white&#39;)</span>
+<span class="sd">            optimized</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff6666&#39;, &#39;#66ff66&#39;, &#39;#6666ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Light&#39;)</span>
+<span class="sd">            optimized = gradient.maximize_contrast_binary_search(&#39;white&#39;)</span>
+<span class="sd">            print(optimized._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map.core.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_binary_search</span>
+
+        <span class="n">background</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Color</span><span class="p">(</span><span class="n">background_color</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">background_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span>
+            <span class="k">else</span> <span class="n">background_color</span>
+        <span class="p">)</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">find_maximal_contrast_binary_search</span><span class="p">(</span>
+                <span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">adjust_lightness</span><span class="p">,</span> <span class="n">precision</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_max_contrast_binary&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gradient.maximize_contrast_optimization">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Gradient.maximize_contrast_optimization">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximize_contrast_optimization</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">background_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+        <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">,</span>
+        <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;golden_section&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Gradient&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximize contrast of all colors using mathematical optimization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        background_color : Color or str</span>
+<span class="sd">            The background color to maximize contrast against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">        method : str, default &#39;golden_section&#39;</span>
+<span class="sd">            The optimization method to use (&#39;golden_section&#39; or &#39;gradient_descent&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Gradient</span>
+<span class="sd">            A new gradient with maximized contrast colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Maximize contrast with optimization:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff6666&#39;, &#39;#66ff66&#39;, &#39;#6666ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Light&#39;)</span>
+<span class="sd">            optimized = gradient.maximize_contrast_optimization(&#39;white&#39;)</span>
+<span class="sd">            optimized</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Gradient</span>
+<span class="sd">            colors = [&#39;#ff6666&#39;, &#39;#66ff66&#39;, &#39;#6666ff&#39;]</span>
+<span class="sd">            gradient = Gradient(colors, name=&#39;Light&#39;)</span>
+<span class="sd">            optimized = gradient.maximize_contrast_optimization(&#39;white&#39;)</span>
+<span class="sd">            print(optimized._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map.core.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_optimization</span>
+
+        <span class="n">background</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Color</span><span class="p">(</span><span class="n">background_color</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">background_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span>
+            <span class="k">else</span> <span class="n">background_color</span>
+        <span class="p">)</span>
+        <span class="n">new_colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">find_maximal_contrast_optimization</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">Gradient</span><span class="p">(</span><span class="n">new_colors</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_max_contrast_optimization&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

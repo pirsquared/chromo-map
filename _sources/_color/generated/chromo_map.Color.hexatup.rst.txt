@@ -1,6 +1,0 @@
-﻿chromo\_map.Color.hexatup
-=========================
-
-.. currentmodule:: chromo_map
-
-.. autoproperty:: Color.hexatup

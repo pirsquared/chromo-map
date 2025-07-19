@@ -1,6 +1,0 @@
-﻿chromo\_map.Color.tup
-=====================
-
-.. currentmodule:: chromo_map
-
-.. autoproperty:: Color.tup

@@ -1,0 +1,1886 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chromo_map.core.color &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/pirr_logo.svg"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">chromo_map.core.color</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for chromo_map.core.color</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Core color functionality for chromo_map package.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">colorsys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">textwrap</span><span class="w"> </span><span class="kn">import</span> <span class="n">dedent</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_rgba</span><span class="p">,</span> <span class="n">to_rgb</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_rgb_c</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">rf</span><span class="s2">&quot;(?P&lt;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&gt;[^,\s]+)&quot;</span>
+
+
+<span class="n">_COMMA</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\s*,\s*&quot;</span>
+<span class="n">_red</span> <span class="o">=</span> <span class="n">_rgb_c</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">_grn</span> <span class="o">=</span> <span class="n">_rgb_c</span><span class="p">(</span><span class="s2">&quot;grn&quot;</span><span class="p">)</span>
+<span class="n">_blu</span> <span class="o">=</span> <span class="n">_rgb_c</span><span class="p">(</span><span class="s2">&quot;blu&quot;</span><span class="p">)</span>
+<span class="n">_alp</span> <span class="o">=</span> <span class="n">_rgb_c</span><span class="p">(</span><span class="s2">&quot;alp&quot;</span><span class="p">)</span>
+<span class="n">_rgb_pat</span> <span class="o">=</span> <span class="n">_COMMA</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">_red</span><span class="p">,</span> <span class="n">_grn</span><span class="p">,</span> <span class="n">_blu</span><span class="p">])</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">_COMMA</span><span class="si">}{</span><span class="n">_alp</span><span class="si">}</span><span class="s2">)?&quot;</span>
+<span class="n">_RGB_PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;rgba?\(</span><span class="si">{</span><span class="n">_rgb_pat</span><span class="si">}</span><span class="s2">\)&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rgba_to_tup</span><span class="p">(</span><span class="n">rgbstr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an RGBA string to a tuple.&quot;&quot;&quot;</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">_RGB_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">rgbstr</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="n">gdict</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+        <span class="n">red</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">])</span>
+        <span class="n">grn</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;grn&quot;</span><span class="p">])</span>
+        <span class="n">blu</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;blu&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">alp</span> <span class="o">:=</span> <span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;alp&quot;</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">alp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">alp</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">alp</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Alpha must be between 0 and 1.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alp</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rgb_vals</span> <span class="o">=</span> <span class="n">to_rgb</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">red</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">grn</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">blu</span><span class="si">:</span><span class="s2">02x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rgb_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rgb_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rgb_vals</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">alp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hexstr_to_tup</span><span class="p">(</span><span class="n">hexstr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a hex string to a tuple.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rgba_vals</span> <span class="o">=</span> <span class="n">to_rgba</span><span class="p">(</span><span class="n">hexstr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rgba_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_valid_color_values</span><span class="p">(</span><span class="n">vals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if values are valid color values (0-1 range).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">clr_to_tup</span><span class="p">(</span><span class="n">clr</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a color to a tuple.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">hexstr_to_tup</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span> <span class="ow">or</span> <span class="n">rgba_to_tup</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+        <span class="n">clr_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span>
+        
+        <span class="c1"># Handle 3 or 4 element sequences</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">clr_list</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">numeric_vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">clr_list</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">_is_valid_color_values</span><span class="p">(</span><span class="n">numeric_vals</span><span class="p">):</span>
+                    <span class="c1"># Add alpha if missing</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeric_vals</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                        <span class="n">numeric_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">numeric_vals</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+                <span class="k">pass</span>
+        
+        <span class="c1"># Return original format if not valid color values</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">clr_list</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="k">else</span> <span class="n">clr_list</span>
+    
+    <span class="c1"># Try matplotlib&#39;s to_rgba as fallback</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rgba_vals</span> <span class="o">=</span> <span class="n">to_rgba</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rgba_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">rgba_vals</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="Color">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Color</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for representing colors.</span>
+
+<span class="sd">    You can pass in a color as a tuple of RGB or RGBA values in which the values</span>
+<span class="sd">    are between 0 and 1, a hex string with or without an alpha value, or an RGB</span>
+<span class="sd">    or RGBA string in the form `&#39;rgb(r, g, b)&#39;` or `&#39;rgba(r, g, b, a)&#39;`.</span>
+<span class="sd">    The alpha value is optional in all cases.</span>
+
+<span class="sd">    You can also pass in another Color object to create a copy of it with an</span>
+<span class="sd">    optional new alpha value.</span>
+
+<span class="sd">    The class has properties that return the color in various formats including</span>
+<span class="sd">    tuples, hex strings, RGB strings, and RGBA strings.</span>
+
+<span class="sd">    You can also interpolate between two colors by passing in another color and</span>
+<span class="sd">    a factor between 0 and 1.</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Simple red color:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        Color(&#39;red&#39;)</span>
+
+<span class="sd">    .. html-output::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        print(Color(&#39;red&#39;)._repr_html_())</span>
+
+<span class="sd">    Simple red color with alpha:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        Color(&#39;red&#39;, 0.5)</span>
+
+<span class="sd">    .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            print(Color(&#39;red&#39;, 0.5)._repr_html_())</span>
+
+<span class="sd">    Green with hex string:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        Color(&#39;#007f00&#39;)</span>
+
+<span class="sd">    .. html-output::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        print(Color(&#39;#007f00&#39;)._repr_html_())</span>
+
+<span class="sd">    Blue with RGB string:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        Color(&#39;rgb(0, 0, 255)&#39;)</span>
+
+<span class="sd">    .. html-output::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        print(Color(&#39;rgb(0, 0, 255)&#39;)._repr_html_())</span>
+
+<span class="sd">    Blue with RGBA string and overidden alpha:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        Color(&#39;rgba(0, 0, 255, 0.5)&#39;, 0.75)</span>
+
+<span class="sd">    .. html-output::</span>
+
+<span class="sd">        from chromo_map import Color</span>
+<span class="sd">        print(Color(&#39;rgba(0, 0, 255, 0.5)&#39;, 0.75)._repr_html_())</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Color.__init__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">clr</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">alpha</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Initialize RGBA attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">:</span> <span class="nb">float</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">:</span> <span class="nb">float</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">:</span> <span class="nb">float</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span>
+        
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="n">Color</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">clr</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">alpha</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
+                <span class="c1"># Extract RGB and optional alpha from sequence</span>
+                <span class="n">clr_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">clr_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Color sequence must have at least 3 values (RGB)&quot;</span>
+                    <span class="p">)</span>
+                
+                <span class="n">red</span><span class="p">,</span> <span class="n">grn</span><span class="p">,</span> <span class="n">blu</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="nb">float</span><span class="p">(</span><span class="n">clr_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                    <span class="nb">float</span><span class="p">(</span><span class="n">clr_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                    <span class="nb">float</span><span class="p">(</span><span class="n">clr_list</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">alpha</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">alp</span> <span class="o">=</span> <span class="n">alpha</span>
+                <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">clr_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="n">alp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">clr_list</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">alp</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">tup</span> <span class="o">=</span> <span class="n">clr_to_tup</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">tup</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid color input.&quot;</span><span class="p">)</span>
+                <span class="n">red</span><span class="p">,</span> <span class="n">grn</span><span class="p">,</span> <span class="n">blu</span><span class="p">,</span> <span class="n">alp</span> <span class="o">=</span> <span class="n">tup</span>
+                <span class="n">alp</span> <span class="o">=</span> <span class="n">alpha</span> <span class="k">if</span> <span class="n">alpha</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">alp</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Invalid color input &#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">clr</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">grn</span><span class="p">,</span> <span class="n">blu</span><span class="p">,</span> <span class="n">alp</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">red</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">grn</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">blu</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">alp</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Color values must be between 0 and 1.&quot;</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as a tuple.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[float, float, float, float]</span>
+<span class="sd">            The color as a tuple of RGBA values between 0 and 1.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as a tuple:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.tup</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            (1.0, 0.6470588235294118, 0.0, 0.5)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hexatup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as a tuple of hex values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[int, int, int, int]</span>
+<span class="sd">            The color as a tuple of RGBA values between 0 and 255.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as a tuple of hex values:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.hexatup</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            (255, 165, 0, 127)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tup</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hextup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as a tuple of hex values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[int, int, int]</span>
+<span class="sd">            The color as a tuple of RGB values between 0 and 255.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as a tuple of hex values:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.hextup</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            (255, 165, 0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hexatup</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rgbtup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as a tuple of RGB values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[int, int, int]</span>
+<span class="sd">            The color as a tuple of RGB values between 0 and 255.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as a tuple of hex values:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.rgbtup</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            (255, 165, 0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hextup</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rgbatup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as a tuple of RGBA values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[int, int, int, float]</span>
+<span class="sd">            The color as a tuple of RGB values between 0 and 255 and an alpha value</span>
+<span class="sd">            between 0 and 1.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Get the color as a tuple of RGBA values:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.rgbatup</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            (255, 165, 0, 0.5)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgbtup</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hex</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as a hex string.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The color as a hex string.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as a hex string:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.hex</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            &#39;#ffa500&#39;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hextup</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">g</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">b</span><span class="si">:</span><span class="s2">02x</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hexa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as a hex string with an alpha value.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The color as a hex string with an alpha value.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as a hex string with an alpha value:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.hexa</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">                &#39;#ffa50080&#39;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hexatup</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">g</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">b</span><span class="si">:</span><span class="s2">02x</span><span class="si">}{</span><span class="n">a</span><span class="si">:</span><span class="s2">02x</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rgb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as an RGB string.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The color as an RGB string.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as an RGB string:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.rgb</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            &#39;rgb(255, 165, 0)&#39;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgbtup</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;rgb(</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rgba</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as an RGBA string.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The color as an RGBA string.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as an RGBA string:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            orange = Color(&#39;orange&#39;, 0.5)</span>
+<span class="sd">            orange.rgba</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            &#39;rgba(255, 165, 0, 0.5)&#39;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgbatup</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;rgba(</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+<div class="viewcode-block" id="Color.interpolate">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.interpolate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">interpolate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Interpolate between two colors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : Color</span>
+<span class="sd">            The other color to interpolate with.</span>
+
+<span class="sd">        factor : float</span>
+<span class="sd">            The interpolation factor between 0 and 1.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            The interpolated color.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Interpolate between red and blue:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            blue = Color(&#39;blue&#39;)</span>
+
+<span class="sd">            red.interpolate(blue, 0.5)</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            blue = Color(&#39;blue&#39;)</span>
+<span class="sd">            print(red.interpolate(blue, 0.5)._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">+</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">r</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">+</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">g</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">b</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">a</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.with_alpha">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.with_alpha">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">with_alpha</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new Color with the specified alpha value.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        alpha : float</span>
+<span class="sd">            The alpha value between 0 and 1.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            A new Color with the specified alpha value.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Create a red color with 50% transparency:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            red_transparent = red.with_alpha(0.5)</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            red_transparent = red.with_alpha(0.5)</span>
+<span class="sd">            print(red_transparent._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">alpha</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.__or__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.__or__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Color&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Interpolate between two colors assuming a factor of 0.5.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : Color</span>
+<span class="sd">            The other color to interpolate with.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            The interpolated color.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Interpolate between red and blue:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            blue = Color(&#39;blue&#39;)</span>
+<span class="sd">            red | blue</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            blue = Color(&#39;blue&#39;)</span>
+<span class="sd">            print((red | blue)._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">random_id</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span>
+        <span class="n">style</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">        &lt;style&gt;</span>
+<span class="s2">            #_</span><span class="si">{</span><span class="n">random_id</span><span class="si">}</span><span class="s2"> </span><span class="se">{{</span><span class="s2"> </span>
+<span class="s2">                position: relative;</span>
+<span class="s2">                display: inline-block;</span>
+<span class="s2">                cursor: pointer;</span>
+<span class="s2">                background: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rgba</span><span class="si">}</span><span class="s2">;</span>
+<span class="s2">                width: 2rem; height: 1.5rem;</span>
+<span class="s2">            </span><span class="se">}}</span>
+<span class="s2">            #_</span><span class="si">{</span><span class="n">random_id</span><span class="si">}</span><span class="s2">::after </span><span class="se">{{</span>
+<span class="s2">                content: attr(data-tooltip);</span>
+<span class="s2">                position: absolute;</span>
+<span class="s2">                bottom: 50%;</span>
+<span class="s2">                left: 0%;</span>
+<span class="s2">                transform: translateY(50%);</span>
+<span class="s2">                padding: 0.125rem;</span>
+<span class="s2">                white-space: pre;</span>
+<span class="s2">                font-size: 0.75rem;</span>
+<span class="s2">                font-family: monospace;</span>
+<span class="s2">                background: rgba(0, 0, 0, 0.6);</span>
+<span class="s2">                backdrop-filter: blur(0.25rem);</span>
+<span class="s2">                color: white;</span>
+<span class="s2">                border-radius: 0.25rem;</span>
+<span class="s2">                opacity: 0;</span>
+<span class="s2">                pointer-events: none;</span>
+<span class="s2">                transition: opacity 0.1s ease-in-out;</span>
+<span class="s2">                z-index: -1;</span>
+<span class="s2">            </span><span class="se">}}</span>
+<span class="s2">            #_</span><span class="si">{</span><span class="n">random_id</span><span class="si">}</span><span class="s2">:hover::after </span><span class="se">{{</span>
+<span class="s2">                opacity: 1;</span>
+<span class="s2">                z-index: 1;</span>
+<span class="s2">            </span><span class="se">}}</span>
+<span class="s2">        &lt;/style&gt;       </span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="p">)</span>
+        <span class="n">tooltip</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">        RGBA: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rgba</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span>
+<span class="s2">        HEXA: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hexa</span><span class="si">}</span><span class="se">\</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">dedent</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">            &lt;div&gt;</span>
+<span class="s2">                </span><span class="si">{</span><span class="n">style</span><span class="si">}</span>
+<span class="s2">                &lt;div id=&quot;_</span><span class="si">{</span><span class="n">random_id</span><span class="si">}</span><span class="s2">&quot; class=&quot;color&quot; data-tooltip=&quot;</span><span class="si">{</span><span class="n">tooltip</span><span class="si">}</span><span class="s2">&quot;&gt;&lt;/div&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hsv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as HSV values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[float, float, float]</span>
+<span class="sd">            The color as a tuple of HSV values (hue: 0-360, saturation: 0-1, value: 0-1).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as HSV values:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            red.hsv</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            (0.0, 1.0, 1.0)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">rgb_to_hsv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="mi">360</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hsl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color as HSL values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[float, float, float]</span>
+<span class="sd">            The color as a tuple of HSL values (hue: 0-360, saturation: 0-1, lightness: 0-1).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the color as HSL values:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            red.hsl</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            (0.0, 1.0, 0.5)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">rgb_to_hls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="mi">360</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">luminance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the relative luminance of the color.</span>
+
+<span class="sd">        Uses the WCAG 2.1 formula for relative luminance.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The relative luminance value (0-1).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the luminance of a color:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            white = Color(&#39;white&#39;)</span>
+<span class="sd">            black = Color(&#39;black&#39;)</span>
+<span class="sd">            print(f&quot;White luminance: {white.luminance:.3f}&quot;)</span>
+<span class="sd">            print(f&quot;Black luminance: {black.luminance:.3f}&quot;)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            White luminance: 1.000</span>
+<span class="sd">            Black luminance: 0.000</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_linearize</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Convert sRGB color component to linear RGB.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="mf">0.03928</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">c</span> <span class="o">/</span> <span class="mf">12.92</span>
+            <span class="k">return</span> <span class="p">((</span><span class="n">c</span> <span class="o">+</span> <span class="mf">0.055</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.055</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.4</span>
+        
+        <span class="n">r_lin</span> <span class="o">=</span> <span class="n">_linearize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">g_lin</span> <span class="o">=</span> <span class="n">_linearize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">)</span>
+        <span class="n">b_lin</span> <span class="o">=</span> <span class="n">_linearize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="mf">0.2126</span> <span class="o">*</span> <span class="n">r_lin</span> <span class="o">+</span> <span class="mf">0.7152</span> <span class="o">*</span> <span class="n">g_lin</span> <span class="o">+</span> <span class="mf">0.0722</span> <span class="o">*</span> <span class="n">b_lin</span>
+
+<div class="viewcode-block" id="Color.adjust_hue">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.adjust_hue">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adjust_hue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degrees</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the hue of the color by the specified degrees.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        degrees : float</span>
+<span class="sd">            The number of degrees to adjust the hue by.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            A new color with the adjusted hue.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Adjust hue by 120 degrees:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            green = red.adjust_hue(120)</span>
+<span class="sd">            green</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            green = red.adjust_hue(120)</span>
+<span class="sd">            print(green._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hsv</span>
+        <span class="n">new_h</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="n">degrees</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">new_h</span> <span class="o">/</span> <span class="mi">360</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.adjust_saturation">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.adjust_saturation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adjust_saturation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the saturation of the color by the specified factor.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        factor : float</span>
+<span class="sd">            The factor to multiply the saturation by. Values &gt; 1 increase saturation,</span>
+<span class="sd">            values &lt; 1 decrease saturation.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            A new color with the adjusted saturation.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Increase saturation by 50%:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            saturated = red.adjust_saturation(1.5)</span>
+<span class="sd">            saturated</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            saturated = red.adjust_saturation(1.5)</span>
+<span class="sd">            print(saturated._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hsv</span>
+        <span class="n">new_s</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">s</span> <span class="o">*</span> <span class="n">factor</span><span class="p">))</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">h</span> <span class="o">/</span> <span class="mi">360</span><span class="p">,</span> <span class="n">new_s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.adjust_brightness">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.adjust_brightness">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adjust_brightness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the brightness (value) of the color by the specified factor.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        factor : float</span>
+<span class="sd">            The factor to multiply the brightness by. Values &gt; 1 increase brightness,</span>
+<span class="sd">            values &lt; 1 decrease brightness.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            A new color with the adjusted brightness.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Increase brightness by 20%:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            bright = red.adjust_brightness(1.2)</span>
+<span class="sd">            bright</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            bright = red.adjust_brightness(1.2)</span>
+<span class="sd">            print(bright._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hsv</span>
+        <span class="n">new_v</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">v</span> <span class="o">*</span> <span class="n">factor</span><span class="p">))</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">h</span> <span class="o">/</span> <span class="mi">360</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">new_v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.adjust_lightness">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.adjust_lightness">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">adjust_lightness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adjust the lightness (HSL) of the color by the specified factor.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        factor : float</span>
+<span class="sd">            The factor to multiply the lightness by. Values &gt; 1 increase lightness,</span>
+<span class="sd">            values &lt; 1 decrease lightness.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            A new color with the adjusted lightness.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Decrease lightness by 20%:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            dark = red.adjust_lightness(0.8)</span>
+<span class="sd">            dark</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            dark = red.adjust_lightness(0.8)</span>
+<span class="sd">            print(dark._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hsl</span>
+        <span class="n">new_l</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">l</span> <span class="o">*</span> <span class="n">factor</span><span class="p">))</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">hls_to_rgb</span><span class="p">(</span><span class="n">h</span> <span class="o">/</span> <span class="mi">360</span><span class="p">,</span> <span class="n">new_l</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.set_hsv">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.set_hsv">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_hsv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set specific HSV values while keeping others unchanged.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        h : float, optional</span>
+<span class="sd">            The hue value (0-360). If None, keeps current hue.</span>
+<span class="sd">        s : float, optional</span>
+<span class="sd">            The saturation value (0-1). If None, keeps current saturation.</span>
+<span class="sd">        v : float, optional</span>
+<span class="sd">            The value/brightness (0-1). If None, keeps current value.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            A new color with the specified HSV values.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Set hue to 240 (blue):</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            blue = red.set_hsv(h=240)</span>
+<span class="sd">            blue</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            blue = red.set_hsv(h=240)</span>
+<span class="sd">            print(blue._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_h</span><span class="p">,</span> <span class="n">current_s</span><span class="p">,</span> <span class="n">current_v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hsv</span>
+        <span class="n">new_h</span> <span class="o">=</span> <span class="n">h</span> <span class="k">if</span> <span class="n">h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">current_h</span>
+        <span class="n">new_s</span> <span class="o">=</span> <span class="n">s</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">current_s</span>
+        <span class="n">new_v</span> <span class="o">=</span> <span class="n">v</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">current_v</span>
+        
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">new_h</span> <span class="o">/</span> <span class="mi">360</span><span class="p">,</span> <span class="n">new_s</span><span class="p">,</span> <span class="n">new_v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.contrast_ratio">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.contrast_ratio">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">contrast_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Color&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the contrast ratio between this color and another.</span>
+
+<span class="sd">        Uses the WCAG 2.1 formula for contrast ratio.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : Color</span>
+<span class="sd">            The other color to compare against.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The contrast ratio (1:1 to 21:1).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Calculate contrast ratio between black and white:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            black = Color(&#39;black&#39;)</span>
+<span class="sd">            white = Color(&#39;white&#39;)</span>
+<span class="sd">            black.contrast_ratio(white)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            21.0</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">l1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">luminance</span>
+        <span class="n">l2</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">luminance</span>
+        
+        <span class="c1"># Ensure l1 is the lighter color</span>
+        <span class="k">if</span> <span class="n">l1</span> <span class="o">&lt;</span> <span class="n">l2</span><span class="p">:</span>
+            <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l1</span>
+        
+        <span class="k">return</span> <span class="p">(</span><span class="n">l1</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">l2</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Color.is_accessible">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.is_accessible">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_accessible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if this color has sufficient contrast with another for accessibility.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : Color</span>
+<span class="sd">            The other color to compare against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to check against (&#39;AA&#39; or &#39;AAA&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the contrast ratio meets the specified level.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Check if black text on white background is accessible:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            black = Color(&#39;black&#39;)</span>
+<span class="sd">            white = Color(&#39;white&#39;)</span>
+<span class="sd">            black.is_accessible(white)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            True</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">&#39;AAA&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ratio</span> <span class="o">&gt;=</span> <span class="mf">7.0</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># AA level</span>
+            <span class="k">return</span> <span class="n">ratio</span> <span class="o">&gt;=</span> <span class="mf">4.5</span></div>
+
+
+<div class="viewcode-block" id="Color.complementary">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.complementary">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">complementary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the complementary color (opposite on the color wheel).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            The complementary color.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the complement of red:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            cyan = red.complementary()</span>
+<span class="sd">            cyan</span>
+
+<span class="sd">        .. html-output::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            cyan = red.complementary()</span>
+<span class="sd">            print(cyan._repr_html_())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Color.triadic">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.triadic">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">triadic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the triadic colors (120 degrees apart on the color wheel).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[Color, Color]</span>
+<span class="sd">            A tuple of two triadic colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get the triadic colors of red:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            triad1, triad2 = red.triadic()</span>
+<span class="sd">            print(f&quot;Triad 1: {triad1.hex}&quot;)</span>
+<span class="sd">            print(f&quot;Triad 2: {triad2.hex}&quot;)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            Triad 1: #00ff00</span>
+<span class="sd">            Triad 2: #0000ff</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">120</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">240</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.analogous">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.analogous">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">analogous</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get analogous colors (adjacent on the color wheel).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        angle : float, default 30</span>
+<span class="sd">            The angle in degrees for the analogous colors.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Tuple[Color, Color]</span>
+<span class="sd">            A tuple of two analogous colors.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Get analogous colors of red:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            red = Color(&#39;red&#39;)</span>
+<span class="sd">            analog1, analog2 = red.analogous()</span>
+<span class="sd">            print(f&quot;Analogous 1: {analog1.hex}&quot;)</span>
+<span class="sd">            print(f&quot;Analogous 2: {analog2.hex}&quot;)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            Analogous 1: #ff8000</span>
+<span class="sd">            Analogous 2: #ff0080</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="o">-</span><span class="n">angle</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Color.find_accessible_version">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.find_accessible_version">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_accessible_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> 
+                              <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find an accessible version of this color against a target.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        target_color : Color or str</span>
+<span class="sd">            The color to ensure accessibility against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">        adjust_lightness : bool, default True</span>
+<span class="sd">            Whether to adjust lightness (True) or brightness/value (False).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            An accessible version of this color.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Find accessible version of gray against white:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            gray = Color(&#39;#888888&#39;)</span>
+<span class="sd">            accessible = gray.find_accessible_version(&#39;white&#39;)</span>
+<span class="sd">            print(f&quot;Accessible: {accessible.hex}&quot;)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            Accessible: #595959</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_color</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">adjust_lightness</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Color.maximize_contrast_iterative">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.maximize_contrast_iterative">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximize_contrast_iterative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> 
+                                  <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> 
+                                  <span class="n">max_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximize contrast against target using iterative approach.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        target_color : Color or str</span>
+<span class="sd">            The color to maximize contrast against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">        adjust_lightness : bool, default True</span>
+<span class="sd">            Whether to adjust lightness (True) or brightness/value (False).</span>
+<span class="sd">        step_size : float, default 0.1</span>
+<span class="sd">            The step size for adjustments.</span>
+<span class="sd">        max_attempts : int, default 50</span>
+<span class="sd">            Maximum number of adjustment attempts.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            The color with maximized contrast.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Maximize contrast iteratively:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            gray = Color(&#39;#888888&#39;)</span>
+<span class="sd">            optimized = gray.maximize_contrast_iterative(&#39;white&#39;)</span>
+<span class="sd">            print(f&quot;Optimized: {optimized.hex}&quot;)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            Optimized: #000000</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">find_maximal_contrast_iterative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_color</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">adjust_lightness</span><span class="p">,</span> <span class="n">step_size</span><span class="p">,</span> <span class="n">max_attempts</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Color.maximize_contrast_binary_search">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.maximize_contrast_binary_search">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximize_contrast_binary_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> 
+                                       <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximize contrast against target using binary search.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        target_color : Color or str</span>
+<span class="sd">            The color to maximize contrast against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">        adjust_lightness : bool, default True</span>
+<span class="sd">            Whether to adjust lightness (True) or brightness/value (False).</span>
+<span class="sd">        precision : float, default 0.001</span>
+<span class="sd">            The precision for binary search convergence.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            The color with maximized contrast.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Maximize contrast with binary search:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            gray = Color(&#39;#888888&#39;)</span>
+<span class="sd">            optimized = gray.maximize_contrast_binary_search(&#39;white&#39;)</span>
+<span class="sd">            print(f&quot;Optimized: {optimized.hex}&quot;)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            Optimized: #0d0d0d</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">find_maximal_contrast_binary_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_color</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">adjust_lightness</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Color.maximize_contrast_optimization">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.maximize_contrast_optimization">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maximize_contrast_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> 
+                                     <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;golden_section&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximize contrast against target using mathematical optimization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        target_color : Color or str</span>
+<span class="sd">            The color to maximize contrast against.</span>
+<span class="sd">        level : str, default &#39;AA&#39;</span>
+<span class="sd">            The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">        method : str, default &#39;golden_section&#39;</span>
+<span class="sd">            The optimization method to use (&#39;golden_section&#39; or &#39;gradient_descent&#39;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Color</span>
+<span class="sd">            The color with maximized contrast.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Maximize contrast with optimization:</span>
+
+<span class="sd">        .. testcode::</span>
+
+<span class="sd">            from chromo_map import Color</span>
+<span class="sd">            gray = Color(&#39;#888888&#39;)</span>
+<span class="sd">            optimized = gray.maximize_contrast_optimization(&#39;white&#39;)</span>
+<span class="sd">            print(f&quot;Optimized: {optimized.hex}&quot;)</span>
+
+<span class="sd">        .. testoutput::</span>
+
+<span class="sd">            Optimized: #0d0d0d</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">find_maximal_contrast_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_color</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Color.__eq__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.__eq__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if two colors are equal.</span>
+
+<span class="sd">        Only checks the result of the tuple property.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : Color</span>
+<span class="sd">            The other color to compare to.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            Whether the colors are equal.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Color</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tup</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">tup</span><span class="p">,</span>
+                                 <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="Color.__repr__">
+<a class="viewcode-back" href="../../../api/core.html#chromo_map.Color.__repr__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a rich colored representation of the color.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">rich.console</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">rich.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">Text</span>
+        
+        <span class="c1"># Force terminal mode to enable colors on Windows</span>
+        <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">force_terminal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="c1"># Check if colors are supported</span>
+        <span class="k">if</span> <span class="n">console</span><span class="o">.</span><span class="n">is_terminal</span> <span class="ow">and</span> <span class="n">console</span><span class="o">.</span><span class="n">color_system</span><span class="p">:</span>
+            <span class="c1"># Use background color with spaces for better visibility</span>
+            <span class="n">colored_block</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;on </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">color_info</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; Color(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># Combine the colored block with the color info</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Text</span><span class="p">()</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colored_block</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color_info</span><span class="p">)</span>
+            
+            <span class="c1"># Use console to render to string</span>
+            <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">capture</span><span class="p">()</span> <span class="k">as</span> <span class="n">capture</span><span class="p">:</span>
+                <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            
+            <span class="k">return</span> <span class="n">capture</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Fallback to plain text representation</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Color(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+</div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_accessible_color</span><span class="p">(</span><span class="n">base_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">target_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> 
+                         <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Color</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find an accessible version of a color by adjusting it.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_color : Color or str</span>
+<span class="sd">        The color to adjust.</span>
+<span class="sd">    target_color : Color or str</span>
+<span class="sd">        The color to ensure accessibility against.</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">    adjust_lightness : bool, default True</span>
+<span class="sd">        Whether to adjust lightness (True) or brightness/value (False).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Color</span>
+<span class="sd">        An accessible version of the base color.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Find an accessible version of gray against white:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import find_accessible_color</span>
+<span class="sd">        accessible = find_accessible_color(&#39;#888888&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Accessible color: {accessible.hex}&quot;)</span>
+
+<span class="sd">    .. testoutput::</span>
+
+<span class="sd">        Accessible color: #595959</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">base_color</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">target_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">target_color</span>
+    
+    <span class="n">required_ratio</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">&#39;AAA&#39;</span> <span class="k">else</span> <span class="mf">4.5</span>
+    <span class="n">current_ratio</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">current_ratio</span> <span class="o">&gt;=</span> <span class="n">required_ratio</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">base</span>
+    
+    <span class="c1"># Determine if we need to make the color lighter or darker</span>
+    <span class="n">base_luminance</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">luminance</span>
+    <span class="n">target_luminance</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">luminance</span>
+    
+    <span class="k">if</span> <span class="n">base_luminance</span> <span class="o">&gt;</span> <span class="n">target_luminance</span><span class="p">:</span>
+        <span class="c1"># Make base color lighter</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.1</span>
+        <span class="n">max_factor</span> <span class="o">=</span> <span class="mf">2.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Make base color darker</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">0.9</span>
+        <span class="n">max_factor</span> <span class="o">=</span> <span class="mf">0.1</span>
+    
+    <span class="n">current_color</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">max_attempts</span> <span class="o">=</span> <span class="mi">50</span>
+    
+    <span class="k">while</span> <span class="n">current_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">required_ratio</span> <span class="ow">and</span> <span class="n">attempts</span> <span class="o">&lt;</span> <span class="n">max_attempts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">adjust_lightness</span><span class="p">:</span>
+            <span class="n">current_color</span> <span class="o">=</span> <span class="n">current_color</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">current_color</span> <span class="o">=</span> <span class="n">current_color</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+        
+        <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="c1"># Prevent infinite loops</span>
+        <span class="k">if</span> <span class="n">factor</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">factor</span> <span class="o">&gt;=</span> <span class="n">max_factor</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">elif</span> <span class="n">factor</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">factor</span> <span class="o">&lt;=</span> <span class="n">max_factor</span><span class="p">:</span>
+            <span class="k">break</span>
+    
+    <span class="k">return</span> <span class="n">current_color</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_maximal_contrast_iterative</span><span class="p">(</span><span class="n">base_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">target_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> 
+                                   <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+                                   <span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">max_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Color</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find maximal contrast using simple iterative approach.</span>
+<span class="sd">    </span>
+<span class="sd">    This approach incrementally adjusts the color until it meets the contrast requirement.</span>
+<span class="sd">    Simple but may not find the optimal solution.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_color : Color or str</span>
+<span class="sd">        The color to adjust.</span>
+<span class="sd">    target_color : Color or str</span>
+<span class="sd">        The color to ensure accessibility against.</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">    adjust_lightness : bool, default True</span>
+<span class="sd">        Whether to adjust lightness (True) or brightness/value (False).</span>
+<span class="sd">    step_size : float, default 0.1</span>
+<span class="sd">        The step size for adjustments.</span>
+<span class="sd">    max_attempts : int, default 50</span>
+<span class="sd">        Maximum number of adjustment attempts.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Color</span>
+<span class="sd">        The adjusted color with maximal contrast found.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    </span>
+<span class="sd">    Find maximal contrast iteratively:</span>
+<span class="sd">    </span>
+<span class="sd">    .. testcode::</span>
+<span class="sd">    </span>
+<span class="sd">        from chromo_map import find_maximal_contrast_iterative</span>
+<span class="sd">        result = find_maximal_contrast_iterative(&#39;#888888&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Iterative result: {result.hex}&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    .. testoutput::</span>
+<span class="sd">    </span>
+<span class="sd">        Iterative result: #595959</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">base_color</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">target_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">target_color</span>
+    
+    <span class="n">required_ratio</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">&#39;AAA&#39;</span> <span class="k">else</span> <span class="mf">4.5</span>
+    
+    <span class="c1"># Determine direction based on luminance</span>
+    <span class="n">base_luminance</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">luminance</span>
+    <span class="n">target_luminance</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">luminance</span>
+    
+    <span class="n">current_color</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">best_color</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    
+    <span class="c1"># Try both directions to find maximum contrast</span>
+    <span class="k">for</span> <span class="n">direction</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">temp_color</span> <span class="o">=</span> <span class="n">base</span>
+        <span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">while</span> <span class="n">attempts</span> <span class="o">&lt;</span> <span class="n">max_attempts</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">adjust_lightness</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">next_color</span> <span class="o">=</span> <span class="n">temp_color</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">step_size</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">next_color</span> <span class="o">=</span> <span class="n">temp_color</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">step_size</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">next_color</span> <span class="o">=</span> <span class="n">temp_color</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">step_size</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">next_color</span> <span class="o">=</span> <span class="n">temp_color</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">step_size</span><span class="p">)</span>
+                
+                <span class="n">next_contrast</span> <span class="o">=</span> <span class="n">next_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+                
+                <span class="k">if</span> <span class="n">next_contrast</span> <span class="o">&gt;</span> <span class="n">best_contrast</span><span class="p">:</span>
+                    <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">next_contrast</span>
+                    <span class="n">best_color</span> <span class="o">=</span> <span class="n">next_color</span>
+                    <span class="n">temp_color</span> <span class="o">=</span> <span class="n">next_color</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">break</span>  <span class="c1"># No improvement, stop in this direction</span>
+                
+                <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                <span class="k">break</span>  <span class="c1"># Stop if adjustment fails</span>
+    
+    <span class="k">return</span> <span class="n">best_color</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_maximal_contrast_binary_search</span><span class="p">(</span><span class="n">base_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">target_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> 
+                                       <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+                                       <span class="n">precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Color</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find maximal contrast using binary search approach.</span>
+<span class="sd">    </span>
+<span class="sd">    This approach uses binary search to efficiently find the optimal adjustment factor</span>
+<span class="sd">    that maximizes contrast while meeting accessibility requirements.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_color : Color or str</span>
+<span class="sd">        The color to adjust.</span>
+<span class="sd">    target_color : Color or str</span>
+<span class="sd">        The color to ensure accessibility against.</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">    adjust_lightness : bool, default True</span>
+<span class="sd">        Whether to adjust lightness (True) or brightness/value (False).</span>
+<span class="sd">    precision : float, default 0.001</span>
+<span class="sd">        The precision for binary search convergence.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Color</span>
+<span class="sd">        The adjusted color with maximal contrast found.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    </span>
+<span class="sd">    Find maximal contrast using binary search:</span>
+<span class="sd">    </span>
+<span class="sd">    .. testcode::</span>
+<span class="sd">    </span>
+<span class="sd">        from chromo_map import find_maximal_contrast_binary_search</span>
+<span class="sd">        result = find_maximal_contrast_binary_search(&#39;#888888&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Binary search result: {result.hex}&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    .. testoutput::</span>
+<span class="sd">    </span>
+<span class="sd">        Binary search result: #595959</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">base_color</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">target_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">target_color</span>
+    
+    <span class="n">required_ratio</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">&#39;AAA&#39;</span> <span class="k">else</span> <span class="mf">4.5</span>
+    
+    <span class="c1"># Determine search direction</span>
+    <span class="n">base_luminance</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">luminance</span>
+    <span class="n">target_luminance</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">luminance</span>
+    
+    <span class="n">best_color</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    
+    <span class="c1"># Search in both directions to find maximum</span>
+    <span class="k">for</span> <span class="n">search_direction</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lighter&#39;</span><span class="p">,</span> <span class="s1">&#39;darker&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">search_direction</span> <span class="o">==</span> <span class="s1">&#39;lighter&#39;</span><span class="p">:</span>
+            <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span>  <span class="c1"># Factor range for making lighter</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span>  <span class="c1"># Factor range for making darker</span>
+        
+        <span class="k">while</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">precision</span><span class="p">:</span>
+            <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+            
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">adjust_lightness</span><span class="p">:</span>
+                    <span class="n">test_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">test_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
+                
+                <span class="n">test_contrast</span> <span class="o">=</span> <span class="n">test_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+                
+                <span class="k">if</span> <span class="n">test_contrast</span> <span class="o">&gt;</span> <span class="n">best_contrast</span><span class="p">:</span>
+                    <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">test_contrast</span>
+                    <span class="n">best_color</span> <span class="o">=</span> <span class="n">test_color</span>
+                
+                <span class="c1"># Binary search logic - try to find the extreme that gives max contrast</span>
+                <span class="k">if</span> <span class="n">search_direction</span> <span class="o">==</span> <span class="s1">&#39;lighter&#39;</span><span class="p">:</span>
+                    <span class="c1"># For lighter colors, higher factors usually give more contrast</span>
+                    <span class="k">if</span> <span class="n">test_contrast</span> <span class="o">&gt;=</span> <span class="n">required_ratio</span><span class="p">:</span>
+                        <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span>  <span class="c1"># Can go lighter</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span>  <span class="c1"># Too light, go back</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># For darker colors, lower factors usually give more contrast</span>
+                    <span class="k">if</span> <span class="n">test_contrast</span> <span class="o">&gt;=</span> <span class="n">required_ratio</span><span class="p">:</span>
+                        <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span>  <span class="c1"># Can go darker</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span>  <span class="c1"># Too dark, go back</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                <span class="k">break</span>  <span class="c1"># Exit if color adjustment fails</span>
+    
+    <span class="k">return</span> <span class="n">best_color</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_maximal_contrast_optimization</span><span class="p">(</span><span class="n">base_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">target_color</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Color</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> 
+                                     <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;golden_section&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Color</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find maximal contrast using mathematical optimization.</span>
+<span class="sd">    </span>
+<span class="sd">    This approach uses mathematical optimization techniques to find the adjustment</span>
+<span class="sd">    that maximizes contrast ratio while meeting accessibility requirements.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_color : Color or str</span>
+<span class="sd">        The color to adjust.</span>
+<span class="sd">    target_color : Color or str</span>
+<span class="sd">        The color to ensure accessibility against.</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">    method : str, default &#39;golden_section&#39;</span>
+<span class="sd">        The optimization method to use (&#39;golden_section&#39; or &#39;gradient_descent&#39;).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Color</span>
+<span class="sd">        The adjusted color with maximal contrast found.</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    </span>
+<span class="sd">    Find maximal contrast using optimization:</span>
+<span class="sd">    </span>
+<span class="sd">    .. testcode::</span>
+<span class="sd">    </span>
+<span class="sd">        from chromo_map import find_maximal_contrast_optimization</span>
+<span class="sd">        result = find_maximal_contrast_optimization(&#39;#888888&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Optimization result: {result.hex}&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    .. testoutput::</span>
+<span class="sd">    </span>
+<span class="sd">        Optimization result: #595959</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">base_color</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">target_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">target_color</span>
+    
+    <span class="n">required_ratio</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s1">&#39;AAA&#39;</span> <span class="k">else</span> <span class="mf">4.5</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">objective_function</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Objective function to maximize contrast ratio.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Try both lightness and brightness adjustments</span>
+            <span class="n">lightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+            <span class="n">brightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+            
+            <span class="n">lightness_contrast</span> <span class="o">=</span> <span class="n">lightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+            <span class="n">brightness_contrast</span> <span class="o">=</span> <span class="n">brightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+            
+            <span class="c1"># Return the maximum contrast achievable</span>
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">lightness_contrast</span><span class="p">,</span> <span class="n">brightness_contrast</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mf">0.0</span>  <span class="c1"># Return minimal contrast if adjustment fails</span>
+    
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;golden_section&#39;</span><span class="p">:</span>
+        <span class="c1"># Golden section search for maximum</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">5</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Golden ratio</span>
+        <span class="n">resphi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">phi</span>
+        
+        <span class="c1"># Search bounds</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">3.0</span>
+        <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-5</span>
+        
+        <span class="c1"># Initial points</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">resphi</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">resphi</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+        <span class="n">f2</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+        
+        <span class="n">best_factor</span> <span class="o">=</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">f1</span> <span class="o">&gt;</span> <span class="n">f2</span> <span class="k">else</span> <span class="n">x2</span>
+        <span class="n">best_contrast</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">)</span>
+        
+        <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">f1</span> <span class="o">&gt;</span> <span class="n">f2</span><span class="p">:</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">x2</span>
+                <span class="n">x2</span> <span class="o">=</span> <span class="n">x1</span>
+                <span class="n">f2</span> <span class="o">=</span> <span class="n">f1</span>
+                <span class="n">x1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">resphi</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+                <span class="n">f1</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">x1</span>
+                <span class="n">x1</span> <span class="o">=</span> <span class="n">x2</span>
+                <span class="n">f1</span> <span class="o">=</span> <span class="n">f2</span>
+                <span class="n">x2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">resphi</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+                <span class="n">f2</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+            
+            <span class="n">current_best</span> <span class="o">=</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">f1</span> <span class="o">&gt;</span> <span class="n">f2</span> <span class="k">else</span> <span class="n">x2</span>
+            <span class="n">current_contrast</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">current_contrast</span> <span class="o">&gt;</span> <span class="n">best_contrast</span><span class="p">:</span>
+                <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">current_contrast</span>
+                <span class="n">best_factor</span> <span class="o">=</span> <span class="n">current_best</span>
+        
+        <span class="c1"># Determine which adjustment method gives better contrast</span>
+        <span class="n">lightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">best_factor</span><span class="p">)</span>
+        <span class="n">brightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">best_factor</span><span class="p">)</span>
+        
+        <span class="n">lightness_contrast</span> <span class="o">=</span> <span class="n">lightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">brightness_contrast</span> <span class="o">=</span> <span class="n">brightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">lightness_color</span> <span class="k">if</span> <span class="n">lightness_contrast</span> <span class="o">&gt;</span> <span class="n">brightness_contrast</span> <span class="k">else</span> <span class="n">brightness_color</span>
+    
+    <span class="c1"># If method is not golden_section, fall back to iterative approach</span>
+    <span class="k">return</span> <span class="n">find_maximal_contrast_iterative</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">target_color</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

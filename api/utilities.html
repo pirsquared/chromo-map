@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utility Functions &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../_static/pirr_logo.svg"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Basic Usage Guide" href="../guides/basic_usage.html" />
+    <link rel="prev" title="Catalog Module" href="catalog.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog.html">Catalog Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utility Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#color-format-conversion">Color Format Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.rgba_to_tup"><code class="docutils literal notranslate"><span class="pre">rgba_to_tup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.hexstr_to_tup"><code class="docutils literal notranslate"><span class="pre">hexstr_to_tup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.clr_to_tup"><code class="docutils literal notranslate"><span class="pre">clr_to_tup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#format-support">Format Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conversion-examples">Conversion Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-with-core-classes">Integration with Core Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-considerations">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extension-points">Extension Points</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Utility Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/utilities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utility-functions">
+<h1>Utility Functions<a class="headerlink" href="#utility-functions" title="Link to this heading"></a></h1>
+<p>The utilities module provides helper functions for color format conversion and manipulation.</p>
+<section id="color-format-conversion">
+<h2>Color Format Conversion<a class="headerlink" href="#color-format-conversion" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.rgba_to_tup">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">rgba_to_tup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgbstr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/utils/color_utils.html#rgba_to_tup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.rgba_to_tup" title="Link to this definition"></a></dt>
+<dd><p>Convert an RGBA string to a tuple.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Convert RGBA values to tuples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">rgba_to_tup</span>
+
+<span class="c1"># Convert rgba string to tuple</span>
+<span class="n">rgba_str</span> <span class="o">=</span> <span class="s2">&quot;rgba(255, 128, 0, 0.8)&quot;</span>
+<span class="n">rgba_tuple</span> <span class="o">=</span> <span class="n">rgba_to_tup</span><span class="p">(</span><span class="n">rgba_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rgba_tuple</span><span class="p">)</span>  <span class="c1"># (255, 128, 0, 0.8)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.hexstr_to_tup">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">hexstr_to_tup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/utils/color_utils.html#hexstr_to_tup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.hexstr_to_tup" title="Link to this definition"></a></dt>
+<dd><p>Convert a hex string to a tuple.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Convert hex strings to RGB tuples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">hexstr_to_tup</span>
+
+<span class="c1"># Convert hex to RGB tuple</span>
+<span class="n">hex_color</span> <span class="o">=</span> <span class="s2">&quot;#ff8000&quot;</span>
+<span class="n">rgb_tuple</span> <span class="o">=</span> <span class="n">hexstr_to_tup</span><span class="p">(</span><span class="n">hex_color</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rgb_tuple</span><span class="p">)</span>  <span class="c1"># (255, 128, 0)</span>
+
+<span class="c1"># Works with 3-digit hex too</span>
+<span class="n">short_hex</span> <span class="o">=</span> <span class="s2">&quot;#f80&quot;</span>
+<span class="n">rgb_tuple</span> <span class="o">=</span> <span class="n">hexstr_to_tup</span><span class="p">(</span><span class="n">short_hex</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rgb_tuple</span><span class="p">)</span>  <span class="c1"># (255, 136, 0)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.clr_to_tup">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">clr_to_tup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/utils/color_utils.html#clr_to_tup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.clr_to_tup" title="Link to this definition"></a></dt>
+<dd><p>Convert a color to a tuple.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Universal color-to-tuple converter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">clr_to_tup</span>
+
+<span class="c1"># Works with various formats</span>
+<span class="n">from_hex</span> <span class="o">=</span> <span class="n">clr_to_tup</span><span class="p">(</span><span class="s2">&quot;#ff8000&quot;</span><span class="p">)</span>        <span class="c1"># (255, 128, 0)</span>
+<span class="n">from_rgba</span> <span class="o">=</span> <span class="n">clr_to_tup</span><span class="p">(</span><span class="s2">&quot;rgba(255, 128, 0, 1)&quot;</span><span class="p">)</span>  <span class="c1"># (255, 128, 0, 1)</span>
+<span class="n">from_name</span> <span class="o">=</span> <span class="n">clr_to_tup</span><span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>        <span class="c1"># Named color</span>
+<span class="n">from_tuple</span> <span class="o">=</span> <span class="n">clr_to_tup</span><span class="p">((</span><span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Pass-through</span>
+</pre></div>
+</div>
+</section>
+<section id="format-support">
+<h2>Format Support<a class="headerlink" href="#format-support" title="Link to this heading"></a></h2>
+<p>The utility functions support a wide range of color formats:</p>
+<dl class="simple">
+<dt><strong>Hex Formats</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#RRGGBB</span></code> (6-digit hex)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#RGB</span></code> (3-digit hex, expanded to 6-digit)</p></li>
+<li><p>With or without the <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix</p></li>
+</ul>
+</dd>
+<dt><strong>RGB/RGBA Formats</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rgb(r,</span> <span class="pre">g,</span> <span class="pre">b)</span></code> string format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rgba(r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a)</span></code> string format with alpha</p></li>
+<li><p>Tuple formats: <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">g,</span> <span class="pre">b)</span></code> and <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a)</span></code></p></li>
+</ul>
+</dd>
+<dt><strong>Named Colors</strong></dt><dd><ul class="simple">
+<li><p>CSS color names (<code class="docutils literal notranslate"><span class="pre">red</span></code>, <code class="docutils literal notranslate"><span class="pre">blue</span></code>, <code class="docutils literal notranslate"><span class="pre">orange</span></code>, etc.)</p></li>
+<li><p>Matplotlib color names</p></li>
+<li><p>X11 color names</p></li>
+</ul>
+</dd>
+<dt><strong>Normalized Formats</strong></dt><dd><ul class="simple">
+<li><p>Floating-point values in range [0, 1]</p></li>
+<li><p>Integer values in range [0, 255]</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="conversion-examples">
+<h2>Conversion Examples<a class="headerlink" href="#conversion-examples" title="Link to this heading"></a></h2>
+<p><strong>Hex to RGB</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">hexstr_to_tup</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;#00ff00&quot;</span><span class="p">,</span> <span class="s2">&quot;#0000ff&quot;</span><span class="p">]</span>
+<span class="n">rgb_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">hexstr_to_tup</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rgb_colors</span><span class="p">)</span>
+<span class="c1"># [(255, 0, 0), (0, 255, 0), (0, 0, 255)]</span>
+</pre></div>
+</div>
+<p><strong>RGBA String Parsing</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">rgba_to_tup</span>
+
+<span class="n">rgba_strings</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;rgba(255, 0, 0, 1.0)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rgba(0, 255, 0, 0.5)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rgb(0, 0, 255)&quot;</span>  <span class="c1"># Also handles rgb format</span>
+<span class="p">]</span>
+
+<span class="n">tuples</span> <span class="o">=</span> <span class="p">[</span><span class="n">rgba_to_tup</span><span class="p">(</span><span class="n">rgba</span><span class="p">)</span> <span class="k">for</span> <span class="n">rgba</span> <span class="ow">in</span> <span class="n">rgba_strings</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tuples</span><span class="p">)</span>
+<span class="c1"># [(255, 0, 0, 1.0), (0, 255, 0, 0.5), (0, 0, 255)]</span>
+</pre></div>
+</div>
+<p><strong>Universal Conversion</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">clr_to_tup</span>
+
+<span class="n">mixed_formats</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span>              <span class="c1"># Hex</span>
+    <span class="s2">&quot;rgb(0, 255, 0)&quot;</span><span class="p">,</span>       <span class="c1"># RGB string</span>
+    <span class="s2">&quot;blue&quot;</span><span class="p">,</span>                 <span class="c1"># Named color</span>
+    <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>          <span class="c1"># RGB tuple</span>
+    <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>      <span class="c1"># RGBA tuple</span>
+<span class="p">]</span>
+
+<span class="n">standardized</span> <span class="o">=</span> <span class="p">[</span><span class="n">clr_to_tup</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">mixed_formats</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>
+<p>The utility functions include robust error handling:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">clr_to_tup</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Invalid hex format</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">clr_to_tup</span><span class="p">(</span><span class="s2">&quot;#invalid&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Invalid RGB values</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">clr_to_tup</span><span class="p">(</span><span class="s2">&quot;rgb(300, 400, 500)&quot;</span><span class="p">)</span>  <span class="c1"># Values &gt; 255</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="integration-with-core-classes">
+<h2>Integration with Core Classes<a class="headerlink" href="#integration-with-core-classes" title="Link to this heading"></a></h2>
+<p>These utilities are used internally by the core classes but are also available for direct use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">clr_to_tup</span>
+
+<span class="c1"># Manual conversion</span>
+<span class="n">rgb_tuple</span> <span class="o">=</span> <span class="n">clr_to_tup</span><span class="p">(</span><span class="s2">&quot;#ff8000&quot;</span><span class="p">)</span>
+
+<span class="c1"># Automatic conversion in Color class</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s2">&quot;#ff8000&quot;</span><span class="p">)</span>  <span class="c1"># Uses clr_to_tup internally</span>
+
+<span class="c1"># Both produce equivalent results</span>
+<span class="k">assert</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb</span> <span class="o">==</span> <span class="n">rgb_tuple</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># (ignoring alpha)</span>
+</pre></div>
+</div>
+</section>
+<section id="performance-considerations">
+<h2>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>Caching</strong></dt><dd><p>The conversion functions use internal caching for named colors to improve performance.</p>
+</dd>
+<dt><strong>Input Validation</strong></dt><dd><p>All functions validate input formats and provide clear error messages for invalid inputs.</p>
+</dd>
+<dt><strong>Memory Efficiency</strong></dt><dd><p>Functions avoid creating unnecessary intermediate objects for large batch conversions.</p>
+</dd>
+</dl>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>Use Universal Converter</strong></dt><dd><p>When working with mixed input formats, use <code class="docutils literal notranslate"><span class="pre">clr_to_tup()</span></code> for consistency.</p>
+</dd>
+<dt><strong>Batch Processing</strong></dt><dd><p>For converting many colors, consider using list comprehensions or map():</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">clr_to_tup</span>
+
+<span class="c1"># Efficient batch conversion</span>
+<span class="n">hex_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;#00ff00&quot;</span><span class="p">,</span> <span class="s2">&quot;#0000ff&quot;</span><span class="p">]</span>
+<span class="n">rgb_tuples</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">clr_to_tup</span><span class="p">,</span> <span class="n">hex_colors</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Type Consistency</strong></dt><dd><p>Ensure consistent output types in your applications by choosing the appropriate conversion function.</p>
+</dd>
+</dl>
+</section>
+<section id="extension-points">
+<h2>Extension Points<a class="headerlink" href="#extension-points" title="Link to this heading"></a></h2>
+<p>The utility module is designed to be extensible. You can add custom format support by:</p>
+<ol class="arabic simple">
+<li><p>Extending the conversion functions</p></li>
+<li><p>Adding new format detection logic</p></li>
+<li><p>Integrating with additional color libraries</p></li>
+</ol>
+<p>This makes chromo-map adaptable to specialized color format requirements in specific domains.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="catalog.html" class="btn btn-neutral float-left" title="Catalog Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../guides/basic_usage.html" class="btn btn-neutral float-right" title="Basic Usage Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

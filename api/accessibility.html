@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Module &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../_static/pirr_logo.svg"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analysis Module" href="analysis.html" />
+    <link rel="prev" title="Core Classes" href="core.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core Classes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Accessibility Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contrast-analysis">Contrast Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.contrast_ratio"><code class="docutils literal notranslate"><span class="pre">contrast_ratio()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.is_accessible"><code class="docutils literal notranslate"><span class="pre">is_accessible()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#color-optimization">Color Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.find_accessible_color"><code class="docutils literal notranslate"><span class="pre">find_accessible_color()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-contrast-optimization">Advanced Contrast Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.find_maximal_contrast_iterative"><code class="docutils literal notranslate"><span class="pre">find_maximal_contrast_iterative()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.find_maximal_contrast_binary_search"><code class="docutils literal notranslate"><span class="pre">find_maximal_contrast_binary_search()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chromo_map.find_maximal_contrast_optimization"><code class="docutils literal notranslate"><span class="pre">find_maximal_contrast_optimization()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#when-to-use-each-method">When to Use Each Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-comparison">Performance Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wcag-guidelines">WCAG Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Accessibility Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/accessibility.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessibility-module">
+<h1>Accessibility Module<a class="headerlink" href="#accessibility-module" title="Link to this heading"></a></h1>
+<p>The accessibility module provides functions for creating WCAG-compliant color combinations and maximizing contrast ratios.</p>
+<section id="contrast-analysis">
+<h2>Contrast Analysis<a class="headerlink" href="#contrast-analysis" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.contrast_ratio">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">contrast_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/accessibility/contrast.html#contrast_ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.contrast_ratio" title="Link to this definition"></a></dt>
+<dd><p>Calculate the contrast ratio between two colors.</p>
+<p>Uses the WCAG 2.1 formula for contrast ratio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>color1</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The first color.</p></li>
+<li><p><strong>color2</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The second color.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The contrast ratio (1:1 to 21:1).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Calculate contrast ratio between black and white:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">contrast_ratio</span>
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">contrast_ratio</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contrast ratio: </span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">:1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Contrast ratio: 21.0:1
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Calculate the contrast ratio between two colors according to WCAG guidelines.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">contrast_ratio</span>
+
+<span class="n">color1</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">)</span>  <span class="c1"># Red</span>
+<span class="n">color2</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">)</span>  <span class="c1"># White</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">contrast_ratio</span><span class="p">(</span><span class="n">color1</span><span class="p">,</span> <span class="n">color2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contrast ratio: </span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Should be ~4.0</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.is_accessible">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">is_accessible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AA'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/accessibility/contrast.html#is_accessible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.is_accessible" title="Link to this definition"></a></dt>
+<dd><p>Check if two colors have sufficient contrast for accessibility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>color1</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The first color (typically text).</p></li>
+<li><p><strong>color2</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The second color (typically background).</p></li>
+<li><p><strong>level</strong> (<em>str</em><em>, </em><em>default 'AA'</em>) – The WCAG level to check against (‘AA’ or ‘AAA’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the contrast ratio meets the specified level.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Check if black text on white background is accessible:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_accessible</span>
+<span class="n">is_accessible</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Check if a color combination meets WCAG accessibility standards.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_accessible</span>
+
+<span class="c1"># Check AA compliance (4.5:1 for normal text)</span>
+<span class="n">accessible_aa</span> <span class="o">=</span> <span class="n">is_accessible</span><span class="p">(</span><span class="s1">&#39;#666666&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+
+<span class="c1"># Check AAA compliance (7:1 for normal text)</span>
+<span class="n">accessible_aaa</span> <span class="o">=</span> <span class="n">is_accessible</span><span class="p">(</span><span class="s1">&#39;#666666&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AAA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="color-optimization">
+<h2>Color Optimization<a class="headerlink" href="#color-optimization" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.find_accessible_color">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">find_accessible_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_lightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/accessibility/contrast.html#find_accessible_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.find_accessible_color" title="Link to this definition"></a></dt>
+<dd><p>Find an accessible version of a color by adjusting it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_color</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The color to adjust.</p></li>
+<li><p><strong>target_color</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The color to ensure accessibility against.</p></li>
+<li><p><strong>level</strong> (<em>str</em><em>, </em><em>default 'AA'</em>) – The WCAG level to achieve (‘AA’ or ‘AAA’).</p></li>
+<li><p><strong>adjust_lightness</strong> (<em>bool</em><em>, </em><em>default True</em>) – Whether to adjust lightness (True) or brightness/value (False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An accessible version of the base color.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color">Color</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Find an accessible version of gray against white:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_accessible_color</span>
+<span class="n">accessible</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accessible color: </span><span class="si">{</span><span class="n">accessible</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Accessible color: #595959
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Find an accessible version of a color that meets WCAG requirements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_accessible_color</span>
+
+<span class="c1"># Make a color accessible against white background</span>
+<span class="n">original</span> <span class="o">=</span> <span class="s1">&#39;#ff6b6b&#39;</span>  <span class="c1"># Light red</span>
+<span class="n">accessible</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;AA&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="n">original</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accessible: </span><span class="si">{</span><span class="n">accessible</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-contrast-optimization">
+<h2>Advanced Contrast Optimization<a class="headerlink" href="#advanced-contrast-optimization" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.find_maximal_contrast_iterative">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">find_maximal_contrast_iterative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_lightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_attempts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/accessibility/contrast.html#find_maximal_contrast_iterative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.find_maximal_contrast_iterative" title="Link to this definition"></a></dt>
+<dd><p>Find maximal contrast using simple iterative approach.</p>
+<p>This approach incrementally adjusts the color until it meets the contrast requirement.
+Simple but may not find the optimal solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_color</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The color to adjust.</p></li>
+<li><p><strong>target_color</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The color to ensure accessibility against.</p></li>
+<li><p><strong>level</strong> (<em>str</em><em>, </em><em>default 'AA'</em>) – The WCAG level to achieve (‘AA’ or ‘AAA’).</p></li>
+<li><p><strong>adjust_lightness</strong> (<em>bool</em><em>, </em><em>default True</em>) – Whether to adjust lightness (True) or brightness/value (False).</p></li>
+<li><p><strong>step_size</strong> (<em>float</em><em>, </em><em>default 0.1</em>) – The step size for adjustments.</p></li>
+<li><p><strong>max_attempts</strong> (<em>int</em><em>, </em><em>default 50</em>) – Maximum number of adjustment attempts.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The adjusted color with maximal contrast found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color">Color</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Find maximal contrast iteratively:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_iterative</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">find_maximal_contrast_iterative</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterative result: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Iterative result: #595959
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Enhanced iterative approach for finding maximum contrast:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_iterative</span>
+
+<span class="c1"># Find maximum contrast using iterative approach</span>
+<span class="n">optimized</span> <span class="o">=</span> <span class="n">find_maximal_contrast_iterative</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimized color: </span><span class="si">{</span><span class="n">optimized</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.find_maximal_contrast_binary_search">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">find_maximal_contrast_binary_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_lightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/accessibility/contrast.html#find_maximal_contrast_binary_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.find_maximal_contrast_binary_search" title="Link to this definition"></a></dt>
+<dd><p>Find maximal contrast using binary search approach.</p>
+<p>This approach uses binary search to efficiently find the optimal adjustment factor
+that maximizes contrast while meeting accessibility requirements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_color</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The color to adjust.</p></li>
+<li><p><strong>target_color</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The color to ensure accessibility against.</p></li>
+<li><p><strong>level</strong> (<em>str</em><em>, </em><em>default 'AA'</em>) – The WCAG level to achieve (‘AA’ or ‘AAA’).</p></li>
+<li><p><strong>adjust_lightness</strong> (<em>bool</em><em>, </em><em>default True</em>) – Whether to adjust lightness (True) or brightness/value (False).</p></li>
+<li><p><strong>precision</strong> (<em>float</em><em>, </em><em>default 0.001</em>) – The precision for binary search convergence.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The adjusted color with maximal contrast found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color">Color</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Find maximal contrast using binary search:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_binary_search</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">find_maximal_contrast_binary_search</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Binary search result: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Binary search result: #595959
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Binary search approach for precise contrast optimization:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_binary_search</span>
+
+<span class="c1"># Find maximum contrast using binary search</span>
+<span class="n">optimized</span> <span class="o">=</span> <span class="n">find_maximal_contrast_binary_search</span><span class="p">(</span>
+    <span class="s1">&#39;#888888&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">0.001</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="chromo_map.find_maximal_contrast_optimization">
+<span class="sig-prename descclassname"><span class="pre">chromo_map.</span></span><span class="sig-name descname"><span class="pre">find_maximal_contrast_optimization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'golden_section'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/chromo_map/accessibility/contrast.html#find_maximal_contrast_optimization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chromo_map.find_maximal_contrast_optimization" title="Link to this definition"></a></dt>
+<dd><p>Find maximal contrast using mathematical optimization.</p>
+<p>This approach uses mathematical optimization techniques to find the adjustment
+that maximizes contrast ratio while meeting accessibility requirements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_color</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The color to adjust.</p></li>
+<li><p><strong>target_color</strong> (<a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color"><em>Color</em></a>) – The color to ensure accessibility against.</p></li>
+<li><p><strong>level</strong> (<em>str</em><em>, </em><em>default 'AA'</em>) – The WCAG level to achieve (‘AA’ or ‘AAA’).</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>default 'golden_section'</em>) – The optimization method to use (‘golden_section’ or ‘gradient_descent’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The adjusted color with maximal contrast found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="core.html#chromo_map.Color" title="chromo_map.Color">Color</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Find maximal contrast using optimization:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_optimization</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">find_maximal_contrast_optimization</span><span class="p">(</span><span class="s1">&#39;#888888&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimization result: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Optimization result: #595959
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Mathematical optimization approach for absolute maximum contrast:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_maximal_contrast_optimization</span>
+
+<span class="c1"># Find absolute maximum contrast</span>
+<span class="n">optimized</span> <span class="o">=</span> <span class="n">find_maximal_contrast_optimization</span><span class="p">(</span>
+    <span class="s1">&#39;#888888&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;golden_section&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="when-to-use-each-method">
+<h2>When to Use Each Method<a class="headerlink" href="#when-to-use-each-method" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>find_accessible_color</strong></dt><dd><p>Use when you need basic WCAG compliance quickly. Good for most web applications.</p>
+</dd>
+<dt><strong>find_maximal_contrast_iterative</strong></dt><dd><p>Use when you want better results than basic accessibility but don’t need perfect optimization.</p>
+</dd>
+<dt><strong>find_maximal_contrast_binary_search</strong></dt><dd><p>Use when you need precise, consistent results with good performance.</p>
+</dd>
+<dt><strong>find_maximal_contrast_optimization</strong></dt><dd><p>Use when you need the absolute best contrast possible and can afford computational cost.</p>
+</dd>
+</dl>
+</section>
+<section id="performance-comparison">
+<h2>Performance Comparison<a class="headerlink" href="#performance-comparison" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Method Performance</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Speed</p></th>
+<th class="head"><p>Accuracy</p></th>
+<th class="head"><p>Best Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>find_accessible_color</p></td>
+<td><p>Fastest</p></td>
+<td><p>Good</p></td>
+<td><p>Basic compliance</p></td>
+</tr>
+<tr class="row-odd"><td><p>iterative</p></td>
+<td><p>Fast</p></td>
+<td><p>Better</p></td>
+<td><p>Balanced performance</p></td>
+</tr>
+<tr class="row-even"><td><p>binary_search</p></td>
+<td><p>Medium</p></td>
+<td><p>High</p></td>
+<td><p>Automated systems</p></td>
+</tr>
+<tr class="row-odd"><td><p>optimization</p></td>
+<td><p>Slower</p></td>
+<td><p>Highest</p></td>
+<td><p>Maximum quality</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wcag-guidelines">
+<h2>WCAG Guidelines<a class="headerlink" href="#wcag-guidelines" title="Link to this heading"></a></h2>
+<p>The Web Content Accessibility Guidelines (WCAG) define contrast requirements:</p>
+<ul class="simple">
+<li><p><strong>AA Level</strong>: 4.5:1 for normal text, 3:1 for large text</p></li>
+<li><p><strong>AAA Level</strong>: 7:1 for normal text, 4.5:1 for large text</p></li>
+<li><p><strong>Large text</strong>: 18pt+ or 14pt+ bold</p></li>
+</ul>
+<p>All accessibility functions in chromo-map follow these standards.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="core.html" class="btn btn-neutral float-left" title="Core Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="analysis.html" class="btn btn-neutral float-right" title="Analysis Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

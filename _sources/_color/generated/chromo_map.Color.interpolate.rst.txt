@@ -1,6 +1,0 @@
-﻿chromo\_map.Color.interpolate
-=============================
-
-.. currentmodule:: chromo_map
-
-.. automethod:: Color.interpolate

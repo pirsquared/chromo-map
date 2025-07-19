@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalog Module &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../_static/pirr_logo.svg"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Utility Functions" href="utilities.html" />
+    <link rel="prev" title="Analysis Module" href="analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Analysis Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Catalog Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#catalog-access">Catalog Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matplotlib-integration">Matplotlib Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotly-color-scales">Plotly Color Scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#palettable-collections">Palettable Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#catalog-organization">Catalog Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#search-and-discovery">Search and Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#catalog-properties">Catalog Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-gradients">Working with Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#catalog-statistics">Catalog Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#popular-gradients">Popular Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-examples">Integration Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visual-gallery">Visual Gallery</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Catalog Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/catalog.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="catalog-module">
+<h1>Catalog Module<a class="headerlink" href="#catalog-module" title="Link to this heading"></a></h1>
+<p>The catalog module provides access to over 240 carefully curated color gradients from popular libraries including matplotlib, Plotly, and Palettable.</p>
+<section id="catalog-access">
+<h2>Catalog Access<a class="headerlink" href="#catalog-access" title="Link to this heading"></a></h2>
+<p>The main catalog object provides organized access to over 240 color gradients:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">cmaps</span>
+
+<span class="c1"># Access different catalog sources</span>
+<span class="n">mpl_maps</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib_by_type</span>
+<span class="n">plotly_maps</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">plotly_by_type</span>
+<span class="n">palettable_maps</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">palettable_by_type</span>
+
+<span class="c1"># Access all maps in a flat structure</span>
+<span class="n">all_maps</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">all</span>
+
+<span class="c1"># Example: Get a specific gradient</span>
+<span class="n">viridis</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">all</span><span class="p">[</span><span class="s1">&#39;viridis&#39;</span><span class="p">]</span>
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">all</span><span class="p">[</span><span class="s1">&#39;plasma&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The catalog is organized by source and type, making it easy to discover and access color palettes from different libraries.</p>
+</section>
+<section id="matplotlib-integration">
+<h2>Matplotlib Integration<a class="headerlink" href="#matplotlib-integration" title="Link to this heading"></a></h2>
+<p>Access matplotlib’s extensive colormap collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">cmaps</span>
+
+<span class="c1"># Browse matplotlib categories</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="c1"># Output: [&#39;Perceptually Uniform Sequential&#39;, &#39;Sequential&#39;, &#39;Diverging&#39;, ...]</span>
+
+<span class="c1"># Access specific categories</span>
+<span class="n">sequential</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib</span><span class="p">[</span><span class="s1">&#39;Sequential&#39;</span><span class="p">]</span>
+<span class="n">diverging</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib</span><span class="p">[</span><span class="s1">&#39;Diverging&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get specific colormaps</span>
+<span class="n">viridis</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib</span><span class="p">[</span><span class="s1">&#39;Perceptually Uniform Sequential&#39;</span><span class="p">][</span><span class="s1">&#39;viridis&#39;</span><span class="p">]</span>
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib</span><span class="p">[</span><span class="s1">&#39;Perceptually Uniform Sequential&#39;</span><span class="p">][</span><span class="s1">&#39;plasma&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="plotly-color-scales">
+<h2>Plotly Color Scales<a class="headerlink" href="#plotly-color-scales" title="Link to this heading"></a></h2>
+<p>Access Plotly’s beautiful color scales:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">cmaps</span>
+
+<span class="c1"># Browse Plotly scales</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cmaps</span><span class="o">.</span><span class="n">plotly</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="c1"># Access specific scales</span>
+<span class="n">plotly_viridis</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">plotly</span><span class="p">[</span><span class="s1">&#39;Viridis&#39;</span><span class="p">]</span>
+<span class="n">plotly_plasma</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">plotly</span><span class="p">[</span><span class="s1">&#39;Plasma&#39;</span><span class="p">]</span>
+
+<span class="c1"># Plotly categorical scales</span>
+<span class="n">plotly_set1</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">plotly</span><span class="p">[</span><span class="s1">&#39;Set1&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="palettable-collections">
+<h2>Palettable Collections<a class="headerlink" href="#palettable-collections" title="Link to this heading"></a></h2>
+<p>Access curated palettes from the Palettable library:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">cmaps</span>
+
+<span class="c1"># Browse Palettable collections</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cmaps</span><span class="o">.</span><span class="n">palettable</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="c1"># Output: [&#39;cartocolors&#39;, &#39;colorbrewer&#39;, &#39;scientific&#39;, ...]</span>
+
+<span class="c1"># Access ColorBrewer palettes</span>
+<span class="n">colorbrewer</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">palettable</span><span class="p">[</span><span class="s1">&#39;colorbrewer&#39;</span><span class="p">]</span>
+
+<span class="c1"># Scientific color palettes</span>
+<span class="n">scientific</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">palettable</span><span class="p">[</span><span class="s1">&#39;scientific&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="catalog-organization">
+<h2>Catalog Organization<a class="headerlink" href="#catalog-organization" title="Link to this heading"></a></h2>
+<p>The catalog is hierarchically organized:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>cmaps/
+├── matplotlib/
+│   ├── Perceptually Uniform Sequential/
+│   │   ├── viridis
+│   │   ├── plasma
+│   │   └── ...
+│   ├── Sequential/
+│   └── Diverging/
+├── plotly/
+│   ├── Viridis
+│   ├── Plasma
+│   └── ...
+└── palettable/
+    ├── colorbrewer/
+    ├── scientific/
+    └── cartocolors/
+</pre></div>
+</div>
+</section>
+<section id="search-and-discovery">
+<h2>Search and Discovery<a class="headerlink" href="#search-and-discovery" title="Link to this heading"></a></h2>
+<p>Multiple ways to find the perfect colormap:</p>
+<p><strong>Direct Access</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you know exactly what you want</span>
+<span class="n">viridis</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib</span><span class="p">[</span><span class="s1">&#39;Perceptually Uniform Sequential&#39;</span><span class="p">][</span><span class="s1">&#39;viridis&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Search Function</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_gradient</span>
+
+<span class="c1"># Flexible search with patterns</span>
+<span class="n">viridis</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>  <span class="c1"># Exact match</span>
+<span class="n">blues</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;blue.*&#39;</span><span class="p">)</span>     <span class="c1"># Regex pattern</span>
+<span class="n">any_plasma</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Browsing</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore available options</span>
+<span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Category: </span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">cmaps</span><span class="o">.</span><span class="n">matplotlib</span><span class="p">[</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">3</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="catalog-properties">
+<h2>Catalog Properties<a class="headerlink" href="#catalog-properties" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>Lazy Loading</strong></dt><dd><p>Color maps are loaded only when accessed, keeping memory usage low.</p>
+</dd>
+<dt><strong>Automatic Conversion</strong></dt><dd><p>All colormaps are automatically converted to chromo-map Gradient objects.</p>
+</dd>
+<dt><strong>Consistent Interface</strong></dt><dd><p>Regardless of source (matplotlib, Plotly, Palettable), all gradients have the same interface.</p>
+</dd>
+<dt><strong>Rich Metadata</strong></dt><dd><p>Each gradient includes information about its source, length, and characteristics.</p>
+</dd>
+</dl>
+</section>
+<section id="working-with-gradients">
+<h2>Working with Gradients<a class="headerlink" href="#working-with-gradients" title="Link to this heading"></a></h2>
+<p>Once you have a gradient from the catalog, you can use all chromo-map features:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_gradient</span>
+
+<span class="c1"># Get a gradient</span>
+<span class="n">viridis</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Use chromo-map features</span>
+<span class="n">reversed_viridis</span> <span class="o">=</span> <span class="n">viridis</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="n">shorter_viridis</span> <span class="o">=</span> <span class="n">viridis</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Access individual colors</span>
+<span class="n">start_color</span> <span class="o">=</span> <span class="n">viridis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">end_color</span> <span class="o">=</span> <span class="n">viridis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Create variations</span>
+<span class="n">darker_viridis</span> <span class="o">=</span> <span class="n">viridis</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="catalog-statistics">
+<h2>Catalog Statistics<a class="headerlink" href="#catalog-statistics" title="Link to this heading"></a></h2>
+<p>The catalog contains:</p>
+<ul class="simple">
+<li><p><strong>Matplotlib</strong>: 100+ colormaps across 8 categories</p></li>
+<li><p><strong>Plotly</strong>: 20+ built-in color scales</p></li>
+<li><p><strong>Palettable</strong>: 200+ curated scientific and cartographic palettes</p></li>
+<li><p><strong>Total</strong>: 300+ high-quality color gradients</p></li>
+</ul>
+</section>
+<section id="popular-gradients">
+<h2>Popular Gradients<a class="headerlink" href="#popular-gradients" title="Link to this heading"></a></h2>
+<p>Some of the most commonly used gradients:</p>
+<dl class="simple">
+<dt><strong>For Data Visualization</strong></dt><dd><ul class="simple">
+<li><p>viridis, plasma, inferno (perceptually uniform)</p></li>
+<li><p>coolwarm, RdBu (diverging)</p></li>
+<li><p>Blues, Reds, Greens (sequential)</p></li>
+</ul>
+</dd>
+<dt><strong>For Scientific Applications</strong></dt><dd><ul class="simple">
+<li><p>jet (classic, though not perceptually uniform)</p></li>
+<li><p>thermal, matter, algae (scientific palettes)</p></li>
+</ul>
+</dd>
+<dt><strong>For Web/UI Design</strong></dt><dd><ul class="simple">
+<li><p>Plotly color scales for modern aesthetics</p></li>
+<li><p>ColorBrewer palettes for print-safe colors</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="integration-examples">
+<h2>Integration Examples<a class="headerlink" href="#integration-examples" title="Link to this heading"></a></h2>
+<p>The catalog integrates seamlessly with plotting libraries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_gradient</span>
+
+<span class="c1"># Use with matplotlib</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">get_gradient</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">gradient</span><span class="o">.</span><span class="n">to_mpl</span><span class="p">())</span>
+
+<span class="c1"># Use with plotly</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">gradient</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>This makes chromo-map a powerful bridge between different color libraries and visualization tools.</p>
+</section>
+<section id="visual-gallery">
+<h2>Visual Gallery<a class="headerlink" href="#visual-gallery" title="Link to this heading"></a></h2>
+<p>For a visual overview of all available color palettes, browse our organized galleries:</p>
+<p><a class="reference internal" href="../catalog_visual.html"><span class="doc">Visual Color Catalog Overview</span></a></p>
+<p><strong>Individual Source Galleries:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../catalog_plotly.html"><span class="doc">Plotly Color Scales</span></a> - Modern web-friendly colors</p></li>
+<li><p><a class="reference internal" href="../catalog_matplotlib.html"><span class="doc">Matplotlib Colormaps</span></a> - Scientific colormaps</p></li>
+<li><p><a class="reference internal" href="../catalog_palettable.html"><span class="doc">Palettable Palettes</span></a> - Professional color schemes</p></li>
+</ul>
+<p>These galleries display all color palettes with beautiful visual swatches, organized by source and type for easy browsing and selection.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="analysis.html" class="btn btn-neutral float-left" title="Analysis Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utilities.html" class="btn btn-neutral float-right" title="Utility Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

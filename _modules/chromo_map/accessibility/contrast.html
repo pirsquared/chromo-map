@@ -1,0 +1,690 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chromo_map.accessibility.contrast &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/pirr_logo.svg"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">chromo_map.accessibility.contrast</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for chromo_map.accessibility.contrast</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Accessibility functions for chromo_map package.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map.core.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map.core.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+
+
+<div class="viewcode-block" id="contrast_ratio">
+<a class="viewcode-back" href="../../../api/accessibility.html#chromo_map.contrast_ratio">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">contrast_ratio</span><span class="p">(</span><span class="n">color1</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="n">color2</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the contrast ratio between two colors.</span>
+
+<span class="sd">    Uses the WCAG 2.1 formula for contrast ratio.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color1 : Color</span>
+<span class="sd">        The first color.</span>
+<span class="sd">    color2 : Color</span>
+<span class="sd">        The second color.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The contrast ratio (1:1 to 21:1).</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Calculate contrast ratio between black and white:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import contrast_ratio</span>
+<span class="sd">        ratio = contrast_ratio(&#39;black&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Contrast ratio: {ratio:.1f}:1&quot;)</span>
+
+<span class="sd">    .. testoutput::</span>
+
+<span class="sd">        Contrast ratio: 21.0:1</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">c1</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color1</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color1</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">color1</span>
+    <span class="n">c2</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color2</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color2</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">color2</span>
+    <span class="k">return</span> <span class="n">c1</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="is_accessible">
+<a class="viewcode-back" href="../../../api/accessibility.html#chromo_map.is_accessible">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_accessible</span><span class="p">(</span><span class="n">color1</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="n">color2</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if two colors have sufficient contrast for accessibility.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color1 : Color</span>
+<span class="sd">        The first color (typically text).</span>
+<span class="sd">    color2 : Color</span>
+<span class="sd">        The second color (typically background).</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to check against (&#39;AA&#39; or &#39;AAA&#39;).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if the contrast ratio meets the specified level.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Check if black text on white background is accessible:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import is_accessible</span>
+<span class="sd">        is_accessible(&#39;black&#39;, &#39;white&#39;)</span>
+
+<span class="sd">    .. testoutput::</span>
+
+<span class="sd">        True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">c1</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color1</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color1</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">color1</span>
+    <span class="n">c2</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color2</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color2</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">color2</span>
+    <span class="k">return</span> <span class="n">c1</span><span class="o">.</span><span class="n">is_accessible</span><span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="find_accessible_color">
+<a class="viewcode-back" href="../../../api/accessibility.html#chromo_map.find_accessible_color">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_accessible_color</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+    <span class="n">target_color</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">,</span>
+    <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Color&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find an accessible version of a color by adjusting it.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_color : Color</span>
+<span class="sd">        The color to adjust.</span>
+<span class="sd">    target_color : Color</span>
+<span class="sd">        The color to ensure accessibility against.</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">    adjust_lightness : bool, default True</span>
+<span class="sd">        Whether to adjust lightness (True) or brightness/value (False).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Color</span>
+<span class="sd">        An accessible version of the base color.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Find an accessible version of gray against white:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import find_accessible_color</span>
+<span class="sd">        accessible = find_accessible_color(&#39;#888888&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Accessible color: {accessible.hex}&quot;)</span>
+
+<span class="sd">    .. testoutput::</span>
+
+<span class="sd">        Accessible color: #595959</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">base_color</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Color</span><span class="p">(</span><span class="n">target_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">target_color</span>
+    <span class="p">)</span>
+
+    <span class="n">required_ratio</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;AAA&quot;</span> <span class="k">else</span> <span class="mf">4.5</span>
+    <span class="n">current_ratio</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">current_ratio</span> <span class="o">&gt;=</span> <span class="n">required_ratio</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">base</span>
+
+    <span class="c1"># Determine if we need to make the color lighter or darker</span>
+    <span class="n">base_luminance</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">luminance</span>
+    <span class="n">target_luminance</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">luminance</span>
+
+    <span class="k">if</span> <span class="n">base_luminance</span> <span class="o">&gt;</span> <span class="n">target_luminance</span><span class="p">:</span>
+        <span class="c1"># Make base color lighter</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.1</span>
+        <span class="n">max_factor</span> <span class="o">=</span> <span class="mf">2.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Make base color darker</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">0.9</span>
+        <span class="n">max_factor</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+    <span class="n">current_color</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">max_attempts</span> <span class="o">=</span> <span class="mi">50</span>
+
+    <span class="k">while</span> <span class="p">(</span>
+        <span class="n">current_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">required_ratio</span>
+        <span class="ow">and</span> <span class="n">attempts</span> <span class="o">&lt;</span> <span class="n">max_attempts</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">adjust_lightness</span><span class="p">:</span>
+            <span class="n">current_color</span> <span class="o">=</span> <span class="n">current_color</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">current_color</span> <span class="o">=</span> <span class="n">current_color</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+
+        <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Prevent infinite loops</span>
+        <span class="k">if</span> <span class="n">factor</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">factor</span> <span class="o">&gt;=</span> <span class="n">max_factor</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">elif</span> <span class="n">factor</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">factor</span> <span class="o">&lt;=</span> <span class="n">max_factor</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">current_color</span></div>
+
+
+
+<div class="viewcode-block" id="find_maximal_contrast_iterative">
+<a class="viewcode-back" href="../../../api/accessibility.html#chromo_map.find_maximal_contrast_iterative">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_maximal_contrast_iterative</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+    <span class="n">target_color</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">,</span>
+    <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">step_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">max_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Color&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find maximal contrast using simple iterative approach.</span>
+
+<span class="sd">    This approach incrementally adjusts the color until it meets the contrast requirement.</span>
+<span class="sd">    Simple but may not find the optimal solution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_color : Color</span>
+<span class="sd">        The color to adjust.</span>
+<span class="sd">    target_color : Color</span>
+<span class="sd">        The color to ensure accessibility against.</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">    adjust_lightness : bool, default True</span>
+<span class="sd">        Whether to adjust lightness (True) or brightness/value (False).</span>
+<span class="sd">    step_size : float, default 0.1</span>
+<span class="sd">        The step size for adjustments.</span>
+<span class="sd">    max_attempts : int, default 50</span>
+<span class="sd">        Maximum number of adjustment attempts.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Color</span>
+<span class="sd">        The adjusted color with maximal contrast found.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Find maximal contrast iteratively:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import find_maximal_contrast_iterative</span>
+<span class="sd">        result = find_maximal_contrast_iterative(&#39;#888888&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Iterative result: {result.hex}&quot;)</span>
+
+<span class="sd">    .. testoutput::</span>
+
+<span class="sd">        Iterative result: #595959</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">base_color</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Color</span><span class="p">(</span><span class="n">target_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">target_color</span>
+    <span class="p">)</span>
+
+    <span class="n">required_ratio</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;AAA&quot;</span> <span class="k">else</span> <span class="mf">4.5</span>
+
+    <span class="c1"># Determine direction based on luminance</span>
+    <span class="n">base_luminance</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">luminance</span>
+    <span class="n">target_luminance</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">luminance</span>
+
+    <span class="n">current_color</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">best_color</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+    <span class="c1"># Try both directions to find maximum contrast</span>
+    <span class="k">for</span> <span class="n">direction</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">temp_color</span> <span class="o">=</span> <span class="n">base</span>
+        <span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">while</span> <span class="n">attempts</span> <span class="o">&lt;</span> <span class="n">max_attempts</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">adjust_lightness</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">next_color</span> <span class="o">=</span> <span class="n">temp_color</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">step_size</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">next_color</span> <span class="o">=</span> <span class="n">temp_color</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">step_size</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">next_color</span> <span class="o">=</span> <span class="n">temp_color</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">step_size</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">next_color</span> <span class="o">=</span> <span class="n">temp_color</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">step_size</span><span class="p">)</span>
+
+                <span class="n">next_contrast</span> <span class="o">=</span> <span class="n">next_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">next_contrast</span> <span class="o">&gt;</span> <span class="n">best_contrast</span><span class="p">:</span>
+                    <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">next_contrast</span>
+                    <span class="n">best_color</span> <span class="o">=</span> <span class="n">next_color</span>
+                    <span class="n">temp_color</span> <span class="o">=</span> <span class="n">next_color</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">break</span>  <span class="c1"># No improvement, stop in this direction</span>
+
+                <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                <span class="k">break</span>  <span class="c1"># Stop if adjustment fails</span>
+
+    <span class="k">return</span> <span class="n">best_color</span></div>
+
+
+
+<div class="viewcode-block" id="find_maximal_contrast_binary_search">
+<a class="viewcode-back" href="../../../api/accessibility.html#chromo_map.find_maximal_contrast_binary_search">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_maximal_contrast_binary_search</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+    <span class="n">target_color</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">,</span>
+    <span class="n">adjust_lightness</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Color&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find maximal contrast using binary search approach.</span>
+
+<span class="sd">    This approach uses binary search to efficiently find the optimal adjustment factor</span>
+<span class="sd">    that maximizes contrast while meeting accessibility requirements.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_color : Color</span>
+<span class="sd">        The color to adjust.</span>
+<span class="sd">    target_color : Color</span>
+<span class="sd">        The color to ensure accessibility against.</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">    adjust_lightness : bool, default True</span>
+<span class="sd">        Whether to adjust lightness (True) or brightness/value (False).</span>
+<span class="sd">    precision : float, default 0.001</span>
+<span class="sd">        The precision for binary search convergence.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Color</span>
+<span class="sd">        The adjusted color with maximal contrast found.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Find maximal contrast using binary search:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import find_maximal_contrast_binary_search</span>
+<span class="sd">        result = find_maximal_contrast_binary_search(&#39;#888888&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Binary search result: {result.hex}&quot;)</span>
+
+<span class="sd">    .. testoutput::</span>
+
+<span class="sd">        Binary search result: #595959</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">base_color</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Color</span><span class="p">(</span><span class="n">target_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">target_color</span>
+    <span class="p">)</span>
+
+    <span class="n">required_ratio</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;AAA&quot;</span> <span class="k">else</span> <span class="mf">4.5</span>
+
+    <span class="c1"># Determine search direction</span>
+    <span class="n">base_luminance</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">luminance</span>
+    <span class="n">target_luminance</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">luminance</span>
+
+    <span class="n">best_color</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+    <span class="c1"># Search in both directions to find maximum</span>
+    <span class="k">for</span> <span class="n">search_direction</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;lighter&quot;</span><span class="p">,</span> <span class="s2">&quot;darker&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">search_direction</span> <span class="o">==</span> <span class="s2">&quot;lighter&quot;</span><span class="p">:</span>
+            <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span>  <span class="c1"># Factor range for making lighter</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span>  <span class="c1"># Factor range for making darker</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">precision</span><span class="p">:</span>
+            <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">adjust_lightness</span><span class="p">:</span>
+                    <span class="n">test_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">test_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
+
+                <span class="n">test_contrast</span> <span class="o">=</span> <span class="n">test_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">test_contrast</span> <span class="o">&gt;</span> <span class="n">best_contrast</span><span class="p">:</span>
+                    <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">test_contrast</span>
+                    <span class="n">best_color</span> <span class="o">=</span> <span class="n">test_color</span>
+
+                <span class="c1"># Binary search logic - try to find the extreme that gives max contrast</span>
+                <span class="k">if</span> <span class="n">search_direction</span> <span class="o">==</span> <span class="s2">&quot;lighter&quot;</span><span class="p">:</span>
+                    <span class="c1"># For lighter colors, higher factors usually give more contrast</span>
+                    <span class="k">if</span> <span class="n">test_contrast</span> <span class="o">&gt;=</span> <span class="n">required_ratio</span><span class="p">:</span>
+                        <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span>  <span class="c1"># Can go lighter</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span>  <span class="c1"># Too light, go back</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># For darker colors, lower factors usually give more contrast</span>
+                    <span class="k">if</span> <span class="n">test_contrast</span> <span class="o">&gt;=</span> <span class="n">required_ratio</span><span class="p">:</span>
+                        <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span>  <span class="c1"># Can go darker</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span>  <span class="c1"># Too dark, go back</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                <span class="k">break</span>  <span class="c1"># Exit if color adjustment fails</span>
+
+    <span class="k">return</span> <span class="n">best_color</span></div>
+
+
+
+<div class="viewcode-block" id="find_maximal_contrast_optimization">
+<a class="viewcode-back" href="../../../api/accessibility.html#chromo_map.find_maximal_contrast_optimization">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_maximal_contrast_optimization</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+    <span class="n">target_color</span><span class="p">:</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;golden_section&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Color&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find maximal contrast using mathematical optimization.</span>
+
+<span class="sd">    This approach uses mathematical optimization techniques to find the adjustment</span>
+<span class="sd">    that maximizes contrast ratio while meeting accessibility requirements.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    base_color : Color</span>
+<span class="sd">        The color to adjust.</span>
+<span class="sd">    target_color : Color</span>
+<span class="sd">        The color to ensure accessibility against.</span>
+<span class="sd">    level : str, default &#39;AA&#39;</span>
+<span class="sd">        The WCAG level to achieve (&#39;AA&#39; or &#39;AAA&#39;).</span>
+<span class="sd">    method : str, default &#39;golden_section&#39;</span>
+<span class="sd">        The optimization method to use (&#39;golden_section&#39; or &#39;gradient_descent&#39;).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Color</span>
+<span class="sd">        The adjusted color with maximal contrast found.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Find maximal contrast using optimization:</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        from chromo_map import find_maximal_contrast_optimization</span>
+<span class="sd">        result = find_maximal_contrast_optimization(&#39;#888888&#39;, &#39;white&#39;)</span>
+<span class="sd">        print(f&quot;Optimization result: {result.hex}&quot;)</span>
+
+<span class="sd">    .. testoutput::</span>
+
+<span class="sd">        Optimization result: #595959</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">base_color</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Color</span><span class="p">(</span><span class="n">target_color</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span> <span class="k">else</span> <span class="n">target_color</span>
+    <span class="p">)</span>
+
+    <span class="n">required_ratio</span> <span class="o">=</span> <span class="mf">7.0</span> <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;AAA&quot;</span> <span class="k">else</span> <span class="mf">4.5</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">objective_function</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Objective function to maximize contrast ratio.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Try both lightness and brightness adjustments</span>
+            <span class="n">lightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+            <span class="n">brightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+
+            <span class="n">lightness_contrast</span> <span class="o">=</span> <span class="n">lightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+            <span class="n">brightness_contrast</span> <span class="o">=</span> <span class="n">brightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+            <span class="c1"># Return the maximum contrast achievable</span>
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">lightness_contrast</span><span class="p">,</span> <span class="n">brightness_contrast</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mf">0.0</span>  <span class="c1"># Return minimal contrast if adjustment fails</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;golden_section&quot;</span><span class="p">:</span>
+        <span class="c1"># Golden section search for maximum</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">5</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Golden ratio</span>
+        <span class="n">resphi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">phi</span>
+
+        <span class="c1"># Search bounds</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">3.0</span>
+        <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+        <span class="c1"># Initial points</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">resphi</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">resphi</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+        <span class="n">f2</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+
+        <span class="n">best_factor</span> <span class="o">=</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">f1</span> <span class="o">&gt;</span> <span class="n">f2</span> <span class="k">else</span> <span class="n">x2</span>
+        <span class="n">best_contrast</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">f1</span> <span class="o">&gt;</span> <span class="n">f2</span><span class="p">:</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">x2</span>
+                <span class="n">x2</span> <span class="o">=</span> <span class="n">x1</span>
+                <span class="n">f2</span> <span class="o">=</span> <span class="n">f1</span>
+                <span class="n">x1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">resphi</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+                <span class="n">f1</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">x1</span>
+                <span class="n">x1</span> <span class="o">=</span> <span class="n">x2</span>
+                <span class="n">f1</span> <span class="o">=</span> <span class="n">f2</span>
+                <span class="n">x2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">resphi</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+                <span class="n">f2</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+
+            <span class="n">current_best</span> <span class="o">=</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">f1</span> <span class="o">&gt;</span> <span class="n">f2</span> <span class="k">else</span> <span class="n">x2</span>
+            <span class="n">current_contrast</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">current_contrast</span> <span class="o">&gt;</span> <span class="n">best_contrast</span><span class="p">:</span>
+                <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">current_contrast</span>
+                <span class="n">best_factor</span> <span class="o">=</span> <span class="n">current_best</span>
+
+        <span class="c1"># Determine which adjustment method gives better contrast</span>
+        <span class="n">lightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">best_factor</span><span class="p">)</span>
+        <span class="n">brightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">best_factor</span><span class="p">)</span>
+
+        <span class="n">lightness_contrast</span> <span class="o">=</span> <span class="n">lightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">brightness_contrast</span> <span class="o">=</span> <span class="n">brightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">lightness_color</span>
+            <span class="k">if</span> <span class="n">lightness_contrast</span> <span class="o">&gt;</span> <span class="n">brightness_contrast</span>
+            <span class="k">else</span> <span class="n">brightness_color</span>
+        <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;gradient_descent&quot;</span><span class="p">:</span>
+        <span class="c1"># Simple gradient descent</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+
+        <span class="n">best_factor</span> <span class="o">=</span> <span class="n">factor</span>
+        <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+            <span class="c1"># Numerical gradient estimation</span>
+            <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
+            <span class="n">gradient</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">objective_function</span><span class="p">(</span><span class="n">factor</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)</span>
+                <span class="o">-</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">factor</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">)</span>
+            <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">epsilon</span><span class="p">)</span>
+
+            <span class="c1"># Update factor in direction of gradient (maximize)</span>
+            <span class="n">new_factor</span> <span class="o">=</span> <span class="n">factor</span> <span class="o">+</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">gradient</span>
+            <span class="n">new_contrast</span> <span class="o">=</span> <span class="n">objective_function</span><span class="p">(</span><span class="n">new_factor</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">new_contrast</span> <span class="o">&gt;</span> <span class="n">best_contrast</span><span class="p">:</span>
+                <span class="n">best_contrast</span> <span class="o">=</span> <span class="n">new_contrast</span>
+                <span class="n">best_factor</span> <span class="o">=</span> <span class="n">new_factor</span>
+                <span class="n">factor</span> <span class="o">=</span> <span class="n">new_factor</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">learning_rate</span> <span class="o">*=</span> <span class="mf">0.9</span>  <span class="c1"># Reduce learning rate</span>
+
+            <span class="c1"># Early stopping if improvement is minimal</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">new_contrast</span> <span class="o">-</span> <span class="n">best_contrast</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="c1"># Determine which adjustment method gives better contrast</span>
+        <span class="n">lightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="n">best_factor</span><span class="p">)</span>
+        <span class="n">brightness_color</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">best_factor</span><span class="p">)</span>
+
+        <span class="n">lightness_contrast</span> <span class="o">=</span> <span class="n">lightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">brightness_contrast</span> <span class="o">=</span> <span class="n">brightness_color</span><span class="o">.</span><span class="n">contrast_ratio</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">lightness_color</span>
+            <span class="k">if</span> <span class="n">lightness_contrast</span> <span class="o">&gt;</span> <span class="n">brightness_contrast</span>
+            <span class="k">else</span> <span class="n">brightness_color</span>
+        <span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown optimization method: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

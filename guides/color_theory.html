@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Theory Guide &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8fdb1ddc" />
+
+  
+    <link rel="shortcut icon" href="../_static/pirr_logo.svg"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Integration" href="../examples/jupyter_integration.html" />
+    <link rel="prev" title="Accessibility Guide" href="accessibility.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            chromo_map
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utilities.html">Utility Functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Color Theory Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-color-theory">Understanding Color Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-color-wheel">The Color Wheel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#color-harmonies">Color Harmonies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monochromatic-schemes">Monochromatic Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-color-relationships">Advanced Color Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#practical-applications">Practical Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#color-psychology">Color Psychology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analyzing-existing-palettes">Analyzing Existing Palettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#color-blindness-considerations">Color Blindness Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-techniques">Advanced Techniques</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">chromo_map</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Color Theory Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guides/color_theory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="color-theory-guide">
+<h1>Color Theory Guide<a class="headerlink" href="#color-theory-guide" title="Link to this heading"></a></h1>
+<p>This guide covers the color theory principles implemented in chromo-map and how to use them for creating harmonious color schemes.</p>
+<section id="understanding-color-theory">
+<h2>Understanding Color Theory<a class="headerlink" href="#understanding-color-theory" title="Link to this heading"></a></h2>
+<p>Color theory is the science and art of using color. It explains how humans perceive color, how colors mix, match, or clash, and how colors convey meaning.</p>
+<dl class="simple">
+<dt><strong>Key Concepts</strong></dt><dd><ul class="simple">
+<li><p><strong>Hue</strong>: The pure color (red, blue, yellow, etc.)</p></li>
+<li><p><strong>Saturation</strong>: The intensity or purity of the color</p></li>
+<li><p><strong>Value/Brightness</strong>: How light or dark the color is</p></li>
+<li><p><strong>Lightness</strong>: Perceptual brightness in HSL space</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="the-color-wheel">
+<h2>The Color Wheel<a class="headerlink" href="#the-color-wheel" title="Link to this heading"></a></h2>
+<p>The color wheel is the foundation of color theory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+
+<span class="c1"># Primary colors (120° apart)</span>
+<span class="n">red</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">)</span>      <span class="c1"># 0°</span>
+<span class="n">green</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#00ff00&#39;</span><span class="p">)</span>    <span class="c1"># 120°</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#0000ff&#39;</span><span class="p">)</span>     <span class="c1"># 240°</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Red hue: </span><span class="si">{</span><span class="n">red</span><span class="o">.</span><span class="n">hue</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Green hue: </span><span class="si">{</span><span class="n">green</span><span class="o">.</span><span class="n">hue</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Blue hue: </span><span class="si">{</span><span class="n">blue</span><span class="o">.</span><span class="n">hue</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="color-harmonies">
+<h2>Color Harmonies<a class="headerlink" href="#color-harmonies" title="Link to this heading"></a></h2>
+<p>chromo-map provides built-in color harmony generation:</p>
+<p><strong>Complementary Colors</strong></p>
+<p>Colors opposite on the color wheel (180° apart):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">generate_color_palette</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff6b35&#39;</span><span class="p">)</span>  <span class="c1"># Orange</span>
+
+<span class="c1"># Get complementary color</span>
+<span class="n">complement</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">complementary</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Base: </span><span class="si">{</span><span class="n">base</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Complement: </span><span class="si">{</span><span class="n">complement</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Generate complementary palette</span>
+<span class="n">comp_palette</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="o">=</span><span class="n">base</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;complementary&#39;</span><span class="p">,</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Analogous Colors</strong></p>
+<p>Colors adjacent on the color wheel (within 30° typically):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analogous colors create harmonious, peaceful schemes</span>
+<span class="n">analogous_palette</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="o">=</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span>  <span class="c1"># Blue</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;analogous&#39;</span><span class="p">,</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
+
+<span class="c1"># Manual analogous colors</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span>
+<span class="n">analogous_manual</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">),</span>  <span class="c1"># Blue-green</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">),</span>  <span class="c1"># Slightly blue-green</span>
+    <span class="n">base</span><span class="p">,</span>                  <span class="c1"># Base blue</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>   <span class="c1"># Slightly blue-purple</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>    <span class="c1"># Blue-purple</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Triadic Colors</strong></p>
+<p>Three colors evenly spaced around the color wheel (120° apart):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Triadic schemes are vibrant but balanced</span>
+<span class="n">triadic_palette</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="o">=</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span>  <span class="c1"># Red</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;triadic&#39;</span><span class="p">,</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+
+<span class="c1"># Manual triadic</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">)</span>  <span class="c1"># Red (~0°)</span>
+<span class="n">triadic_manual</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">base</span><span class="p">,</span>                    <span class="c1"># Red</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">120</span><span class="p">),</span>    <span class="c1"># Green</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">240</span><span class="p">)</span>     <span class="c1"># Blue</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Split-Complementary</strong></p>
+<p>Base color plus two colors adjacent to its complement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># More nuanced than pure complementary</span>
+<span class="n">split_comp_palette</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="o">=</span><span class="s1">&#39;#f39c12&#39;</span><span class="p">,</span>  <span class="c1"># Orange</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;split_complementary&#39;</span><span class="p">,</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">4</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Tetradic (Rectangle)</strong></p>
+<p>Four colors forming a rectangle on the color wheel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rich, diverse palettes</span>
+<span class="n">tetradic_palette</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="o">=</span><span class="s1">&#39;#9b59b6&#39;</span><span class="p">,</span>  <span class="c1"># Purple</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;tetradic&#39;</span><span class="p">,</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">4</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Square</strong></p>
+<p>Four colors evenly spaced (90° apart):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bold, dynamic palettes</span>
+<span class="n">square_palette</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="o">=</span><span class="s1">&#39;#2ecc71&#39;</span><span class="p">,</span>  <span class="c1"># Green</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;square&#39;</span><span class="p">,</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">4</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="monochromatic-schemes">
+<h2>Monochromatic Schemes<a class="headerlink" href="#monochromatic-schemes" title="Link to this heading"></a></h2>
+<p>Variations of a single hue using different saturation and brightness levels:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Gradient</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span>  <span class="c1"># Blue</span>
+
+<span class="c1"># Create monochromatic variations</span>
+<span class="n">monochromatic</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span>  <span class="c1"># Very light, desaturated</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mf">0.15</span><span class="p">),</span> <span class="c1"># Light, slightly desaturated</span>
+    <span class="n">base</span><span class="p">,</span>                                                <span class="c1"># Base color</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">),</span> <span class="c1"># Darker, more saturated</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">)</span>   <span class="c1"># Very dark, highly saturated</span>
+<span class="p">]</span>
+
+<span class="c1"># Or use the built-in function</span>
+<span class="n">mono_palette</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span>
+    <span class="n">base_color</span><span class="o">=</span><span class="n">base</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;monochromatic&#39;</span><span class="p">,</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">saturation_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">brightness_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-color-relationships">
+<h2>Advanced Color Relationships<a class="headerlink" href="#advanced-color-relationships" title="Link to this heading"></a></h2>
+<p><strong>Color Temperature</strong></p>
+<p>Warm vs. cool colors affect emotional response:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Warm colors (reds, oranges, yellows)</span>
+<span class="n">warm_colors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff4757&#39;</span><span class="p">),</span>  <span class="c1"># Red</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff6348&#39;</span><span class="p">),</span>  <span class="c1"># Orange-red</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff7675&#39;</span><span class="p">),</span>  <span class="c1"># Pink-red</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#fdcb6e&#39;</span><span class="p">),</span>  <span class="c1"># Yellow-orange</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#e17055&#39;</span><span class="p">)</span>   <span class="c1"># Brown-orange</span>
+<span class="p">]</span>
+
+<span class="c1"># Cool colors (blues, greens, purples)</span>
+<span class="n">cool_colors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#0984e3&#39;</span><span class="p">),</span>  <span class="c1"># Blue</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#74b9ff&#39;</span><span class="p">),</span>  <span class="c1"># Light blue</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#00b894&#39;</span><span class="p">),</span>  <span class="c1"># Green</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#00cec9&#39;</span><span class="p">),</span>  <span class="c1"># Teal</span>
+    <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#6c5ce7&#39;</span><span class="p">)</span>   <span class="c1"># Purple</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Color Intensity and Mood</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">)</span>  <span class="c1"># Vibrant red</span>
+
+<span class="c1"># Create mood variations</span>
+<span class="n">energetic</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># More vibrant</span>
+<span class="n">calming</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>    <span class="c1"># Muted, lighter</span>
+<span class="n">dramatic</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">)</span>  <span class="c1"># Dark, intense</span>
+
+<span class="n">moods</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;energetic&#39;</span><span class="p">:</span> <span class="n">energetic</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;calming&#39;</span><span class="p">:</span> <span class="n">calming</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+    <span class="s1">&#39;dramatic&#39;</span><span class="p">:</span> <span class="n">dramatic</span><span class="o">.</span><span class="n">hex</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="practical-applications">
+<h2>Practical Applications<a class="headerlink" href="#practical-applications" title="Link to this heading"></a></h2>
+<p><strong>Brand Color Systems</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_brand_system</span><span class="p">(</span><span class="n">primary_color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a complete brand color system.&quot;&quot;&quot;</span>
+    <span class="n">primary</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">primary_color</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="c1"># Core brand colors</span>
+        <span class="s1">&#39;primary&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="s1">&#39;secondary&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">complementary</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="s1">&#39;accent&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+
+        <span class="c1"># Monochromatic variations</span>
+        <span class="s1">&#39;primary_light&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="s1">&#39;primary_dark&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+
+        <span class="c1"># Neutral colors</span>
+        <span class="s1">&#39;neutral_light&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#f8f9fa&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="s1">&#39;neutral_medium&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#6c757d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="s1">&#39;neutral_dark&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#343a40&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+
+        <span class="c1"># Semantic colors (maintaining brand harmony)</span>
+        <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="s1">&#39;warning&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">primary</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span>
+    <span class="p">}</span>
+
+<span class="c1"># Example brand system</span>
+<span class="n">brand_colors</span> <span class="o">=</span> <span class="n">create_brand_system</span><span class="p">(</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">role</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">brand_colors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Data Visualization Palettes</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_data_palette</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="n">n_categories</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create palette for categorical data visualization.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n_categories</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="c1"># Use triadic for small numbers</span>
+        <span class="k">return</span> <span class="n">generate_color_palette</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="s1">&#39;triadic&#39;</span><span class="p">,</span> <span class="n">n_categories</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n_categories</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="c1"># Use square for medium numbers</span>
+        <span class="k">return</span> <span class="n">generate_color_palette</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span> <span class="s1">&#39;square&#39;</span><span class="p">,</span> <span class="n">n_categories</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Use evenly spaced hues for larger numbers</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">base_color</span><span class="p">)</span>
+        <span class="n">hue_step</span> <span class="o">=</span> <span class="mi">360</span> <span class="o">/</span> <span class="n">n_categories</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">hue_step</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_categories</span><span class="p">)]</span>
+
+<span class="c1"># Create palette for 6 categories</span>
+<span class="n">data_colors</span> <span class="o">=</span> <span class="n">create_data_palette</span><span class="p">(</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">data_colors</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>Seasonal Color Schemes</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spring palette - fresh, light, analogous greens and yellows</span>
+<span class="n">spring</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span><span class="s1">&#39;#2ecc71&#39;</span><span class="p">,</span> <span class="s1">&#39;analogous&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">spring_adjusted</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">adjust_lightness</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">spring</span><span class="p">]</span>
+
+<span class="c1"># Summer palette - warm, vibrant</span>
+<span class="n">summer_base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#f39c12&#39;</span><span class="p">)</span>  <span class="c1"># Orange</span>
+<span class="n">summer</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">summer_base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">),</span>  <span class="c1"># Yellow-orange</span>
+    <span class="n">summer_base</span><span class="p">,</span>                  <span class="c1"># Orange</span>
+    <span class="n">summer_base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>   <span class="c1"># Red-orange</span>
+    <span class="n">summer_base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">60</span><span class="p">),</span>   <span class="c1"># Red</span>
+    <span class="n">summer_base</span><span class="o">.</span><span class="n">adjust_hue</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>    <span class="c1"># Pink-red</span>
+<span class="p">]</span>
+
+<span class="c1"># Autumn palette - warm, muted</span>
+<span class="n">autumn_base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#d35400&#39;</span><span class="p">)</span>  <span class="c1"># Dark orange</span>
+<span class="n">autumn</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">)</span> <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span>
+         <span class="n">generate_color_palette</span><span class="p">(</span><span class="n">autumn_base</span><span class="p">,</span> <span class="s1">&#39;analogous&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+<span class="c1"># Winter palette - cool, high contrast</span>
+<span class="n">winter_base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#2980b9&#39;</span><span class="p">)</span>  <span class="c1"># Dark blue</span>
+<span class="n">winter</span> <span class="o">=</span> <span class="n">generate_color_palette</span><span class="p">(</span><span class="n">winter_base</span><span class="p">,</span> <span class="s1">&#39;complementary&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="color-psychology">
+<h2>Color Psychology<a class="headerlink" href="#color-psychology" title="Link to this heading"></a></h2>
+<p>Different colors evoke different emotional responses:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Psychological color associations</span>
+<span class="n">psychology_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;trust&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>        <span class="c1"># Blue - trust, stability</span>
+    <span class="s1">&#39;energy&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>       <span class="c1"># Red - energy, passion</span>
+    <span class="s1">&#39;growth&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#2ecc71&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>       <span class="c1"># Green - growth, nature</span>
+    <span class="s1">&#39;creativity&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#9b59b6&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>   <span class="c1"># Purple - creativity, luxury</span>
+    <span class="s1">&#39;optimism&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#f1c40f&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>     <span class="c1"># Yellow - optimism, happiness</span>
+    <span class="s1">&#39;sophistication&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#34495e&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span> <span class="c1"># Dark gray - sophistication</span>
+    <span class="s1">&#39;purity&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ecf0f1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>       <span class="c1"># Light gray - purity, cleanliness</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="analyzing-existing-palettes">
+<h2>Analyzing Existing Palettes<a class="headerlink" href="#analyzing-existing-palettes" title="Link to this heading"></a></h2>
+<p>Use chromo-map to analyze the harmony of existing color schemes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">analyze_color_harmony</span>
+
+<span class="c1"># Analyze a existing palette</span>
+<span class="n">existing_palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ecc71&#39;</span><span class="p">,</span> <span class="s1">&#39;#f39c12&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">Color</span><span class="p">(</span><span class="n">hex_color</span><span class="p">)</span> <span class="k">for</span> <span class="n">hex_color</span> <span class="ow">in</span> <span class="n">existing_palette</span><span class="p">]</span>
+
+<span class="n">harmony_analysis</span> <span class="o">=</span> <span class="n">analyze_color_harmony</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Harmony type: </span><span class="si">{</span><span class="n">harmony_analysis</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall score: </span><span class="si">{</span><span class="n">harmony_analysis</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="color-blindness-considerations">
+<h2>Color Blindness Considerations<a class="headerlink" href="#color-blindness-considerations" title="Link to this heading"></a></h2>
+<p>When applying color theory, consider color blindness:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Colors that work well for color blind users</span>
+<span class="n">colorblind_safe</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#d73027&#39;</span><span class="p">),</span>      <span class="c1"># Safe red</span>
+    <span class="s1">&#39;orange&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#fc8d62&#39;</span><span class="p">),</span>   <span class="c1"># Orange (distinct from red)</span>
+    <span class="s1">&#39;yellow&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#fee08b&#39;</span><span class="p">),</span>   <span class="c1"># Yellow</span>
+    <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#1a9850&#39;</span><span class="p">),</span>    <span class="c1"># Safe green</span>
+    <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#313695&#39;</span><span class="p">),</span>     <span class="c1"># Blue</span>
+    <span class="s1">&#39;purple&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#5e3c99&#39;</span><span class="p">),</span>   <span class="c1"># Purple</span>
+    <span class="s1">&#39;brown&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#8c510a&#39;</span><span class="p">),</span>    <span class="c1"># Brown</span>
+    <span class="s1">&#39;pink&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#fbb4b9&#39;</span><span class="p">)</span>      <span class="c1"># Pink</span>
+<span class="p">}</span>
+
+<span class="c1"># Test color separation</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colorblind_safe</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2"> (H: </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">hue</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°, S: </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">saturation</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Start with Purpose</strong>: Choose colors based on the emotional response you want</p></li>
+<li><p><strong>Use the 60-30-10 Rule</strong>: 60% dominant color, 30% secondary, 10% accent</p></li>
+<li><p><strong>Test Harmony</strong>: Use chromo-map’s harmony functions to validate your choices</p></li>
+<li><p><strong>Consider Context</strong>: Colors look different depending on surrounding colors</p></li>
+<li><p><strong>Maintain Accessibility</strong>: Ensure adequate contrast ratios</p></li>
+<li><p><strong>Be Consistent</strong>: Establish a color system and stick to it</p></li>
+<li><p><strong>Test with Users</strong>: Real feedback is invaluable</p></li>
+</ol>
+</section>
+<section id="advanced-techniques">
+<h2>Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Link to this heading"></a></h2>
+<p><strong>Color Interpolation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create smooth transitions between colors</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">)</span>  <span class="c1"># Red</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span>    <span class="c1"># Blue</span>
+
+<span class="c1"># Create gradient with specific number of steps</span>
+<span class="n">transition</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">([</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Extract colors at specific points</span>
+<span class="n">quarter_point</span> <span class="o">=</span> <span class="n">transition</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1"># 25% of the way</span>
+<span class="n">midpoint</span> <span class="o">=</span> <span class="n">transition</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>         <span class="c1"># 50% of the way</span>
+<span class="n">three_quarter</span> <span class="o">=</span> <span class="n">transition</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>    <span class="c1"># 75% of the way</span>
+</pre></div>
+</div>
+<p><strong>Dynamic Color Adjustment</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">adjust_for_accessibility</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">maintain_hue</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust color for accessibility while maintaining character.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_accessible_color</span><span class="p">,</span> <span class="n">is_accessible</span>
+
+    <span class="k">if</span> <span class="n">is_accessible</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">maintain_hue</span><span class="p">:</span>
+        <span class="c1"># Try adjusting saturation and brightness first</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">sat_adj</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">bright_adj</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]:</span>
+                <span class="n">adjusted</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">adjust_saturation</span><span class="p">(</span><span class="n">sat_adj</span><span class="p">)</span><span class="o">.</span><span class="n">adjust_brightness</span><span class="p">(</span><span class="n">bright_adj</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">is_accessible</span><span class="p">(</span><span class="n">adjusted</span><span class="p">,</span> <span class="n">background</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">adjusted</span>
+
+    <span class="c1"># Fall back to automatic accessibility adjustment</span>
+    <span class="k">return</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This guide provides the foundation for understanding and applying color theory with chromo-map. The library’s functions implement these principles programmatically, making it easy to create beautiful, harmonious, and accessible color schemes.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="accessibility.html" class="btn btn-neutral float-left" title="Accessibility Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples/jupyter_integration.html" class="btn btn-neutral float-right" title="Jupyter Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sean Smith.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,33 +1,35 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Str2D - String Squared &mdash; chromo_map 0.1.15 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+  <title>chromo-map - Color Management Library &mdash; chromo_map 0.1.15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=8fdb1ddc" />
 
   
     <link rel="shortcut icon" href="_static/pirr_logo.svg"/>
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=e2f3408e"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-        <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e2f3408e"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="color module" href="_color/color.html" /> 
+    <link rel="next" title="Core Classes" href="api/core.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,12 +51,36 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_color/color.html">color module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/core.html">Core Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/accessibility.html">Accessibility Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/analysis.html">Analysis Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/catalog.html">Catalog Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/utilities.html">Utility Functions</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guides/basic_usage.html">Basic Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/accessibility.html">Accessibility Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/color_theory.html">Color Theory Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/gallery.html">Example Gallery</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
 </ul>
 
         </div>
@@ -71,7 +97,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Str2D - String Squared</li>
+      <li class="breadcrumb-item active">chromo-map - Color Management Library</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,28 +107,170 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="str2d-string-squared">
-<h1>Str2D - String Squared<a class="headerlink" href="#str2d-string-squared" title="Link to this heading"></a></h1>
-<section id="install">
-<h2>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h2>
-<p><code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">chromo-map</span></code></p>
+  <section id="chromo-map-color-management-library">
+<h1>chromo-map - Color Management Library<a class="headerlink" href="#chromo-map-color-management-library" title="Link to this heading"></a></h1>
+<p>A powerful Python package for color manipulation, accessibility compliance, and color palette generation. The <cite>Gradient</cite> class is fully compatible with matplotlib colormaps, giving you access to hundreds of professional color schemes from Plotly, Palettable, and matplotlib through a single, unified interface.</p>
+<p><strong>Key Advantage</strong>: Use any chromo-map gradient as a drop-in replacement for matplotlib colormaps while gaining access to enhanced color manipulation features.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>chromo-map
+</pre></div>
+</div>
+</section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chromo_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Gradient</span><span class="p">,</span> <span class="n">find_accessible_color</span><span class="p">,</span> <span class="n">cmaps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Create colors</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#ff6b6b&#39;</span><span class="p">)</span>
+
+<span class="c1"># Find accessible version</span>
+<span class="n">accessible</span> <span class="o">=</span> <span class="n">find_accessible_color</span><span class="p">(</span><span class="s1">&#39;#ff6b6b&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accessible color: </span><span class="si">{</span><span class="n">accessible</span><span class="o">.</span><span class="n">hex</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Work with gradients (matplotlib compatible!)</span>
+<span class="n">grad</span> <span class="o">=</span> <span class="n">Gradient</span><span class="p">([</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Use Plotly colors in matplotlib plots</span>
+<span class="n">plotly_colors</span> <span class="o">=</span> <span class="n">cmaps</span><span class="o">.</span><span class="n">plotly_by_type</span><span class="p">[</span><span class="s1">&#39;qualitative&#39;</span><span class="p">][</span><span class="s1">&#39;Plotly&#39;</span><span class="p">]</span>
+
+<span class="c1"># Generate sample data for the scatter plot</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_color/color.html">color module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_color/chromo_map.Color.html">Color</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_color/chromo_map.ColorGradient.html">ColorGradient</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_color/chromo_map.ColorMaps.html">ColorMaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/core.html">Core Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html#color-class">Color Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html#gradient-class">Gradient Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html#swatch-class">Swatch Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/core.html#class-hierarchy">Class Hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/accessibility.html">Accessibility Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/accessibility.html#contrast-analysis">Contrast Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/accessibility.html#color-optimization">Color Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/accessibility.html#advanced-contrast-optimization">Advanced Contrast Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/accessibility.html#when-to-use-each-method">When to Use Each Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/accessibility.html#performance-comparison">Performance Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/accessibility.html#wcag-guidelines">WCAG Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/analysis.html">Analysis Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/analysis.html#palette-generation">Palette Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/analysis.html#color-harmony-analysis">Color Harmony Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/analysis.html#gradient-search">Gradient Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/analysis.html#available-palette-schemes">Available Palette Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/analysis.html#example-creating-themed-palettes">Example: Creating Themed Palettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/analysis.html#advanced-analysis-features">Advanced Analysis Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/analysis.html#integration-with-catalog">Integration with Catalog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/catalog.html">Catalog Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#catalog-access">Catalog Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#matplotlib-integration">Matplotlib Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#plotly-color-scales">Plotly Color Scales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#palettable-collections">Palettable Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#catalog-organization">Catalog Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#search-and-discovery">Search and Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#catalog-properties">Catalog Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#working-with-gradients">Working with Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#catalog-statistics">Catalog Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#popular-gradients">Popular Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#integration-examples">Integration Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/catalog.html#visual-gallery">Visual Gallery</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/utilities.html">Utility Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/utilities.html#color-format-conversion">Color Format Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/utilities.html#format-support">Format Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/utilities.html#conversion-examples">Conversion Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/utilities.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/utilities.html#integration-with-core-classes">Integration with Core Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/utilities.html#performance-considerations">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/utilities.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/utilities.html#extension-points">Extension Points</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/basic_usage.html">Basic Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#creating-colors">Creating Colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#working-with-color-properties">Working with Color Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#color-manipulation">Color Manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#creating-gradients">Creating Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#working-with-gradients">Working with Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#creating-swatches">Creating Swatches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#working-in-jupyter-notebooks">Working in Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#common-patterns">Common Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#matplotlib-compatibility">Matplotlib Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/basic_usage.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/accessibility.html">Accessibility Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#understanding-color-accessibility">Understanding Color Accessibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#wcag-guidelines">WCAG Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#quick-accessibility-check">Quick Accessibility Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#making-colors-accessible">Making Colors Accessible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#practical-examples">Practical Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#color-blindness-considerations">Color Blindness Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#testing-your-colors">Testing Your Colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#advanced-accessibility-features">Advanced Accessibility Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#best-practices-summary">Best Practices Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/accessibility.html#tools-and-resources">Tools and Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guides/color_theory.html">Color Theory Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#understanding-color-theory">Understanding Color Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#the-color-wheel">The Color Wheel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#color-harmonies">Color Harmonies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#monochromatic-schemes">Monochromatic Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#advanced-color-relationships">Advanced Color Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#practical-applications">Practical Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#color-psychology">Color Psychology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#analyzing-existing-palettes">Analyzing Existing Palettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#color-blindness-considerations">Color Blindness Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/color_theory.html#advanced-techniques">Advanced Techniques</a></li>
+</ul>
+</li>
 </ul>
 </div>
-</section>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/jupyter_integration.html">Jupyter Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/gallery.html">Example Gallery</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Visual Catalogs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="catalog_visual.html">Visual Color Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_plotly.html">Plotly Color Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_matplotlib.html">Matplotlib Colormaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalog_palettable.html">Palettable Palettes</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phase5_documentation.html">Comprehensive Documentation for chromo-map Phase 5</a></li>
+</ul>
+</div>
 <section id="coverage-report">
 <h2>Coverage Report<a class="headerlink" href="#coverage-report" title="Link to this heading"></a></h2>
 <p>The test coverage report can be found <a class="reference external" href="_static/coverage/index.html">here</a>.</p>
@@ -121,7 +289,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="_color/color.html" class="btn btn-neutral float-right" title="color module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api/core.html" class="btn btn-neutral float-right" title="Core Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
